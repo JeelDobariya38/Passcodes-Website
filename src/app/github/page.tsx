@@ -206,7 +206,7 @@ export default function GitHubPage() {
                 <p className="mb-4">
                   <strong>MIT License</strong>
                 </p>
-                <p className="mb-4">Copyright (c) 2024 Passcodes Project</p>
+                <p className="mb-4">Copyright (c) 2024 Jeel Dobariya</p>
                 <p className="mb-4">
                   Permission is hereby granted, free of charge, to any person
                   obtaining a copy of this software and associated documentation
