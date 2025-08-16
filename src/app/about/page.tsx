@@ -261,8 +261,8 @@ export default function AboutPage() {
                 Password management is something as simple as remembering a
                 password, yet it&apos;s a very important topic in terms of
                 security. As developers of Passcodes, we aim to streamline and
-                secure the process as much as possible while giving users
-                complete control over their data and workflow.
+                secure the process as much as possible while giving users full
+                (or utter-most) control over their data and workflow.
               </p>
               <p className="text-muted-foreground leading-relaxed mt-4">
                 We believe that true security comes from transparency, user
