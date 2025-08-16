@@ -6,6 +6,16 @@
 
 Next.js Based Website For [JeelDobariya38/Passcodes](https://github.com/JeelDobariya38/Passcodes) project.
 
+## Building
+
+A .env.example file.
+
+```bash
+BUILD_VARIANT="production"
+BASE_PATH="/Passcodes"
+ASSET_PREFIX="/Passcodes/"
+```
+
 ---
 
 <details>

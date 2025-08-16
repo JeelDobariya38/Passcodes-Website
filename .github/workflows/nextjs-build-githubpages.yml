@@ -6,7 +6,9 @@ on:
   workflow_dispatch:
 
 env:
-  NODE_ENV: ${{ vars.NODE_ENV }}
+  BUILD_VARIANT: "production"
+  BASE_PATH: "/Passcodes"
+  ASSET_PREFIX: "/Passcodes/"
 
 permissions:
   contents: read
