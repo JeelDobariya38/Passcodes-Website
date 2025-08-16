@@ -4,7 +4,7 @@
   <img width="512" alt="passcodes play store banner" src="https://github.com/user-attachments/assets/88e63483-9930-4ce0-a01e-4564e18b3c71" />
 </p>
 
-Next.js Based Website For [JeelDobariya38/Passcodes](https://github.com/JeelDobariya38/Passcodes) project.
+This repository contains the source code for the website of the Passcodes Android App, maintained within the seperate repository — [JeelDobariya38/Passcodes](https://github.com/JeelDobariya38/Passcodes).
 
 ## Building
 
@@ -15,6 +15,20 @@ BUILD_VARIANT="production"
 BASE_PATH="/Passcodes"
 ASSET_PREFIX="/Passcodes/"
 ```
+
+## Contribution Are Appreciated!!!
+
+We appreciate the contribuation to website...
+
+Before, contributing to this website project, you should have knowledge of the [CONTRIBUTING.md](https://github.com/JeelDobariya38/Passcodes/blob/main/CONTRIBUTING.md) & [MIT License](https://github.com/JeelDobariya38/Passcodes/blob/main/LICENSE.txt) provide in [app repository](https://github.com/JeelDobariya38/Passcodes). and also you should have basic knowledge of app repository codebase.
+
+## 📫 Questions or Issues?
+
+Free free to [open an issue](https://github.com/JeelDobariya38/Passcodes-Website/issues) or start a discussion in the [repository](https://github.com/JeelDobariya38/Passcodes-Website) if you need help contributing or have questions about passcodes website.
+
+## Security Policy
+
+We follow the same security policy as the [app repository](https://github.com/JeelDobariya38/Passcodes). which is avaiable in app repository over [here](https://github.com/JeelDobariya38/Passcodes/blob/main/SECURITY.md).
 
 ---
 
