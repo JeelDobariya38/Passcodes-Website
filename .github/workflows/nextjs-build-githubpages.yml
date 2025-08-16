@@ -7,8 +7,8 @@ on:
 
 env:
   BUILD_VARIANT: "production"
-  BASE_PATH: "/Passcodes"
-  ASSET_PREFIX: "/Passcodes/"
+  BASE_PATH: "/${{ github.event.repository.name }}"
+  ASSET_PREFIX: "/${{ github.event.repository.name }}/"
 
 permissions:
   contents: read
