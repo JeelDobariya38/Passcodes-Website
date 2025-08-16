@@ -5,20 +5,23 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "test": "echo \"Error: no test specified\" && exit 0",
+    "postinstall": "npm run copydependency",
     "build": "next build",
+    "copydependency": "cpy public out",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "next": "15.4.6",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.4.6"
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "cpy-cli": "^6.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4"
   }
 }
