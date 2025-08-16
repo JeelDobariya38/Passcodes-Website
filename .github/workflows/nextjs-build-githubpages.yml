@@ -49,7 +49,7 @@ jobs:
       - name: 📤 Upload Static Site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: website/out
+          path: out
 
   deploy:
     runs-on: ubuntu-latest
