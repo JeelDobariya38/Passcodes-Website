@@ -39,7 +39,7 @@ export function Navigation() {
           </Link>
           <ThemeToggle />
           <Button variant="outline" className="gap-2" asChild>
-            <Link href="/github">
+            <Link href="https://github.com/JeelDobariya38/Passcodes">
               <Code className="h-4 w-4" />
               View Source
             </Link>
@@ -89,7 +89,10 @@ export function Navigation() {
               GitHub
             </Link>
             <Button variant="outline" className="gap-2 w-fit" asChild>
-              <Link href="/github" onClick={() => setIsMenuOpen(false)}>
+              <Link
+                href="https://github.com/JeelDobariya38/Passcodes"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 <Code className="h-4 w-4" />
                 View Source
               </Link>

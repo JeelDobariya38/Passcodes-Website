@@ -60,7 +60,7 @@ export default function HomePage() {
               Download APK
             </Button>
             <Button variant="outline" size="lg" className="gap-2" asChild>
-              <Link href="/github">
+              <Link href="https://github.com/JeelDobariya38/Passcodes">
                 <Code className="h-5 w-5" />
                 View Source Code
               </Link>
@@ -302,12 +302,18 @@ export default function HomePage() {
           </p>
           <div className="flex justify-center gap-6">
             <Button variant="ghost" asChild>
-              <Link href="/github">GitHub</Link>
+              <Link href="https://github.com/JeelDobariya38/Passcodes">
+                GitHub
+              </Link>
             </Button>
             <Button variant="ghost" asChild>
               <Link href="/about">About</Link>
             </Button>
-            <Button variant="ghost">Documentation</Button>
+            <Button variant="ghost" asChild>
+              <Link href="https://github.com/JeelDobariya38/Passcodes/tree/main/docs">
+                Documentation
+              </Link>
+            </Button>
           </div>
           <div className="mt-8 pt-8 border-t text-muted-foreground text-sm">
             <p>

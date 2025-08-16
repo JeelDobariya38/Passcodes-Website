@@ -79,18 +79,24 @@ export default function GitHubPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="gap-2" size="lg">
-                  <Code className="h-5 w-5" />
-                  View on GitHub
-                  <ExternalLink className="h-4 w-4" />
+                <Button className="gap-2" size="lg" asChild>
+                  <Link href="https://github.com/JeelDobariya38/Passcodes">
+                    <Code className="h-5 w-5" />
+                    View on GitHub
+                    <ExternalLink className="h-4 w-4" />
+                  </Link>
                 </Button>
-                <Button variant="outline" className="gap-2" size="lg">
-                  <Download className="h-5 w-5" />
-                  Download Latest Release
+                <Button variant="outline" className="gap-2" size="lg" asChild>
+                  <Link href="https://github.com/JeelDobariya38/Passcodes/releases/latest">
+                    <Download className="h-5 w-5" />
+                    Download Latest Release
+                  </Link>
                 </Button>
-                <Button variant="outline" className="gap-2" size="lg">
-                  <GitBranch className="h-5 w-5" />
-                  Fork Repository
+                <Button variant="outline" className="gap-2" size="lg" asChild>
+                  <Link href="https://github.com/JeelDobariya38/Passcodes/fork">
+                    <GitBranch className="h-5 w-5" />
+                    Fork Repository
+                  </Link>
                 </Button>
               </div>
             </CardContent>
@@ -272,14 +278,18 @@ export default function GitHubPage() {
                 management better for everyone.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="gap-2">
-                  <Code className="h-5 w-5" />
-                  Start Contributing
-                  <ExternalLink className="h-4 w-4" />
+                <Button size="lg" className="gap-2" asChild>
+                  <Link href="https://github.com/JeelDobariya38/Passcodes">
+                    <Code className="h-5 w-5" />
+                    Start Contributing
+                    <ExternalLink className="h-4 w-4" />
+                  </Link>
                 </Button>
-                <Button variant="outline" size="lg" className="gap-2">
-                  <Users className="h-5 w-5" />
-                  Join Discussions
+                <Button variant="outline" size="lg" className="gap-2" asChild>
+                  <Link href="https://t.me/passcodescommunity">
+                    <Users className="h-5 w-5" />
+                    Join Telegram Community
+                  </Link>
                 </Button>
               </div>
             </CardContent>
