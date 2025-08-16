@@ -1,16 +1,11 @@
-const isProdBuild = process.env.BUILD_VARIANT === "production";
-
-if (isProdBuild) {
-    console.log("VERBOSE: Build a production Version (next.config.js)");
-} else {
-    console.log("VERBOSE: Build a Development Version (next.config.js)")
-}
+const basePathEnv = process.env.BASE_PATH;
+const assetPrefixEnv = process.env.ASSET_PREFIX;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: "export",
-    basePath: isProdBuild ? process.env.BASE_PATH : "",
-    assetPrefix: isProdBuild ? process.env.ASSET_PREFIX : "",
+    basePath: basePathEnv ? basePathEnv : "",
+    assetPrefix: assetPrefixEnv ? assetPrefixEnv : "",
     images: {
         unoptimized: true,
     }

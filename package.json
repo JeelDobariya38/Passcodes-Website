@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "postinstall": "npm run copydependency",
-    "build": "next build",
+    "build": "next build && npm run copydependency",
     "copydependency": "cpy public out",
     "start": "next start",
     "lint": "next lint"

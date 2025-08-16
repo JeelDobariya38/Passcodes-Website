@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
 
 env:
-  BUILD_VARIANT: "production"
   BASE_PATH: "/${{ github.event.repository.name }}"
   ASSET_PREFIX: "/${{ github.event.repository.name }}/"
 

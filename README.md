@@ -8,12 +8,9 @@ This repository contains the source code for the website of the Passcodes Androi
 
 ## Building
 
-A .env.example file.
-
-```bash
-BUILD_VARIANT="production"
-BASE_PATH="/Passcodes"
-ASSET_PREFIX="/Passcodes/"
+```
+npm run build
+npm run copydependency
 ```
 
 ## Contribution Are Appreciated!!!
