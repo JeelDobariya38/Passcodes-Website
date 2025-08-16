@@ -279,14 +279,17 @@ export default function GitHubPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="gap-2" asChild>
-                  <Link href="https://github.com/JeelDobariya38/Passcodes">
+                  <Link
+                    href="https://github.com/JeelDobariya38/Passcodes"
+                    target="_blank"
+                  >
                     <Code className="h-5 w-5" />
                     Start Contributing
                     <ExternalLink className="h-4 w-4" />
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" className="gap-2" asChild>
-                  <Link href="https://t.me/passcodescommunity">
+                  <Link href="https://t.me/passcodescommunity" target="_blank">
                     <Users className="h-5 w-5" />
                     Join Telegram Community
                   </Link>
