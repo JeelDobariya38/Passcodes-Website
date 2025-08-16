@@ -32,7 +32,7 @@ export default function AboutPage() {
           <h1 className="text-4xl font-bold mb-6">Our Philosophy & Vision</h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
             Password management should be intuitive, secure, and completely
-            under your control. Here's what drives us to build Passcodes.
+            under your control. Here&apos;s what drives us to build Passcodes.
           </p>
         </div>
 
@@ -143,7 +143,7 @@ export default function AboutPage() {
                   <li className="flex items-start gap-2">
                     <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                     Those who wish to optimize their password management
-                    workflow but don't know how
+                    workflow but don&apos;t know how
                   </li>
                   <li className="flex items-start gap-2">
                     <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
@@ -157,8 +157,8 @@ export default function AboutPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                    Users who don't mind researching documentation to customize
-                    their workflow
+                    Users who don&apos;t mind researching documentation to
+                    customize their workflow
                   </li>
                 </ul>
               </CardContent>
@@ -191,7 +191,7 @@ export default function AboutPage() {
               <CardContent>
                 <p className="text-muted-foreground">
                   While we support general users, the app is optimized for
-                  customization rather than simplicity. If you're a general
+                  customization rather than simplicity. If you&apos;re a general
                   user, consider this a starting point for your password
                   management journey. We recommend evolving into our primary
                   target group to use the app more effectively.
@@ -259,10 +259,10 @@ export default function AboutPage() {
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
                 Password management is something as simple as remembering a
-                password, yet it's a very important topic in terms of security.
-                As developers of Passcodes, we aim to streamline and secure the
-                process as much as possible while giving users complete control
-                over their data and workflow.
+                password, yet it&apos;s a very important topic in terms of
+                security. As developers of Passcodes, we aim to streamline and
+                secure the process as much as possible while giving users
+                complete control over their data and workflow.
               </p>
               <p className="text-muted-foreground leading-relaxed mt-4">
                 We believe that true security comes from transparency, user

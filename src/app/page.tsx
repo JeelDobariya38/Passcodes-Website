@@ -221,9 +221,9 @@ export default function HomePage() {
             </AlertTitle>
             <AlertDescription className="text-red-700 dark:text-red-300">
               Passcodes is an open source project under MIT License, provided
-              "as is" without warranty. Your passwords are as safe as writing
-              them on paper or in a text file. We recommend waiting for the
-              stable release before trusting it with real passwords.
+              &quot;as is&quot; without warranty. Your passwords are as safe as
+              writing them on paper or in a text file. We recommend waiting for
+              the stable release before trusting it with real passwords.
             </AlertDescription>
           </Alert>
 
@@ -239,7 +239,7 @@ export default function HomePage() {
                 <div className="flex items-start gap-2">
                   <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-muted-foreground">
-                    Lock the app using your phone's settings
+                    Lock the app using your phone&apos;s settings
                   </p>
                 </div>
                 <div className="flex items-start gap-2">
@@ -251,7 +251,7 @@ export default function HomePage() {
                 <div className="flex items-start gap-2">
                   <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-muted-foreground">
-                    Hide the app if you don't use it often
+                    Hide the app if you don&apos;t use it often
                   </p>
                 </div>
               </CardContent>
