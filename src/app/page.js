@@ -4,23 +4,21 @@ export default function Home() {
   return (
     <div className="font-sans flex items-center justify-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] justify-center items-center">
-        <Image
+        <img
           className="dark:invert"
-          src="/passcodes-banner.png"
+          src="public/passcodes-banner.png"
           alt="Passcodes logo"
           width={1024 / 2}
           height={500 / 2}
-          priority
         />
         <div className="flex flex-col sm:flex-row justify-evenly items-center my-4 bg-slate-900 text-pink-500 rounded p-7">
           <div className="px-4">
-            <Image
+            <img
               className="dark:invert"
-              src="/passcodes.png"
+              src="public/passcodes.png"
               alt="Passcodes logo"
               width={512 / 4}
               height={512 / 4}
-              priority
             />
           </div>
           <div className="p-4">
@@ -40,13 +38,12 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-col gap-[32px] items-center">
-          <Image
+          <img
             className="dark:invert"
-            src="/next.svg"
+            src="public/next.svg"
             alt="Next.js logo"
             width={180}
             height={38}
-            priority
           />
         </div>
       </main>
