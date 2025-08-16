@@ -11,6 +11,7 @@ This repository contains the source code for the website of the Passcodes Androi
 ```
 npm run build
 npm run copydependency
+npm run serve
 ```
 
 ## Contribution Are Appreciated!!!

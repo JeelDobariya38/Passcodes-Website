@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 0",
     "build": "next build && npm run copydependency",
     "copydependency": "cpy public out",
+    "serve": "serve out",
     "start": "next start",
     "lint": "next lint"
   },
@@ -21,6 +22,7 @@
     "cpy-cli": "^6.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
+    "serve": "^14.2.4",
     "tailwindcss": "^4"
   }
 }
