@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "serve": "serve out -l 1234",
+    "serve": "serve out -l 8000",
     "preview": "npm run build && npm run serve"
   },
   "dependencies": {
