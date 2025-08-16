@@ -6,14 +6,10 @@
 
 This repository contains the source code for the website of the Passcodes Android App, maintained within the seperate repository — [JeelDobariya38/Passcodes](https://github.com/JeelDobariya38/Passcodes).
 
-## Building
+## Building && Previewing
 
-A .env.example file.
-
-```bash
-BUILD_VARIANT="production"
-BASE_PATH="/Passcodes"
-ASSET_PREFIX="/Passcodes/"
+```
+npm run preview
 ```
 
 ## Contribution Are Appreciated!!!
