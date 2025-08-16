@@ -26,6 +26,10 @@ Before, contributing to this website project, you should have knowledge of the [
 
 Free free to [open an issue](https://github.com/JeelDobariya38/Passcodes-Website/issues) or start a discussion in the [repository](https://github.com/JeelDobariya38/Passcodes-Website) if you need help contributing or have questions about passcodes website.
 
+## Security Policy
+
+We follow the same security policy as the [app repository](https://github.com/JeelDobariya38/Passcodes). which is avaiable in app repository over [here](https://github.com/JeelDobariya38/Passcodes/blob/main/SECURITY.md).
+
 ---
 
 <details>
