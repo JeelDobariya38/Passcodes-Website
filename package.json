@@ -9,8 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "serve": "serve out",
-    "preview": "npm run build && serve out"
+    "serve": "serve out -l 1234",
+    "preview": "npm run build && npm run serve"
   },
   "dependencies": {
     "next": "15.4.6",

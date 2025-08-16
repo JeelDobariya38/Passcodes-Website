@@ -30,12 +30,12 @@ export default function HomePage() {
       <section className="py-20 px-4">
         <div className="container mx-auto text-center max-w-4xl">
           <Badge variant="secondary" className="mb-4">
-            Open Source • Under Development
+            Open Source • <wbr /> Under Development
           </Badge>
-          <h2 className="text-5xl font-bold mb-6">
+          <h2 className="text-xl sm:text-5xl font-bold mb-6">
             Take Down the Headache of Remembering Passwords
           </h2>
-          <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+          <p className="text-sm sm:text-xl text-muted-foreground mb-8 leading-relaxed">
             An open source Android app that helps you keep your passwords safe
             and secure in your own local storage without ever needing to push
             them to the cloud.
@@ -72,7 +72,7 @@ export default function HomePage() {
       {/* Features Section */}
       <section id="features" className="py-16 px-4 bg-muted/30">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12">
+          <h3 className="text-xs sm:text-3xl font-bold text-center mb-12">
             Why Choose Passcodes?
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
@@ -115,7 +115,7 @@ export default function HomePage() {
       {/* Compatibility Section */}
       <section id="compatibility" className="py-16 px-4">
         <div className="container mx-auto max-w-4xl">
-          <h3 className="text-3xl font-bold text-center mb-12">
+          <h3 className="text-xs sm:text-3xl font-bold text-center mb-12">
             Compatibility
           </h3>
           <Card>
@@ -160,13 +160,13 @@ export default function HomePage() {
       {/* Target Users Section */}
       <section className="py-16 px-4 bg-muted/30">
         <div className="container mx-auto max-w-4xl">
-          <h3 className="text-3xl font-bold text-center mb-12">
+          <h3 className="text-xs sm:text-3xl font-bold text-center mb-12">
             Who Is This For?
           </h3>
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col sm:flex-row items-center gap-2">
                   <Badge variant="default">Primary Target</Badge>
                   <CardTitle>Tech-Savvy Users</CardTitle>
                 </div>
@@ -179,7 +179,7 @@ export default function HomePage() {
 
             <Card>
               <CardHeader>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col sm:flex-row items-center gap-2">
                   <Badge variant="secondary">Secondary Target</Badge>
                   <CardTitle>Software Engineers</CardTitle>
                 </div>
@@ -192,7 +192,7 @@ export default function HomePage() {
 
             <Card>
               <CardHeader>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col sm:flex-row items-center gap-2">
                   <Badge variant="outline">End Users</Badge>
                   <CardTitle>General Users</CardTitle>
                 </div>
@@ -210,7 +210,7 @@ export default function HomePage() {
       {/* Security Section */}
       <section id="security" className="py-16 px-4">
         <div className="container mx-auto max-w-4xl">
-          <h3 className="text-3xl font-bold text-center mb-12">
+          <h3 className="text-xs sm:text-3xl font-bold text-center mb-12">
             Security Considerations
           </h3>
 
@@ -300,7 +300,7 @@ export default function HomePage() {
             Open source password management for Android. Built by developers,
             for developers.
           </p>
-          <div className="flex justify-center gap-6">
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Button variant="ghost" asChild>
               <Link href="https://github.com/JeelDobariya38/Passcodes">
                 GitHub
