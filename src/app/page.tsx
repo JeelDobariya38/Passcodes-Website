@@ -63,7 +63,8 @@ export default async function HomePage() {
             <Button variant="outline" size="lg" className="gap-2" asChild>
               <Link href={telegramGroupLink} target="_blank">
                 <Users className="h-5 w-5" />
-                Join Telegram Community
+                Join <wbr />
+                Telegram <wbr /> Community
               </Link>
             </Button>
           </div>
