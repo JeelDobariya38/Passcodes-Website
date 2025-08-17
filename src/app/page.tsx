@@ -5,6 +5,7 @@ import {
   AlertTriangle,
   Lock,
   Eye,
+  Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,7 +24,7 @@ import { ApkDownloadButton } from "@/components/apkdownloadbutton";
 export default async function HomePage() {
   let downloadFallbackUrl =
     "https://github.com/JeelDobariya38/Passcodes/releases";
-  let githubRepoUrl = "https://github.com/JeelDobariya38/Passcodes";
+  let telegramGroupLink = "https://t.me/passcodescommunity";
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/20">
@@ -60,9 +61,9 @@ export default async function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <ApkDownloadButton fallbackUrl={downloadFallbackUrl} />
             <Button variant="outline" size="lg" className="gap-2" asChild>
-              <Link href={githubRepoUrl} target="_blank">
-                <Code className="h-5 w-5" />
-                View Source Code
+              <Link href={telegramGroupLink} target="_blank">
+                <Users className="h-5 w-5" />
+                Join Telegram Community
               </Link>
             </Button>
           </div>
