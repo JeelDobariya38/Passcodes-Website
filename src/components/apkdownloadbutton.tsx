@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Constants from "@/lib/constants";
+import Constants from "@/libs/constants";
 
 type Asset = {
   url: string;

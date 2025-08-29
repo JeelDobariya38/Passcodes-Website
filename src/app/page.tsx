@@ -20,7 +20,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Navigation } from "@/components/navigation";
 import Link from "next/link";
 import { ApkDownloadButton } from "@/components/apkdownloadbutton";
-import Constants from "@/lib/constants";
+import Constants from "@/libs/constants";
 
 export default async function HomePage() {
   let downloadFallbackUrl = Constants.GITHUB_RELEASE_URL;
