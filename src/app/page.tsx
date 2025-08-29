@@ -20,11 +20,11 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Navigation } from "@/components/navigation";
 import Link from "next/link";
 import { ApkDownloadButton } from "@/components/apkdownloadbutton";
+import Constants from "@/lib/constants";
 
 export default async function HomePage() {
-  let downloadFallbackUrl =
-    "https://github.com/JeelDobariya38/Passcodes/releases";
-  let telegramGroupLink = "https://t.me/passcodescommunity";
+  let downloadFallbackUrl = Constants.GITHUB_RELEASE_URL;
+  let telegramGroupLink = Constants.TELEGRAM_COMMUNITY_URL;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/20">
