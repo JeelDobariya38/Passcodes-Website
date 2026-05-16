@@ -12,8 +12,6 @@
 
 This repository contains the source code for the website of the Passcodes Android App, maintained within the seperate repository — [PasscodesApp/Passcodes](https://github.com/PasscodesApp/Passcodes).
 
-**Maintain by** : [@jainil63](https://github.com/jainil63)
-
 ## Building && Previewing
 
 Open `index.html` in your browser.
