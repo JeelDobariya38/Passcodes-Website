@@ -10,13 +10,19 @@ body {
     height: 100vh;
     font-family: "Segoe UI", sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
 
     /* Gradient background */
     background: linear-gradient(135deg, #061023, #343f53);
     color: white;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
 }
 
 /* Heading */
@@ -129,12 +135,6 @@ h1 {
 }
 
 /* Hover effect */
-
-/* Fix body overlap due to fixed navbar */
-body {
-    padding-top: 80px;
-}
-
 .nav-links li a:active {
     transform: scale(0.92);
 
@@ -149,10 +149,13 @@ body {
 }
 
 footer {
-    margin-top: 200px;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100vw;
+    width: 100%;
+    position: relative;
+    bottom: 0px;
+    padding: 12px;
+
+    background-color: black;
+    text-align: center;
 }
 
 a {
