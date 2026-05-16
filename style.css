@@ -24,11 +24,6 @@ h1 {
     font-size: 3rem;
     margin-bottom: 20px;
     letter-spacing: 2px;
-
-    /* Glow effect */
-    text-shadow:
-        0 0 10px rgba(249, 211, 211, 0.7),
-        0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 /* Link as button */
@@ -116,12 +111,29 @@ header {
 }
 
 main {
-    padding: 20px 0;
+    padding: 20px 10px;
+    flex: 1;
+}
+
+.flex-elem-center {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    flex: 1;
+}
+
+.primary-btn {
+    display: inline-block;
+    margin: 2px;
+    padding: 12px 24px;
+    border: 2px solid #fff;
+    border-radius: 30px;
+}
+
+.primary-btn:hover {
+    color: #0059ff;
+    /* background: linear-gradient(45deg, #1e2849, #152c77); */
+    background-color: #030f33;
 }
 
 footer {
