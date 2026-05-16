@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
 /* Reset */
 * {
     margin: 0;
@@ -8,7 +10,7 @@
 /* Background */
 body {
     height: 100vh;
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Open Sans", sans-serif;
     display: flex;
     flex-direction: column;
 
@@ -78,40 +80,6 @@ h1 {
     animation: float 3s ease-in-out infinite;
 }
 
-/* Logo */
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: white;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-}
-
-/* Nav links */
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 4px;
-}
-
-/* Nav link style */
-.nav-links li a {
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-    padding: 8px 15px;
-    border-radius: 20px;
-    transition: 0.3s;
-}
-
-/* Hover effect */
-.nav-links li a:active {
-    transform: scale(0.92);
-
-    /* Pressed shadow */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
-}
-
 /* ------------------------------------------------------------------------------------- */
 
 a {
@@ -128,21 +96,22 @@ header {
 
 .navbar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 4px;
 }
 
-.link-btn {
+.nav-btn {
     padding: 8px 16px;
     border-radius: 12px;
     background: linear-gradient(45deg, #24315e1f, #283a738f);
 }
 
-.link-btn:hover {
+.nav-btn:hover {
     background: linear-gradient(45deg, #24315e9f, #283a73df);
 }
 
-.link-btn:active {
+.nav-btn:active {
     background: linear-gradient(45deg, #24315fff, #283a7fff);
 }
 
