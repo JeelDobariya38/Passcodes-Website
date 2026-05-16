@@ -17,14 +17,6 @@ body {
     color: white;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    flex: 1;
-}
-
 /* Heading */
 h1 {
     font-size: 3rem;
@@ -89,17 +81,6 @@ h1 {
     animation: float 3s ease-in-out infinite;
 }
 
-/* Navbar */
-.nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(6, 16, 35, 0.9);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-}
-
 /* Navbar container */
 .navbar {
     display: flex;
@@ -148,6 +129,27 @@ h1 {
     gap: 20px;
 }
 
+/* ------------------------------------------------------------------------------------- */
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header {
+    background: rgba(12, 10, 26, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+}
+
 footer {
     width: 100%;
     position: relative;
@@ -156,8 +158,4 @@ footer {
 
     background-color: black;
     text-align: center;
-}
-
-a {
-    color: #ffffff;
 }
