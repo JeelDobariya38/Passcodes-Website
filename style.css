@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
 /* Reset */
 * {
     margin: 0;
@@ -5,65 +7,103 @@
     box-sizing: border-box;
 }
 
-/* Background */
-body {
-    height: 100vh;
-    font-family: "Segoe UI", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+/* Styling */
+:root {
+    font-family: "Open Sans", sans-serif;
 
     /* Gradient background */
     background: linear-gradient(135deg, #061023, #343f53);
     color: white;
 }
 
-/* Heading */
 h1 {
     font-size: 3rem;
-    margin-bottom: 20px;
     letter-spacing: 2px;
-
-    /* Glow effect */
-    text-shadow:
-        0 0 10px rgba(249, 211, 211, 0.7),
-        0 0 20px rgba(255, 255, 255, 0.5);
 }
 
-/* Link as button */
-.link {
+a {
+    color: #fff;
     text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
-    padding: 12px 25px;
-    border-radius: 30px;
+}
 
+header {
+    padding: 12px 0px;
+    background: rgba(12, 10, 26, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+}
+
+.nav-btn {
+    padding: 8px 16px;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #24315e1f, #283a738f);
+}
+
+.nav-btn:hover {
+    background: linear-gradient(45deg, #24315e9f, #283a73df);
+}
+
+.nav-btn:active {
+    background: linear-gradient(45deg, #24315fff, #283a7fff);
+}
+
+main {
+    padding: 40px 20px;
+    min-height: 90vh;
+}
+
+.primary-btn {
+    display: inline-block;
+    margin: 2px;
+    padding: 12px 24px;
+    border: 2px solid #fff;
+    border-radius: 30px;
+}
+
+.primary-btn:hover {
+    color: #0059ff;
+    background-color: #030f33;
+}
+
+.outline-btn {
+    display: inline-block;
+    margin: 2px;
+    padding: 12px 25px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.outline-btn:hover {
     /* Gradient button */
     background: linear-gradient(45deg, #3e57a8, #3e57a8);
-
-    /* Smooth transition */
-    transition: all 0.3s ease;
-
-    margin-bottom: 20px;
-
-    /* Shadow */
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
-}
-
-/* Hover effect */
-.link:hover {
     transform: scale(1.1) translateY(-3px);
 
-    /* Glow */
-    box-shadow: 0 10px 25px #3e57a8(255, 75, 43, 0.6);
-
-    background: linear-gradient(45deg, #3e57a8, #3e57a8);
+    /* Shadow */
+    box-shadow: 0 5px 32px #3e57aaf9;
 }
 
-/* Click effect */
-.link:active {
+.outline-btn:active {
     transform: scale(0.95);
+}
+
+footer {
+    width: 100%;
+    position: relative;
+    bottom: 0px;
+    padding: 12px 0px;
+
+    background-color: black;
+    text-align: center;
 }
 
 /* Add subtle floating animation */
@@ -79,82 +119,6 @@ h1 {
     }
 }
 
-h1 {
+.floating-animation {
     animation: float 3s ease-in-out infinite;
-}
-
-/* Navbar */
-.nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(6, 16, 35, 0.9);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-}
-
-/* Navbar container */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-}
-
-/* Logo */
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: white;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-}
-
-/* Nav links */
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-}
-
-/* Nav link style */
-.nav-links li a {
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-    padding: 8px 15px;
-    border-radius: 20px;
-    transition: 0.3s;
-}
-
-/* Hover effect */
-
-/* Fix body overlap due to fixed navbar */
-body {
-    padding-top: 80px;
-}
-
-.nav-links li a:active {
-    transform: scale(0.92);
-
-    /* Pressed shadow */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
-}
-
-.navbar {
-    justify-content: center;
-    display: flex;
-    gap: 20px;
-}
-
-footer {
-    margin-top: 200px;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100vw;
-}
-
-a {
-    color: #ffffff;
 }
