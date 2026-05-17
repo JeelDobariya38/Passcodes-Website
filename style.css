@@ -7,25 +7,6 @@
     box-sizing: border-box;
 }
 
-/* Background */
-body {
-    height: 100vh;
-    font-family: "Open Sans", sans-serif;
-    display: flex;
-    flex-direction: column;
-
-    /* Gradient background */
-    background: linear-gradient(135deg, #061023, #343f53);
-    color: white;
-}
-
-/* Heading */
-h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-}
-
 /* Link as button */
 .link {
     padding: 12px 25px;
@@ -58,24 +39,21 @@ h1 {
     transform: scale(0.95);
 }
 
-/* Add subtle floating animation */
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
+/* ------------------------------------------------------------------------------------- */
+
+/* Styling */
+:root {
+    font-family: "Open Sans", sans-serif;
+
+    /* Gradient background */
+    background: linear-gradient(135deg, #061023, #343f53);
+    color: white;
 }
 
 h1 {
-    animation: float 3s ease-in-out infinite;
+    font-size: 3rem;
+    letter-spacing: 2px;
 }
-
-/* ------------------------------------------------------------------------------------- */
 
 a {
     color: #fff;
@@ -111,8 +89,8 @@ header {
 }
 
 main {
-    padding: 20px 10px;
-    flex: 1;
+    padding: 40px 20px;
+    min-height: 90vh;
 }
 
 .flex-elem-center {
@@ -144,4 +122,21 @@ footer {
 
     background-color: black;
     text-align: center;
+}
+
+/* Add subtle floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.floating-animation {
+    animation: float 3s ease-in-out infinite;
 }
