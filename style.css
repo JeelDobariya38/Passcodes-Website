@@ -36,6 +36,31 @@
 
 /* Click effect */
 .link:active {
+    transition: all 0.3s ease;
+    transform: scale(0.95);
+}
+
+.outline-btn {
+    display: inline-block;
+    margin: 4px;
+    padding: 12px 25px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.outline-btn:hover {
+    /* Gradient button */
+    background: linear-gradient(45deg, #3e57a8, #3e57a8);
+    transform: scale(1.1) translateY(-3px);
+
+    /* Shadow */
+    box-shadow: 0 5px 32px #3e57aaf9;
+}
+
+.outline-btn:active {
     transform: scale(0.95);
 }
 
