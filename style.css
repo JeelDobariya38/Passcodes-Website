@@ -59,6 +59,14 @@ main {
     min-height: 90vh;
 }
 
+main p {
+    margin-top: 10px;
+}
+
+main h1 {
+    margin-bottom: 10px;
+}
+
 .primary-btn {
     display: inline-block;
     margin: 2px;
@@ -68,17 +76,12 @@ main {
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease,
-        background-color 0.25s ease;
-}
-
-.primary-btn i {
-    margin-right: 8px;
-    vertical-align: middle;
+        background 0.25s ease;
 }
 
 .primary-btn:hover {
     color: #0059ff;
-    background-color: #020a25;
+    background-color: #030f33;
 
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(0, 89, 255, 0.25);
@@ -89,24 +92,30 @@ main {
     box-shadow: 0 2px 8px rgba(0, 89, 255, 0.2);
 }
 
+.primary-btn i {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
 .outline-btn {
     display: inline-block;
-    margin: 2px;
+    margin: 4px;
     padding: 12px 25px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.6);
     border-radius: 30px;
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .outline-btn:hover {
-    /* Gradient button */
-    background: linear-gradient(45deg, #3e57a8, #3e57a8);
-    transform: scale(1.1) translateY(-3px);
+    background: rgba(62, 87, 168, 0.15);
+    border-color: #3e57a8;
 
-    /* Shadow */
-    box-shadow: 0 5px 32px #3e57aaf9;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(62, 87, 168, 0.3);
 }
 
 .outline-btn:active {
@@ -121,6 +130,12 @@ footer {
 
     background-color: black;
     text-align: center;
+}
+
+.contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 /* Add subtle floating animation */
