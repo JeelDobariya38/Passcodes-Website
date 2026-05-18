@@ -65,11 +65,28 @@ main {
     padding: 12px 24px;
     border: 2px solid #fff;
     border-radius: 30px;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.primary-btn i {
+    margin-right: 8px;
+    vertical-align: middle;
 }
 
 .primary-btn:hover {
     color: #0059ff;
-    background-color: #030f33;
+    background-color: #020a25;
+
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 89, 255, 0.25);
+}
+
+.primary-btn:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 8px rgba(0, 89, 255, 0.2);
 }
 
 .outline-btn {
@@ -116,6 +133,15 @@ footer {
     }
     100% {
         transform: translateY(0px);
+    }
+}
+
+@media (max-width: 600px) {
+    .primary-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 8px 0;
     }
 }
 
