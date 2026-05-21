@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
             name="description"
-            content="An password manager app,
+            content="A password manager app,
             take down the headache of remembering passwords"
         />
         <title>Passcodes</title>
@@ -38,6 +38,7 @@
                 <a href="download.html" class="nav-btn">Download</a>
                 <a href="community.html" class="nav-btn">Community</a>
                 <a href="contact_us.html" class="nav-btn">Contact Us</a>
+                <a href="test_suite.html" class="nav-btn test">Test Suite</a>
             </nav>
         </header>
 
@@ -45,24 +46,28 @@
             <h1 class="floating-animation">Passcodes</h1>
 
             <a
+                id="download-btn"
                 target="_blank"
+                rel="noopener noreferrer"
                 href="https://github.com/PasscodesApp/Passcodes/releases/download/v2.1.1/v2.1.1-passcodes-app-universal-release.apk"
-                class="primary-btn"
-                ><i class="fa-solid fa-download"></i>Download Latest</a
+                class="btn btn-primary"
+                style="pointer-events: none; opacity: 0.7"
             >
+                <i class="fa-solid fa-spinner fa-spin"></i> Loading...
+            </a>
 
             <a
                 href="https://discord.gg/kSSkYq7KAQ"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="primary-btn"
+                class="btn btn-primary"
             >
                 <i class="fa-brands fa-discord"></i> Join Discord
             </a>
 
             <a
                 href="https://github.com/PasscodesApp/Passcodes/blob/main/LICENSE.txt"
-                class="primary-btn"
+                class="btn btn-primary"
                 ><i class="fa-regular fa-copyright"></i>View License
             </a>
         </main>
@@ -70,5 +75,34 @@
         <footer>
             <div>Copyright © Jeel Dobariya 2025-2026</div>
         </footer>
+        <script>
+            async function loadLatestDownload() {
+                try {
+                    const res = await fetch(
+                        "https://api.github.com/repos/PasscodesApp/Passcodes/releases/latest",
+                    );
+                    const data = await res.json();
+                    if (!data.assets) return;
+                    const apk = data.assets.find((file) =>
+                        file.name.endsWith(".apk"),
+                    );
+
+                    if (apk) {
+                        const btn = document.getElementById("download-btn");
+
+                        btn.href = apk.browser_download_url;
+                        btn.innerHTML = `<i class="fa-solid fa-download"></i> Download Latest (${data.tag_name})`;
+                        btn.style.pointerEvents = "auto";
+                        btn.style.opacity = "1";
+                    }
+                } catch (err) {
+                    console.error("Error loading latest release", err);
+                    const btn = document.getElementById("download-btn");
+                    btn.innerHTML = `<i class="fa-solid fa-download"></i> Download Latest`;
+                }
+            }
+
+            loadLatestDownload();
+        </script>
     </body>
 </html>
