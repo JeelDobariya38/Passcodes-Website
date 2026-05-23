@@ -45,9 +45,6 @@
             const repoName = "Passcodes";
 
             async function fetchReleases() {
-                const repoOwner = "PasscodesApp";
-                const repoName = "Passcodes";
-
                 const url = `https://api.github.com/repos/${repoOwner}/${repoName}/releases`;
 
                 const container = document.getElementById("releases-container");
@@ -61,17 +58,30 @@
                         const version = release.tag_name;
                         const isLatest = index === 0;
 
-                        let type = "stable";
-                        if (version.toLowerCase().includes("beta"))
-                            type = "beta";
-                        if (version.toLowerCase().includes("alpha"))
-                            type = "alpha";
+                        let type = "unknown";
 
-                        const apkAsset = release.assets.find((asset) =>
-                            asset.name.endsWith(".apk"),
+                        if (version.toLowerCase().includes("alpha")) {
+                            type = "alpha";
+                        } else if (version.toLowerCase().includes("beta")) {
+                            type = "beta";
+                        } else if (release.prerelease) {
+                            type = "beta"; // GitHub flag
+                        } else {
+                            type = "stable";
+                        }
+
+                        const apkAsset = release.assets.find(
+                            (asset) =>
+                                asset.name
+                                    .toLowerCase()
+                                    .includes("universal") &&
+                                asset.name.toLowerCase().endsWith(".apk"),
                         );
 
-                        if (!apkAsset) return; //  skip invalid releases
+                        if (!apkAsset) {
+                            console.warn(`No universal APK for ${version}`);
+                            return;
+                        }
 
                         const downloadLink = apkAsset.browser_download_url;
                         const notesLink = release.html_url;
@@ -102,7 +112,7 @@
                 }
 
                 // Main fetch function
-                async function fetchReleases() {
+                async function loadReleases() {
                     try {
                         const response = await fetch(url);
                         const releases = await response.json();
@@ -117,6 +127,9 @@
                         renderReleases(releases);
                     } catch (error) {
                         console.error("Error fetching releases:", error);
+                        container.innerHTML =
+                            "<p>Failed to load releases. Please try again later.</p>";
+                        loading.style.display = "none";
                     }
                 }
 
@@ -126,9 +139,10 @@
                 if (cached) {
                     renderReleases(JSON.parse(cached));
                     loading.style.display = "none";
-                } else {
-                    fetchReleases();
                 }
+
+                // Always fetch fresh data in background
+                loadReleases();
             }
 
             fetchReleases();
