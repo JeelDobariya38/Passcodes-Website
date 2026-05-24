@@ -83,8 +83,10 @@
                     );
                     const data = await res.json();
                     if (!data.assets) return;
-                    const apk = data.assets.find((file) =>
-                        file.name.endsWith(".apk"),
+                    const apk = data.assets.find(
+                        (file) =>
+                            file.name.toLowerCase().includes("universal") &&
+                            file.name.endsWith(".apk"),
                     );
 
                     if (apk) {
