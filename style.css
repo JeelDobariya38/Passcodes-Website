@@ -50,6 +50,12 @@ a {
     color: inherit;
 }
 
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
 h1 {
     font-size: 3rem;
     letter-spacing: 2px;
@@ -63,6 +69,14 @@ h1 {
 main {
     flex: 1;
     padding: 40px 20px;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 /* ============================= */
@@ -88,10 +102,6 @@ header {
     border-radius: 12px;
     background: linear-gradient(45deg, #24315e1f, #283a738f);
     transition: background 0.2s ease;
-}
-
-.nav-btn.test {
-    border: 1px solid rgba(255,255,255,0.3);
 }
 
 .nav-btn:hover {
@@ -402,35 +412,4 @@ footer {
     .release-actions {
         flex-direction: column;
     }
-}
-
-/* ===== TEST SUITE ===== */
-
-.test-container {
-    max-width: 700px;
-    margin: 30px auto;
-    text-align: center;
-}
-
-.test-intro {
-    margin-bottom: 20px;
-    opacity: 0.8;
-}
-
-.steps {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.step {
-    padding: 16px;
-    border-radius: 12px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    text-align: left;
-}
-
-.step h3 {
-    margin-bottom: 6px;
 }
