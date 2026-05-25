@@ -71,6 +71,14 @@ main {
     padding: 40px 20px;
 }
 
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
 /* ============================= */
 /* ===== NAVBAR ===== */
 /* ============================= */
