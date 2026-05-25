@@ -50,6 +50,12 @@ a {
     color: inherit;
 }
 
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
 h1 {
     font-size: 3rem;
     letter-spacing: 2px;
@@ -91,7 +97,7 @@ header {
 }
 
 .nav-btn.test {
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .nav-btn:hover {
