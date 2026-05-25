@@ -96,10 +96,6 @@ header {
     transition: background 0.2s ease;
 }
 
-.nav-btn.test {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
 .nav-btn:hover {
     background: linear-gradient(45deg, #24315e9f, #283a73df);
 }
@@ -408,35 +404,4 @@ footer {
     .release-actions {
         flex-direction: column;
     }
-}
-
-/* ===== TEST SUITE ===== */
-
-.test-container {
-    max-width: 700px;
-    margin: 30px auto;
-    text-align: center;
-}
-
-.test-intro {
-    margin-bottom: 20px;
-    opacity: 0.8;
-}
-
-.steps {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.step {
-    padding: 16px;
-    border-radius: 12px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    text-align: left;
-}
-
-.step h3 {
-    margin-bottom: 6px;
 }
