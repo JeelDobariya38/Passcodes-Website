@@ -58,16 +58,16 @@
                         const version = release.tag_name;
                         const isLatest = index === 0;
 
-                        let type = "unknown";
+                        const title = (release.name || "").toLowerCase();
 
-                        if (version.toLowerCase().includes("alpha")) {
+                        let type = "beta"; // default
+
+                        if (title.includes("alpha")) {
                             type = "alpha";
-                        } else if (version.toLowerCase().includes("beta")) {
-                            type = "beta";
-                        } else if (release.prerelease) {
-                            type = "beta"; // GitHub flag
-                        } else {
+                        } else if (title.includes("stable")) {
                             type = "stable";
+                        } else if (title.includes("beta")) {
+                            type = "beta";
                         }
 
                         const apkAsset = release.assets.find(
