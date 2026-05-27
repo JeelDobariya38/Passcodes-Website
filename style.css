@@ -112,6 +112,13 @@ header {
     background: linear-gradient(45deg, #24315fff, #283a7fff);
 }
 
+/* ===== ACTIVE NAV ===== */
+
+.active-nav {
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+}
+
 /* ============================= */
 /* ===== BUTTON SYSTEM ===== */
 /* ============================= */

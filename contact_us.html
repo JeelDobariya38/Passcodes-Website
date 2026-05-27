@@ -71,5 +71,16 @@
         <footer>
             <div>Copyright © Jeel Dobariya 2025-2026</div>
         </footer>
+        <script>
+            const currentPage = window.location.pathname.split("/").pop();
+
+            document.querySelectorAll(".nav-btn").forEach((link) => {
+                const href = link.getAttribute("href");
+
+                if (href === currentPage) {
+                    link.classList.add("active-nav");
+                }
+            });
+        </script>
     </body>
 </html>
