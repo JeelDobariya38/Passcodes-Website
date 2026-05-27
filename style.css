@@ -79,6 +79,55 @@ main {
     flex-wrap: wrap;
 }
 
+/* ===== HERO ===== */
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 18px;
+    padding-top: 20px;
+}
+
+.hero-logo {
+    width: 110px;
+    height: 110px;
+    border-radius: 24px;
+    object-fit: cover;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.hero-tagline {
+    max-width: 650px;
+    font-size: 1.1rem;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.hero-description {
+    max-width: 650px;
+    line-height: 1.6;
+    opacity: 0.75;
+}
+
+.hero-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.badge {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 14px;
+    opacity: 0.9;
+}
+
 /* ============================= */
 /* ===== NAVBAR ===== */
 /* ============================= */
