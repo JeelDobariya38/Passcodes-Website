@@ -68,14 +68,14 @@ h1 {
 
 main {
     flex: 1;
-    padding: 40px 20px;
+    padding: 40px 20px 60px;
 }
 
 .hero-actions {
     display: flex;
     justify-content: center;
     gap: 16px;
-    margin-top: 20px;
+    margin-top: 12px;
     flex-wrap: wrap;
 }
 
@@ -87,8 +87,8 @@ main {
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 18px;
-    padding-top: 20px;
+    gap: 14px;
+    padding-top: 10px;
 }
 
 .hero-logo {
@@ -97,35 +97,74 @@ main {
     border-radius: 24px;
     object-fit: cover;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.hero-logo:hover {
+    transform: translateY(-3px);
 }
 
 .hero-tagline {
     max-width: 650px;
-    font-size: 1.1rem;
-    opacity: 0.8;
-    line-height: 1.6;
+    font-size: 1rem;
+    opacity: 0.72;
+    line-height: 1.5;
 }
 
 .hero-description {
-    max-width: 650px;
-    line-height: 1.6;
-    opacity: 0.75;
-}
-
-.hero-badges {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+    max-width: 620px;
+    line-height: 1.7;
+    opacity: 0.58;
+    font-size: 0.98rem;
 }
 
 .badge {
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 13px;
+    opacity: 0.75;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.badge:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.features-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 70px;
+}
+
+.feature-card {
+    width: 240px;
+    padding: 22px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
     background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    font-size: 14px;
-    opacity: 0.9;
+}
+
+.feature-card p {
+    opacity: 0.65;
+    line-height: 1.6;
+    margin-top: 10px;
 }
 
 /* ============================= */
@@ -147,10 +186,16 @@ header {
 }
 
 .nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 8px 16px;
     border-radius: 12px;
     background: linear-gradient(45deg, #24315e1f, #283a738f);
-    transition: background 0.2s ease;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    line-height: 1;
 }
 
 .github-nav {
@@ -170,7 +215,7 @@ header {
 
 .active-nav {
     font-weight: 700;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 /* ============================= */
