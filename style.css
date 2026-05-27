@@ -153,6 +153,11 @@ header {
     transition: background 0.2s ease;
 }
 
+.github-nav {
+    margin-left: 28px;
+    padding: 12px 18px;
+}
+
 .nav-btn:hover {
     background: linear-gradient(45deg, #24315e9f, #283a73df);
 }
