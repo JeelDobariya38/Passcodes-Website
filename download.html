@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
             name="description"
-            content="An password manager app,
+            content="A password manager app,
             take down the headache of remembering passwords"
         />
         <title>Downloads | Passcodes</title>
@@ -25,13 +25,29 @@
                 <a href="download.html" class="nav-btn">Download</a>
                 <a href="community.html" class="nav-btn">Community</a>
                 <a href="contact_us.html" class="nav-btn">Contact Us</a>
+                <a
+                    href="https://github.com/PasscodesApp/Passcodes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="nav-btn github-nav"
+                >
+                    <i class="fa-brands fa-github"></i>
+                </a>
             </nav>
         </header>
 
         <main>
             <h1 class="floating-animation">Other Downloads</h1>
+            <p class="page-subtitle">
+                Download the latest releases of Passcodes for Android. All
+                builds are open-source and publicly available on GitHub.
+            </p>
             <div id="releases-container" class="releases-container">
-                <p id="loading-text">Loading releases...</p>
+                <div id="loading-text" class="loading-state">
+                    <div class="loading-card"></div>
+                    <div class="loading-card"></div>
+                    <div class="loading-card"></div>
+                </div>
                 <!-- Releases will be loaded dynamically -->
             </div>
         </main>
@@ -145,6 +161,18 @@
             }
 
             fetchReleases();
+        </script>
+
+        <script>
+            const currentPage = window.location.pathname.split("/").pop();
+
+            document.querySelectorAll(".nav-btn").forEach((link) => {
+                const href = link.getAttribute("href");
+
+                if (href === currentPage) {
+                    link.classList.add("active-nav");
+                }
+            });
         </script>
     </body>
 </html>
