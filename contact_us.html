@@ -22,7 +22,9 @@
                 <a href="index.html" class="nav-btn">Home</a>
                 <a href="download.html" class="nav-btn">Download</a>
                 <a href="community.html" class="nav-btn">Community</a>
-                <a href="contact_us.html" class="nav-btn">Contact Us</a>
+                <a href="contact_us.html" class="nav-btn active-nav"
+                    >Contact Us</a
+                >
                 <a
                     href="https://github.com/PasscodesApp/Passcodes"
                     target="_blank"
@@ -95,16 +97,5 @@
         <footer>
             <div>Copyright © Jeel Dobariya 2025-2026</div>
         </footer>
-        <script>
-            const currentPage = window.location.pathname.split("/").pop();
-
-            document.querySelectorAll(".nav-btn").forEach((link) => {
-                const href = link.getAttribute("href");
-
-                if (href === currentPage) {
-                    link.classList.add("active-nav");
-                }
-            });
-        </script>
     </body>
 </html>

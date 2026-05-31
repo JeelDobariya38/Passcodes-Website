@@ -22,7 +22,7 @@
         <header>
             <nav class="navbar">
                 <a href="index.html" class="nav-btn">Home</a>
-                <a href="download.html" class="nav-btn">Download</a>
+                <a href="download.html" class="nav-btn active-nav">Download</a>
                 <a href="community.html" class="nav-btn">Community</a>
                 <a href="contact_us.html" class="nav-btn">Contact Us</a>
                 <a
@@ -161,18 +161,6 @@
             }
 
             fetchReleases();
-        </script>
-
-        <script>
-            const currentPage = window.location.pathname.split("/").pop();
-
-            document.querySelectorAll(".nav-btn").forEach((link) => {
-                const href = link.getAttribute("href");
-
-                if (href === currentPage) {
-                    link.classList.add("active-nav");
-                }
-            });
         </script>
     </body>
 </html>
