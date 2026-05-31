@@ -18,7 +18,9 @@
             <nav class="navbar">
                 <a href="index.html" class="nav-btn">Home</a>
                 <a href="download.html" class="nav-btn">Download</a>
-                <a href="community.html" class="nav-btn">Community</a>
+                <a href="community.html" class="nav-btn active-nav"
+                    >Community</a
+                >
                 <a href="contact_us.html" class="nav-btn">Contact Us</a>
                 <a
                     href="https://github.com/PasscodesApp/Passcodes"
@@ -35,7 +37,6 @@
             <h1 class="floating-animation">Community</h1>
 
             <div class="community-container">
-                <!-- Card 1 -->
                 <div class="card">
                     <img
                         class="avatar-img"
@@ -43,7 +44,7 @@
                         alt="Jeel Dobariya"
                     />
                     <h3>Jeel Dobariya</h3>
-                    <p class="role">Founder & Developer</p>
+                    <p class="role">Owner</p>
 
                     <div class="card-links">
                         <a
@@ -58,10 +59,34 @@
                         >
                             <i class="fa-solid fa-envelope"></i>
                         </a>
+                        <a
+                            href="https://www.linkedin.com/in/jeeldobariya/"
+                            target="_blank"
+                        >
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
+                <div class="card">
+                    <img
+                        class="avatar-img"
+                        src="https://github.com/razorblade23.png"
+                        alt="razorblade"
+                    />
+                    <h3>Josip</h3>
+                    <p class="role">CI/CD & Security Expert</p>
+
+                    <div class="card-links">
+                        <a
+                            href="https://github.com/razorblade23"
+                            target="_blank"
+                        >
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
                 <div class="card">
                     <img
                         class="avatar-img"
@@ -76,10 +101,16 @@
                         <a href="https://github.com/kudanilll" target="_blank">
                             <i class="fa-brands fa-github"></i>
                         </a>
+
+                        <a
+                            href="https://www.linkedin.com/in/achmaddaniel/"
+                            target="_blank"
+                        >
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="card">
                     <img
                         class="avatar-img"
@@ -87,7 +118,7 @@
                         alt="Jainil Gondaliya"
                     />
                     <h3>Jainil Gondaliya</h3>
-                    <p class="role">Contributor</p>
+                    <p class="role">Web Developer (Contributor)</p>
 
                     <div class="card-links">
                         <a href="https://github.com/jainil63" target="_blank">
@@ -120,7 +151,7 @@
                         alt="Harsha Vardhan"
                     />
                     <h3>Harsha Vardhan Burra</h3>
-                    <p class="role">Contributor</p>
+                    <p class="role">Web Developer (Contributor)</p>
 
                     <div class="card-links">
                         <a
@@ -137,16 +168,5 @@
         <footer>
             <div>Copyright © Jeel Dobariya 2025-2026</div>
         </footer>
-        <script>
-            const currentPage = window.location.pathname.split("/").pop();
-
-            document.querySelectorAll(".nav-btn").forEach((link) => {
-                const href = link.getAttribute("href");
-
-                if (href === currentPage) {
-                    link.classList.add("active-nav");
-                }
-            });
-        </script>
     </body>
 </html>
