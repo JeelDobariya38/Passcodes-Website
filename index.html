@@ -20,6 +20,7 @@
 
         <!-- Importable Content-->
         <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="dailog-styles.css" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -28,6 +29,33 @@
             referrerpolicy="no-referrer"
         />
     </head>
+
+    <dialog id="github-star-dialog">
+        <div class="dialog-content">
+            <h2>⭐ Enjoying Passcodes?</h2>
+
+            <p>
+                Passcodes is completely free and open source. If you find it
+                useful, consider starring the repository on GitHub to support
+                development.
+            </p>
+
+            <div class="dialog-actions">
+                <button id="later-btn" class="dialog-btn dialog-btn-secondary">
+                    Maybe Later
+                </button>
+
+                <a
+                    href="https://github.com/PasscodesApp/Passcodes"
+                    class="dialog-btn dialog-btn-primary"
+                >
+                    <i class="fa-brands fa-github"></i>
+                    Star on GitHub
+                </a>
+            </div>
+        </div>
+    </dialog>
+
     <body>
         <header>
             <nav class="navbar">
@@ -74,8 +102,6 @@
                 <div class="hero-actions">
                     <a
                         id="download-btn"
-                        target="_blank"
-                        rel="noopener noreferrer"
                         href="#"
                         class="btn btn-primary"
                         style="pointer-events: none; opacity: 0.7"
@@ -101,6 +127,7 @@
                     </a>
                 </div>
             </div>
+
             <section class="features-section">
                 <div class="feature-card">
                     <h3>Local First</h3>
@@ -125,4 +152,19 @@
 
         <script type="module" src="index.js"></script>
     </body>
+
+    <script>
+        const dialog = document.getElementById("github-star-dialog");
+
+        const downloadBtn = document.getElementById("download-btn");
+
+        downloadBtn.addEventListener("click", () => {
+            dialog.showModal();
+            localStorage.setItem("passcodes_star_dialog_shown", "true");
+        });
+
+        document.getElementById("later-btn").addEventListener("click", () => {
+            dialog.close();
+        });
+    </script>
 </html>
