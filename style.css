@@ -392,6 +392,28 @@ header {
 /* ============================= */
 /* ===== DOWNLOAD PAGE ===== */
 /* ============================= */
+.release-search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.release-search input {
+    width: min(420px, 100%);
+    padding: 10px 14px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    background: rgba(255, 255, 255, 0.04);
+    color: inherit;
+
+    outline: none;
+}
+
+.release-search input:focus {
+    border-color: rgba(255, 255, 255, 0.25);
+}
 
 .release-filters {
     display: flex;
@@ -416,8 +438,9 @@ header {
 }
 
 .filter-btn.active {
-    border: 1px solid rgba(255, 255, 255, 0.18);
     font-weight: 700;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .releases-container {
