@@ -393,6 +393,33 @@ header {
 /* ===== DOWNLOAD PAGE ===== */
 /* ============================= */
 
+.release-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.04);
+    color: inherit;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.filter-btn.active {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    font-weight: 700;
+}
+
 .releases-container {
     display: grid;
     gap: 20px;
