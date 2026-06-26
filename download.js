@@ -6,6 +6,13 @@ let allReleases = [];
 let currentFilter = "all";
 let searchQuery = "";
 
+function formatDownloadCount(num) {
+    if (num >= 1_000_000)
+        return (num / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
+    if (num >= 1_000) return (num / 1_000).toFixed(1).replace(/\.0$/, "") + "K";
+    return num.toLocaleString();
+}
+
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
@@ -132,6 +139,12 @@ function renderReleases(releases) {
 
         const isLatest = release.id === allReleases[0]?.id;
 
+        // Calculate total downloads for this release
+        const totalDownloads = release.assets.reduce(
+            (sum, asset) => sum + asset.download_count,
+            0,
+        );
+
         const card = document.createElement("div");
 
         card.className = `release-card ${isLatest ? "latest" : ""}`;
@@ -139,9 +152,21 @@ function renderReleases(releases) {
         card.innerHTML = `
             <div class="release-top">
                 <h3>${version}</h3>
-                <span class="tag ${type}">
-                    ${type}
-                </span>
+                <div class="release-top-meta">
+                    ${
+                        totalDownloads > 0
+                            ? `
+                        <span class="release-download-count" title="${totalDownloads.toLocaleString()} total downloads">
+                            <i class="fa-solid fa-download"></i>
+                            ${formatDownloadCount(totalDownloads)}
+                        </span>
+                    `
+                            : ""
+                    }
+                    <span class="tag ${type}">
+                        ${type}
+                    </span>
+                </div>
             </div>
 
             ${isLatest ? '<p class="release-date">Latest Release</p>' : ""}

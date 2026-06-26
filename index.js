@@ -1,5 +1,12 @@
 import { githubAPIFetch } from "./github-cache.js";
 
+function formatDownloadCount(num) {
+    if (num >= 1_000_000)
+        return (num / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
+    if (num >= 1_000) return (num / 1_000).toFixed(1).replace(/\.0$/, "") + "K";
+    return num.toLocaleString();
+}
+
 async function loadLatestDownload() {
     try {
         const data = await githubAPIFetch({
@@ -23,6 +30,19 @@ async function loadLatestDownload() {
             btn.innerHTML = `<i class="fa-solid fa-download"></i> Download Latest (${data.tag_name})`;
             btn.style.pointerEvents = "auto";
             btn.style.opacity = "1";
+        }
+
+        // Calculate total downloads across all assets of this release
+        const totalDownloads = data.assets.reduce(
+            (sum, asset) => sum + asset.download_count,
+            0,
+        );
+
+        if (totalDownloads > 0) {
+            const countEl = document.getElementById("download-count");
+
+            countEl.innerHTML = `<i class="fa-solid fa-arrow-down"></i> ${formatDownloadCount(totalDownloads)} downloads`;
+            countEl.style.display = "";
         }
     } catch (err) {
         console.error("Error loading latest release", err);
