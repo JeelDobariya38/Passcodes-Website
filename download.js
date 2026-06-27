@@ -1,4 +1,5 @@
 import { githubAPIFetch } from "./github-cache.js";
+import { formatDownloadCount } from "./utils.js";
 
 const RELEASE_API_URI = "repos/PasscodesApp/Passcodes/releases";
 
@@ -132,6 +133,12 @@ function renderReleases(releases) {
 
         const isLatest = release.id === allReleases[0]?.id;
 
+        // Calculate total downloads for this release
+        const totalDownloads = release.assets.reduce(
+            (sum, asset) => sum + asset.download_count,
+            0,
+        );
+
         const card = document.createElement("div");
 
         card.className = `release-card ${isLatest ? "latest" : ""}`;
@@ -139,9 +146,21 @@ function renderReleases(releases) {
         card.innerHTML = `
             <div class="release-top">
                 <h3>${version}</h3>
-                <span class="tag ${type}">
-                    ${type}
-                </span>
+                <div class="release-top-meta">
+                    ${
+                        totalDownloads > 0
+                            ? `
+                        <span class="release-download-count" title="${totalDownloads.toLocaleString()} total downloads">
+                            <i class="fa-solid fa-download"></i>
+                            ${formatDownloadCount(totalDownloads)}
+                        </span>
+                    `
+                            : ""
+                    }
+                    <span class="tag ${type}">
+                        ${type}
+                    </span>
+                </div>
             </div>
 
             ${isLatest ? '<p class="release-date">Latest Release</p>' : ""}
