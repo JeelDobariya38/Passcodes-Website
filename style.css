@@ -604,9 +604,6 @@ footer {
 }
 
 .download-count-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
     font-size: 12px;
     opacity: 0.55;
     letter-spacing: 0.2px;
@@ -638,18 +635,13 @@ footer {
 }
 
 .release-download-count {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
     font-size: 12px;
     padding: 4px 10px;
     border-radius: 999px;
     background: rgba(90, 120, 255, 0.12);
     border: 1px solid rgba(90, 120, 255, 0.2);
     color: var(--accent-light);
-    font-weight: 600;
-    letter-spacing: 0.2px;
-    cursor: default;
+    letter-spacing: 0.5px;
     transition: background 0.2s ease;
 }
 
