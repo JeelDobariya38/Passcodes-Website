@@ -196,19 +196,47 @@ header {
         background 0.2s ease,
         transform 0.2s ease;
     line-height: 1;
+    position: relative;
 }
 
 .github-nav {
-    margin-left: 28px;
+    margin-left: 24px;
     padding: 12px 18px;
 }
 
 .nav-btn:hover {
     background: linear-gradient(45deg, #24315e9f, #283a73df);
+    transform: translateY(-2px);
 }
 
 .nav-btn:active {
     background: linear-gradient(45deg, #24315fff, #283a7fff);
+}
+
+.nav-btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+
+    width: 0;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0.6)
+    );
+    transition:
+        width 0.3s ease,
+        left 0.3s ease;
+}
+
+.nav-btn:hover::after,
+.active-nav::after {
+    width: 70%;
+    left: 15%;
 }
 
 /* ===== ACTIVE NAV ===== */
@@ -216,6 +244,7 @@ header {
 .active-nav {
     font-weight: 700;
     border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
 }
 
 /* ============================= */
