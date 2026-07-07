@@ -197,19 +197,47 @@ header {
         background 0.2s ease,
         transform 0.2s ease;
     line-height: 1;
+    position: relative;
 }
 
 .github-nav {
-    margin-left: 28px;
+    margin-left: 24px;
     padding: 12px 18px;
 }
 
 .nav-btn:hover {
     background: linear-gradient(45deg, #24315e9f, #283a73df);
+    transform: translateY(-2px);
 }
 
 .nav-btn:active {
     background: linear-gradient(45deg, #24315fff, #283a7fff);
+}
+
+.nav-btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+
+    width: 0;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0.6)
+    );
+    transition:
+        width 0.3s ease,
+        left 0.3s ease;
+}
+
+.nav-btn:hover::after,
+.active-nav::after {
+    width: 70%;
+    left: 15%;
 }
 
 /* ===== ACTIVE NAV ===== */
@@ -217,6 +245,7 @@ header {
 .active-nav {
     font-weight: 700;
     border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
 }
 
 /* ============================= */
@@ -393,6 +422,76 @@ header {
 /* ============================= */
 /* ===== DOWNLOAD PAGE ===== */
 /* ============================= */
+
+.store-section {
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 2rem; /* Increased padding slightly for breathing room */
+
+    text-align: center;
+
+    /* Slightly more prominent background and border */
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+}
+
+.store-section h2 {
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem; /* Ensure consistent font size */
+    font-weight: 600; /* Bold the title for emphasis */
+}
+
+.store-section p {
+    /* Increased opacity slightly for better readability */
+    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* --- The Link Container (The 'badge') --- */
+.store-badge {
+    display: inline-block;
+
+    /* --- Essential for curved image edges --- */
+    border-radius: 16px; /* Slightly smaller than the section curve */
+    overflow: hidden; /* Clips the image inside */
+    line-height: 0;
+    /* -------------------------------------- */
+
+    /* Improved smooth transition */
+    transition:
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Ensure the link isn't too wide */
+    max-width: max-content;
+}
+
+/* Modern, subtle hover effect */
+.store-badge:hover {
+    transform: scale(
+        1.03
+    ); /* Slightly scales the badge instead of shifting it */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adds a soft glow */
+}
+
+/* The actual image inside the link */
+.store-badge img {
+    /* Keep the original size logic, but add focus ring for keyboard accessibility */
+    max-width: 220px;
+    height: auto;
+    display: block; /* Removes descender space below image */
+}
+
+/* Optional: Add a focus ring for keyboard users to know what they are selecting */
+.store-badge:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+}
+
 .release-search {
     display: flex;
     justify-content: center;
@@ -474,18 +573,6 @@ header {
     height: 100px;
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.06);
-    animation: pulse 1.5s infinite ease-in-out;
-}
-
-@keyframes pulse {
-    0%,
-    100% {
-        opacity: 0.5;
-    }
-
-    50% {
-        opacity: 1;
-    }
 }
 
 /* ===== Release Card ===== */
@@ -570,88 +657,6 @@ footer {
     display: flex;
     gap: 10px;
     margin-top: 15px;
-}
-
-/* ============================= */
-/* ===== ANIMATIONS ===== */
-/* ============================= */
-
-.floating-animation {
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-/* ============================= */
-/* ===== DOWNLOAD STATS ===== */
-/* ============================= */
-
-/* --- Homepage: download count under button --- */
-
-.download-btn-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-}
-
-.download-count-label {
-    font-size: 12px;
-    opacity: 0.55;
-    letter-spacing: 0.2px;
-    animation: fadeInUp 0.4s ease both;
-    animation-delay: 0.15s;
-}
-
-.download-count-label i {
-    font-size: 10px;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* --- Download page: per-release count --- */
-
-.release-top-meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.release-download-count {
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: rgba(90, 120, 255, 0.12);
-    border: 1px solid rgba(90, 120, 255, 0.2);
-    color: var(--accent-light);
-    letter-spacing: 0.5px;
-    transition: background 0.2s ease;
-}
-
-.release-download-count:hover {
-    background: rgba(90, 120, 255, 0.2);
-}
-
-.release-download-count i {
-    font-size: 10px;
-    opacity: 0.8;
 }
 
 /* ============================= */
