@@ -214,32 +214,6 @@ header {
     background: linear-gradient(45deg, #24315fff, #283a7fff);
 }
 
-.nav-btn::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -4px;
-
-    width: 0;
-    height: 2px;
-
-    background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.6),
-        rgba(255, 255, 255, 1),
-        rgba(255, 255, 255, 0.6)
-    );
-    transition:
-        width 0.3s ease,
-        left 0.3s ease;
-}
-
-.nav-btn:hover::after,
-.active-nav::after {
-    width: 70%;
-    left: 15%;
-}
-
 /* ===== ACTIVE NAV ===== */
 
 .active-nav {
