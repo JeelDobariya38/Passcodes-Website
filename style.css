@@ -15,19 +15,37 @@
 /* ============================= */
 
 :root {
+    /* Colors */
     --bg-gradient: linear-gradient(135deg, #061023, #343f53);
-
+    --nav-bg: rgba(12, 10, 26, 0.9);
     --text: #ffffff;
-
+    --text-muted: rgba(255, 255, 255, 0.7);
     --primary: #0059ff;
+    --primary-dark: #030f33;
     --accent: #3e57a8;
     --accent-light: #5a78ff;
+    --accent-gradient: linear-gradient(135deg, #5a78ff, #6366f1);
 
+    /* Tags */
+    --tag-stable: #22c55e;
+    --tag-beta: #f59e0b;
+    --tag-alpha: #ef4444;
+
+    /* UI Elements */
     --card-bg: rgba(255, 255, 255, 0.05);
     --border: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-lighter: rgba(255, 255, 255, 0.12);
 
+    /* Shadows */
     --shadow-primary: rgba(0, 89, 255, 0.25);
     --shadow-accent: rgba(62, 87, 168, 0.3);
+    --shadow-hover: rgba(0, 0, 0, 0.35);
+
+    /* Animation */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.25s ease;
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     font-family: "Open Sans", sans-serif;
     color: var(--text);
@@ -39,7 +57,6 @@
 
 body {
     background: var(--bg-gradient);
-
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -71,15 +88,6 @@ main {
     padding: 40px 20px 60px;
 }
 
-.hero-actions {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 16px;
-    margin-top: 12px;
-    flex-wrap: wrap;
-}
-
 /* ===== HERO ===== */
 
 .hero-container {
@@ -92,15 +100,24 @@ main {
     padding-top: 10px;
 }
 
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
 .hero-logo {
     width: 110px;
     height: 110px;
     border-radius: 24px;
     object-fit: cover;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 8px 25px var(--shadow-hover);
     transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+        transform var(--transition-base),
+        box-shadow var(--transition-base);
 }
 
 .hero-logo:hover {
@@ -121,16 +138,68 @@ main {
     font-size: 0.98rem;
 }
 
+/* --- Shared Icons --- */
+.download-count-label i,
+.release-download-count i {
+    font-size: 10px;
+}
+
+.download-count-label {
+    font-size: 12px;
+    opacity: 0.55;
+    letter-spacing: 0.2px;
+    animation: fadeInUp 0.4s ease both;
+    animation-delay: 0.15s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Download page: per-release count --- */
+
+.release-top-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.release-download-count {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(90, 120, 255, 0.12);
+    border: 1px solid rgba(90, 120, 255, 0.2);
+    color: var(--accent-light);
+    letter-spacing: 0.5px;
+    transition: background var(--transition-fast);
+}
+
+.release-download-count:hover {
+    background: rgba(90, 120, 255, 0.2);
+}
+
+.release-download-count i {
+    opacity: 0.8;
+}
+
 .badge {
     padding: 5px 12px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-light);
     font-size: 13px;
     opacity: 0.75;
     transition:
-        background 0.2s ease,
-        border-color 0.2s ease;
+        background var(--transition-fast),
+        border-color var(--transition-fast);
 }
 
 .badge:hover {
@@ -150,11 +219,11 @@ main {
     padding: 22px;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-light);
     text-align: center;
     transition:
-        transform 0.2s ease,
-        background 0.2s ease;
+        transform var(--transition-fast),
+        background var(--transition-fast);
 }
 
 .feature-card:hover {
@@ -174,7 +243,7 @@ main {
 
 header {
     padding: 12px 0;
-    background: rgba(12, 10, 26, 0.9);
+    background: var(--nav-bg);
     backdrop-filter: blur(10px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
 }
@@ -192,10 +261,14 @@ header {
     justify-content: center;
     padding: 8px 16px;
     border-radius: 12px;
-    background: linear-gradient(45deg, #24315e1f, #283a738f);
+    background: linear-gradient(
+        45deg,
+        rgba(36, 49, 94, 0.12),
+        rgba(40, 58, 115, 0.56)
+    );
     transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+        background var(--transition-fast),
+        transform var(--transition-fast);
     line-height: 1;
     position: relative;
 }
@@ -206,41 +279,17 @@ header {
 }
 
 .nav-btn:hover {
-    background: linear-gradient(45deg, #24315e9f, #283a73df);
+    background: linear-gradient(
+        45deg,
+        rgba(36, 49, 94, 0.62),
+        rgba(40, 58, 115, 0.87)
+    );
     transform: translateY(-2px);
 }
 
 .nav-btn:active {
-    background: linear-gradient(45deg, #24315fff, #283a7fff);
+    background: linear-gradient(45deg, #24315f, #283a7f);
 }
-
-.nav-btn::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -4px;
-
-    width: 0;
-    height: 2px;
-
-    background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.6),
-        rgba(255, 255, 255, 1),
-        rgba(255, 255, 255, 0.6)
-    );
-    transition:
-        width 0.3s ease,
-        left 0.3s ease;
-}
-
-.nav-btn:hover::after,
-.active-nav::after {
-    width: 70%;
-    left: 15%;
-}
-
-/* ===== ACTIVE NAV ===== */
 
 .active-nav {
     font-weight: 700;
@@ -256,14 +305,9 @@ header {
     display: inline-block;
     padding: 12px 24px;
     border-radius: 30px;
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
+    transition: all var(--transition-base);
 }
 
-/* Icon alignment */
 .btn i {
     margin-right: 8px;
     vertical-align: middle;
@@ -272,13 +316,12 @@ header {
 /* ===== PRIMARY BUTTON ===== */
 
 .btn-primary {
-    border: 2px solid white;
+    border: 2px solid var(--text);
 }
 
 .btn-primary:hover {
     color: var(--primary);
-    background-color: #030f33;
-
+    background-color: var(--primary-dark);
     transform: translateY(-3px);
     box-shadow: 0 6px 20px var(--shadow-primary);
 }
@@ -297,7 +340,6 @@ header {
 .btn-outline:hover {
     background: rgba(62, 87, 168, 0.15);
     border-color: var(--accent);
-
     transform: translateY(-3px);
     box-shadow: 0 6px 20px var(--shadow-accent);
 }
@@ -306,19 +348,17 @@ header {
     transform: scale(0.95);
 }
 
-/* ===== SMALL BUTTON (Download page) ===== */
+/* ===== SMALL & FILLED BUTTONS ===== */
 
 .btn-small {
     padding: 8px 14px;
     border-radius: 8px;
 }
 
-/* ===== FILLED PRIMARY BUTTON (Download CTA) ===== */
-
 .btn-filled {
-    background: linear-gradient(135deg, #5a78ff, #6366f1);
+    background: var(--accent-gradient);
     border: none;
-    color: white;
+    color: var(--text);
     font-weight: 500;
 }
 
@@ -342,15 +382,14 @@ header {
     border: 1px solid var(--border);
     text-align: center;
     backdrop-filter: blur(8px);
-
     transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+        transform var(--transition-base),
+        box-shadow var(--transition-base);
 }
 
 .card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 12px 35px var(--shadow-hover);
 }
 
 /* ============================= */
@@ -371,13 +410,12 @@ header {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 12px;
-
     border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: border-color var(--transition-base);
 }
 
 .avatar-img:hover {
     border-color: var(--accent-light);
-    transition: border-color 0.25s ease;
 }
 
 .role {
@@ -389,7 +427,7 @@ header {
 .card-links a {
     margin: 0 8px;
     font-size: 18px;
-    transition: color 0.2s ease;
+    transition: color var(--transition-fast);
 }
 
 .card-links a:hover {
@@ -426,11 +464,8 @@ header {
 .store-section {
     max-width: 720px;
     margin: 2rem auto;
-    padding: 2rem; /* Increased padding slightly for breathing room */
-
+    padding: 2rem;
     text-align: center;
-
-    /* Slightly more prominent background and border */
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 18px;
@@ -438,14 +473,13 @@ header {
 
 .store-section h2 {
     margin-bottom: 0.75rem;
-    font-size: 1.5rem; /* Ensure consistent font size */
-    font-weight: 600; /* Bold the title for emphasis */
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .store-section p {
-    /* Increased opacity slightly for better readability */
     opacity: 0.9;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-muted);
     margin-bottom: 2rem;
     font-size: 1.1rem;
     line-height: 1.5;
@@ -454,41 +488,28 @@ header {
 /* --- The Link Container (The 'badge') --- */
 .store-badge {
     display: inline-block;
-
-    /* --- Essential for curved image edges --- */
-    border-radius: 16px; /* Slightly smaller than the section curve */
-    overflow: hidden; /* Clips the image inside */
+    border-radius: 16px;
+    overflow: hidden;
     line-height: 0;
-    /* -------------------------------------- */
-
-    /* Improved smooth transition */
     transition:
-        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    /* Ensure the link isn't too wide */
+        transform var(--transition-smooth),
+        box-shadow var(--transition-smooth);
     max-width: max-content;
 }
 
-/* Modern, subtle hover effect */
 .store-badge:hover {
-    transform: scale(
-        1.03
-    ); /* Slightly scales the badge instead of shifting it */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adds a soft glow */
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* The actual image inside the link */
 .store-badge img {
-    /* Keep the original size logic, but add focus ring for keyboard accessibility */
     max-width: 220px;
     height: auto;
-    display: block; /* Removes descender space below image */
+    display: block;
 }
 
-/* Optional: Add a focus ring for keyboard users to know what they are selecting */
 .store-badge:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid var(--text);
     outline-offset: 4px;
 }
 
@@ -501,13 +522,10 @@ header {
 .release-search input {
     width: min(420px, 100%);
     padding: 10px 14px;
-
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-
+    border: 1px solid var(--border-lighter);
     background: rgba(255, 255, 255, 0.04);
     color: inherit;
-
     outline: none;
 }
 
@@ -530,16 +548,16 @@ header {
     background: rgba(255, 255, 255, 0.04);
     color: inherit;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background var(--transition-fast);
 }
 
 .filter-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--border-light);
 }
 
 .filter-btn.active {
     font-weight: 700;
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--border-lighter);
     border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
@@ -581,12 +599,11 @@ header {
     background: var(--card-bg);
     border-radius: 16px;
     padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-light);
     backdrop-filter: blur(10px);
-
     transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+        transform var(--transition-base),
+        box-shadow var(--transition-base);
 }
 
 .release-card:hover {
@@ -597,8 +614,6 @@ header {
 .release-card.latest {
     border: 1px solid var(--accent-light);
 }
-
-/* ===== Top Section ===== */
 
 .release-top {
     display: flex;
@@ -611,14 +626,6 @@ header {
     font-weight: 600;
 }
 
-/* ===== FOOTER ===== */
-
-footer {
-    padding: 12px 0;
-    background-color: black;
-    text-align: center;
-}
-
 /* ===== TAGS ===== */
 
 .tag {
@@ -629,21 +636,21 @@ footer {
 }
 
 .tag.stable {
-    background: #22c55e;
-    color: black;
+    background: var(--tag-stable);
+    color: #000;
 }
 
 .tag.beta {
-    background: #f59e0b;
-    color: black;
+    background: var(--tag-beta);
+    color: #000;
 }
 
 .tag.alpha {
-    background: #ef4444;
-    color: white;
+    background: var(--tag-alpha);
+    color: var(--text);
 }
 
-/* ===== META ===== */
+/* ===== META & ACTIONS ===== */
 
 .release-date {
     font-size: 13px;
@@ -651,12 +658,18 @@ footer {
     margin-top: 5px;
 }
 
-/* ===== ACTION BUTTONS ===== */
-
 .release-actions {
     display: flex;
     gap: 10px;
     margin-top: 15px;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    padding: 12px 0;
+    background-color: #000;
+    text-align: center;
 }
 
 /* ============================= */
@@ -664,6 +677,18 @@ footer {
 /* ============================= */
 
 @media (max-width: 600px) {
+    .hero-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .download-btn-wrapper {
+        width: 100%;
+        gap: 6px;
+    }
+
     .btn {
         display: block;
         width: 100%;

@@ -4,18 +4,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.querySelectorAll(".nav-btn").forEach((link) => {
-        link.addEventListener("click", (e) => {
+        link.addEventListener("click", (event) => {
             const href = link.getAttribute("href");
 
-            if (!href || href.startsWith("http") || href.startsWith("#")) {
+            if (
+                !href ||
+                href.startsWith("http") ||
+                href.startsWith("#") ||
+                link.target === "_blank" ||
+                event.ctrlKey ||
+                event.metaKey ||
+                event.shiftKey ||
+                event.altKey
+            ) {
                 return;
             }
 
-            e.preventDefault();
+            event.preventDefault();
 
             document.body.classList.add("page-leaving");
 
-            setTimeout(() => {
+            window.setTimeout(() => {
                 window.location.href = href;
             }, 300);
         });

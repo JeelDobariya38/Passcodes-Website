@@ -2,6 +2,10 @@
 /* ===== ANIMATIONS ===== */
 /* ============================= */
 
+body {
+    overflow-x: hidden;
+}
+
 .floating-animation {
     animation: float 3s ease-in-out infinite;
 }
@@ -11,6 +15,7 @@
     100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
@@ -28,34 +33,8 @@
 }
 
 .loading-card {
-    animation: pulse 1.5s infinite ease-in-out;
+    animation: pulse 1.5s ease-in-out infinite;
 }
-
-/* ===== PAGE ENTRANCE ===== */
-
-/* main {
-    animation: page-enter 0.4s ease-out;
-}
-
-@keyframes page-enter {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-container {
-    animation: page-enter 0.45s ease-out;
-}
-
-.features-section {
-    animation: page-enter 0.55s ease-out;
-} */
 
 /* ================================= */
 /* ===== PAGE NAVIGATION FX ===== */
@@ -63,7 +42,7 @@
 
 main {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateX(12px);
 
     transition:
         opacity 0.3s ease,
@@ -72,10 +51,27 @@ main {
 
 body.page-loaded main {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
 body.page-leaving main {
     opacity: 0;
-    transform: translateY(-12px);
+    transform: translateX(-12px);
+}
+
+/* ============================= */
+/* ===== REDUCED MOTION ===== */
+/* ============================= */
+
+@media (prefers-reduced-motion: reduce) {
+    main {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .floating-animation,
+    .loading-card {
+        animation: none;
+    }
 }
