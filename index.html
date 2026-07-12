@@ -57,7 +57,7 @@
 
         <!-- Importable Content-->
         <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="dailog-styles.css" />
+        <link rel="stylesheet" href="dialog-styles.css" />
         <link rel="stylesheet" href="transition.css" />
         <link
             rel="stylesheet"
@@ -68,33 +68,86 @@
         />
     </head>
 
-    <dialog id="github-star-dialog">
-        <div class="dialog-content">
-            <h2>⭐ Enjoying Passcodes?</h2>
-
-            <p>
-                Passcodes is completely free and open source. If you find it
-                useful, consider starring the repository on GitHub to support
-                development.
-            </p>
-
-            <div class="dialog-actions">
-                <button id="later-btn" class="dialog-btn dialog-btn-secondary">
-                    Maybe Later
-                </button>
-
-                <a
-                    href="https://github.com/PasscodesApp/Passcodes"
-                    class="dialog-btn dialog-btn-primary"
-                >
-                    <i class="fa-brands fa-github"></i>
-                    Star on GitHub
-                </a>
-            </div>
-        </div>
-    </dialog>
-
     <body>
+        <dialog id="github-star-dialog" aria-labelledby="github-star-title">
+            <div class="dialog-content">
+                <div class="dialog-heading">
+                    <span class="dialog-icon" aria-hidden="true">
+                        <i class="fa-brands fa-github"></i>
+                    </span>
+
+                    <h2 id="github-star-title">Enjoying Passcodes?</h2>
+                </div>
+
+                <p>
+                    Passcodes is completely free and open source. If you find it
+                    useful, consider starring the repository on GitHub to
+                    support development.
+                </p>
+
+                <div class="dialog-actions">
+                    <button
+                        type="button"
+                        id="later-btn"
+                        class="dialog-btn dialog-btn-secondary"
+                    >
+                        Maybe later
+                    </button>
+
+                    <a
+                        href="https://github.com/PasscodesApp/Passcodes"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="dialog-btn dialog-btn-primary"
+                    >
+                        <i class="fa-brands fa-github"></i>
+                        Star on GitHub
+                    </a>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog
+            id="unsupported-device-dialog"
+            aria-labelledby="unsupported-device-title"
+        >
+            <div class="dialog-content">
+                <div class="dialog-heading">
+                    <span class="dialog-icon" aria-hidden="true">
+                        <i class="fa-brands fa-android"></i>
+                    </span>
+
+                    <h2 id="unsupported-device-title">
+                        Android Device Required
+                    </h2>
+                </div>
+
+                <p>
+                    Passcodes is currently available only for Android. This APK
+                    cannot be installed directly on your current device.
+                </p>
+
+                <div class="dialog-actions">
+                    <button
+                        type="button"
+                        id="close-device-dialog"
+                        class="dialog-btn dialog-btn-secondary"
+                    >
+                        Got it
+                    </button>
+
+                    <a
+                        id="download-apk-anyway"
+                        href="#"
+                        class="dialog-btn dialog-btn-primary"
+                    >
+                        <i class="fa-solid fa-download"></i>
+                        Download anyway
+                    </a>
+                </div>
+            </div>
+        </dialog>
+
         <header>
             <nav class="navbar">
                 <a href="index.html" class="nav-btn active-nav">Home</a>
@@ -198,19 +251,4 @@
         <script type="module" src="index.js"></script>
         <script src="transition.js"></script>
     </body>
-
-    <script>
-        const dialog = document.getElementById("github-star-dialog");
-
-        const downloadBtn = document.getElementById("download-btn");
-
-        downloadBtn.addEventListener("click", () => {
-            dialog.showModal();
-            localStorage.setItem("passcodes_star_dialog_shown", "true");
-        });
-
-        document.getElementById("later-btn").addEventListener("click", () => {
-            dialog.close();
-        });
-    </script>
 </html>
