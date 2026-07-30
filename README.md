@@ -18,6 +18,10 @@ This repository contains the source code for the website of the Passcodes Androi
 npm run dev
 ```
 
+```bash
+npm run preview
+```
+
 ## Contribution Are Appreciated!!!
 
 We appreciate the contribuation to website...
