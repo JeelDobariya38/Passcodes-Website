@@ -14,7 +14,9 @@ This repository contains the source code for the website of the Passcodes Androi
 
 ## Building && Previewing
 
-Open `index.html` in your browser.
+```bash
+npm run dev
+```
 
 ## Contribution Are Appreciated!!!
 
