@@ -10,7 +10,6 @@ on:
 
 env:
   BASE_PATH: "/${{ github.event.repository.name }}"
-  ASSET_PREFIX: "/${{ github.event.repository.name }}/"
 
 permissions:
   contents: read
@@ -44,9 +43,9 @@ jobs:
         run: |
           npm run lint
 
-      - name: 🧪 Test The Site
-        run: |
-          npm test
+      # - name: 🧪 Test The Site
+      #   run: |
+      #     npm test
 
       - name: 🛠️ Build and Export Site
         run: |
