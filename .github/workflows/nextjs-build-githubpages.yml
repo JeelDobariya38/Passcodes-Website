@@ -3,8 +3,8 @@
 name: 🚀 Deploy Next.js Based Website to GitHub Pages
 
 on:
-  # push:
-  #   branches: ["main"]
+  push:
+    branches: ["main"]
   
   workflow_dispatch:
 
@@ -52,9 +52,9 @@ jobs:
         run: |
           npm run build
 
-      - name: ©️ Copy Public Assest In Out
-        run: |
-          npm run copydependency
+      # - name: ©️ Copy Public Assest In Out
+      #   run: |
+      #     npm run copydependency
 
       - name: 📤 Upload Static Site
         uses: actions/upload-pages-artifact@v3
