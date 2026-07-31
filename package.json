@@ -5,10 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build-gh": "BASE_PATH=/Passcodes-Website next build",
     "start": "next start",
     "lint": "next lint",
-    "preview": "npm run build-gh && serve out",
+    "preview": "npm run build && serve out",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "type-check": "tsc --noEmit"
   },

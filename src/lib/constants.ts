@@ -39,11 +39,11 @@ export const USER_GUIDE_URL =
 export const CONTACT_EMAIL = 'jeeldobariya38@gmail.com';
 
 /** Local logo asset — drop your logo file at public/logo.png */
-export const LOGO_SRC = '/logo.png';
+export const LOGO_SRC = `${process.env.BASE_PATH || ''}/logo.png`;
 
 /** Komi Store "Get it on" badge image — drop the old banner at public/komi-badge.png.
  *  If the file is missing, the Downloads page falls back to a text button (no broken image). */
-export const KOMI_BADGE_SRC = '/komi-store-badge.png';
+export const KOMI_BADGE_SRC = `${process.env.BASE_PATH || ''}/komi-store-badge.png`;
 
 /** Community / store links */
 export const DISCORD_URL = 'https://discord.gg/kSSkYq7KAQ';

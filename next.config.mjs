@@ -6,6 +6,7 @@ const nextConfig = {
   // Set BASE_PATH=/Passcodes-Website only when building for GitHub Pages.
   // Local builds (npm run build / npm run dev) get '' → everything works at /.
   basePath: process.env.BASE_PATH || '',
+  assetPrefix: process.env.ASSET_PREFIX || '',
 
   images: {
     unoptimized: true,

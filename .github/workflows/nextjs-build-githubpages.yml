@@ -4,12 +4,13 @@ name: 🚀 Deploy Next.js Based Website to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
-  
+    branches: ['main']
+
   workflow_dispatch:
 
 env:
-  BASE_PATH: "/${{ github.event.repository.name }}"
+  BASE_PATH: '/${{ github.event.repository.name }}'
+  ASSET_PREFIX: '/${{ github.event.repository.name }}/'
 
 permissions:
   contents: read
@@ -17,7 +18,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
 
 jobs:
@@ -31,9 +32,9 @@ jobs:
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: "package.json"
+          node-version-file: 'package.json'
           cache: npm
-          cache-dependency-path: "package-lock.json"
+          cache-dependency-path: 'package-lock.json'
 
       - name: 📦 Install Dependencies (npm)
         run: |
