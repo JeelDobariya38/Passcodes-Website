@@ -4,6 +4,7 @@ import { Download, Calendar, ExternalLink } from "lucide-react";
 import { ArchDownload } from "@/components/downloads/ArchDownload";
 import { formatNumber, formatDate } from "@/lib/utils";
 import type { GithubRelease } from "@/types/github";
+import Link from "next/link";
 
 export function ReleaseList({ releases }: { releases: GithubRelease[] }) {
     if (releases.length === 0) {
@@ -55,7 +56,7 @@ export function ReleaseList({ releases }: { releases: GithubRelease[] }) {
                                 assets={release.assets}
                                 variant="compact"
                             />
-                            <a
+                            <Link
                                 href={release.html_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -64,7 +65,7 @@ export function ReleaseList({ releases }: { releases: GithubRelease[] }) {
                             >
                                 <ExternalLink className="h-4 w-4" /> Release
                                 notes
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 );
