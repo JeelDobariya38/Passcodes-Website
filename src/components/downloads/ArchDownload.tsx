@@ -14,6 +14,7 @@ import {
     cn,
 } from "@/lib/utils";
 import type { GithubReleaseAsset } from "@/types/github";
+import Link from "next/link";
 
 interface Props {
     assets: GithubReleaseAsset[];
@@ -53,7 +54,7 @@ export function ArchDownload({ assets, variant = "full", className }: Props) {
         return (
             <div className={cn("relative", className)}>
                 <div className="flex items-center gap-2">
-                    <a
+                    <Link
                         href={primary.browser_download_url}
                         download
                         aria-label={`Download ${ARCH_META[primaryArch].label} APK`}
@@ -61,7 +62,7 @@ export function ArchDownload({ assets, variant = "full", className }: Props) {
                     >
                         <Download className="h-4 w-4" aria-hidden="true" />{" "}
                         Download {ARCH_META[primaryArch].short}
-                    </a>
+                    </Link>
                     {alts.length > 0 && (
                         <button
                             type="button"
@@ -99,7 +100,7 @@ export function ArchDownload({ assets, variant = "full", className }: Props) {
                 <span>{note}</span>
             </p>
 
-            <a
+            <Link
                 href={primary.browser_download_url}
                 download
                 aria-label={`Download ${ARCH_META[primaryArch].label} APK, ${formatFileSize(primary.size)}`}
@@ -110,7 +111,7 @@ export function ArchDownload({ assets, variant = "full", className }: Props) {
                 <span className="opacity-80">
                     · {formatFileSize(primary.size)}
                 </span>
-            </a>
+            </Link>
             <p
                 className="mt-1.5 flex items-center gap-1 text-xs"
                 style={{ color: "var(--accent-light)" }}
@@ -139,7 +140,7 @@ export function ArchDownload({ assets, variant = "full", className }: Props) {
 function Chip({ v }: { v: { key: ArchKey; asset: GithubReleaseAsset } }) {
     const m = ARCH_META[v.key];
     return (
-        <a
+        <Link
             href={v.asset.browser_download_url}
             download
             aria-label={`Download ${m.label} APK, ${formatFileSize(v.asset.size)}`}
@@ -153,7 +154,7 @@ function Chip({ v }: { v: { key: ArchKey; asset: GithubReleaseAsset } }) {
             <span className="text-xs text-[var(--text-dim)]">
                 {formatFileSize(v.asset.size)}
             </span>
-        </a>
+        </Link>
     );
 }
 
@@ -161,7 +162,7 @@ function VariantRow({ v }: { v: { key: ArchKey; asset: GithubReleaseAsset } }) {
     const m = ARCH_META[v.key];
     return (
         <li>
-            <a
+            <Link
                 href={v.asset.browser_download_url}
                 download
                 aria-label={`Download ${m.label} APK, ${formatFileSize(v.asset.size)}`}
@@ -182,7 +183,7 @@ function VariantRow({ v }: { v: { key: ArchKey; asset: GithubReleaseAsset } }) {
                         aria-hidden="true"
                     />
                 </span>
-            </a>
+            </Link>
         </li>
     );
 }

@@ -23,27 +23,27 @@ export function Footer() {
                             {route.label}
                         </Link>
                     ))}
-                    <a
+                    <Link
                         href={GITHUB_REPO_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         Source
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href={USER_GUIDE_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         Docs
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href={LICENSE_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         License
-                    </a>
+                    </Link>
                     <ShortcutsLink />
                 </div>
                 <div
