@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { ContributorCard } from "@/components/community/ContributorCard";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
+import { EmptyState } from "@/components/ui/EmptyState";
+import { ErrorState } from "@/components/ui/ErrorState";
 import { ButtonLink } from "@/components/ui/Button";
 import { getContributors, getRepoInfo } from "@/lib/github";
 import {
@@ -17,7 +19,12 @@ import { Star, GitFork, Users } from "lucide-react";
 type Display = ContributorProfile & { avatarUrl?: string };
 
 export function CommunityContent() {
-    const { data: contributors, isLoading } = useQuery({
+    const {
+        data: contributors,
+        isLoading,
+        error,
+        refetch,
+    } = useQuery({
         queryKey: ["github", "contributors"],
         queryFn: getContributors,
     });
@@ -102,6 +109,15 @@ export function CommunityContent() {
 
                 {isLoading ? (
                     <LoadingSpinner label="Loading contributors..." />
+                ) : error ? (
+                    <ErrorState
+                        message="We couldn't load the community contributors. Please try again."
+                        onRetry={() => {
+                            void refetch();
+                        }}
+                    />
+                ) : all.length === 0 ? (
+                    <EmptyState />
                 ) : (
                     <div className="community-container">
                         {all.map((c, i) => (
