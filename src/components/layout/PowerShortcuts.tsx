@@ -8,6 +8,7 @@ import { useLatestRelease } from "@/hooks/useGithubRelease";
 import { useArchDetection } from "@/hooks/useArchDetection";
 import { pickRecommendedApk } from "@/lib/utils";
 import { DISCORD_URL } from "@/lib/constants";
+import type { ArchKey } from "@/types/arch";
 
 const LEADER = "p";
 const ARM_TIMEOUT = 1400;
@@ -26,7 +27,7 @@ function isTyping(el: EventTarget | null): boolean {
 
 export function PowerShortcuts() {
     const { data: latest } = useLatestRelease();
-    const { arch } = useArchDetection();
+    const { arch, isDetecting } = useArchDetection();
     const [armed, setArmed] = useState(false);
     const [helpOpen, setHelpOpen] = useState(false);
     const [toast, setToast] = useState<string | null>(null);
@@ -46,8 +47,11 @@ export function PowerShortcuts() {
     }, []);
 
     const downloadLatest = useCallback(() => {
+        const preferred: ArchKey = isDetecting
+            ? "universal"
+            : (arch ?? "arm64");
         const apk = latest
-            ? pickRecommendedApk(latest.assets, arch ?? "arm64")
+            ? pickRecommendedApk(latest.assets, preferred)
             : undefined;
         if (!apk) {
             flash("Release info still loading — try again in a sec.");
@@ -61,7 +65,7 @@ export function PowerShortcuts() {
         a.click();
         a.remove();
         flash(`Downloading ${apk.name}…`);
-    }, [latest, arch, flash]);
+    }, [latest, arch, isDetecting, flash]);
 
     const openDiscord = useCallback(
         () => window.open(DISCORD_URL, "_blank", "noopener"),

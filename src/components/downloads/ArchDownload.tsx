@@ -26,7 +26,9 @@ export function ArchDownload({ assets, variant = "full", className }: Props) {
     const { arch: detected, isAndroid, isDetecting } = useArchDetection();
     const [open, setOpen] = useState(false);
 
-    const preferred: ArchKey = detected ?? "arm64";
+    const preferred: ArchKey = isDetecting
+        ? "universal"
+        : (detected ?? "arm64");
     const primary = pickRecommendedApk(assets, preferred);
     if (!primary) return null;
 
