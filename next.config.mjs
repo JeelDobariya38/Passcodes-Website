@@ -1,3 +1,5 @@
+const basePath = process.env.BASE_PATH || '';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
@@ -5,8 +7,12 @@ const nextConfig = {
 
   // Set BASE_PATH=/Passcodes-Website only when building for GitHub Pages.
   // Local builds (npm run build / npm run dev) get '' → everything works at /.
-  basePath: process.env.BASE_PATH || '',
+  basePath,
   assetPrefix: process.env.ASSET_PREFIX || '',
+
+  env: {
+    BASE_PATH: basePath,
+  },
 
   images: {
     unoptimized: true,

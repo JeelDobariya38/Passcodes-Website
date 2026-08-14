@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     title: { default: SITE_META.title, template: "%s | Passcodes" },
     description: SITE_META.description,
     metadataBase: new URL(SITE_META.url),
+    icons: {
+        icon: `${process.env.BASE_PATH || ""}/favicon.ico`,
+    },
     openGraph: {
         title: SITE_META.title,
         description: SITE_META.description,
