@@ -1,26 +1,47 @@
 'use client';
 
+import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { getLatestRelease, getAllReleases, GithubRateLimitError } from '@/lib/github';
+import {
+  getAllReleases,
+  getLatestStableRelease,
+  GithubRateLimitError,
+} from '@/lib/github';
 import type { GithubRelease } from '@/types/github';
 
-/** Fetch the latest GitHub release with caching and error handling */
-export function useLatestRelease() {
-  return useQuery<GithubRelease, Error>({
-    queryKey: ['github', 'release', 'latest'],
-    queryFn: getLatestRelease,
+/** Fetch all releases with caching and error handling */
+export function useReleases() {
+  return useQuery<GithubRelease[], Error>({
+    queryKey: ['github', 'releases'],
+    queryFn: getAllReleases,
   });
 }
 
-/** Fetch all releases for download history */
+/** Fetch all releases for download history (alias for useReleases) */
 export function useAllReleases() {
-  return useQuery<GithubRelease[], Error>({
-    queryKey: ['github', 'releases', 'all'],
-    queryFn: getAllReleases,
-  });
+  return useReleases();
+}
+
+/**
+ * Fetch the latest stable release derived from the canonical releases query.
+ * Backward-compatible helper for consumers that only need the latest release.
+ */
+export function useLatestRelease() {
+  const query = useReleases();
+  const latestRelease = useMemo(
+    () => (query.data ? getLatestStableRelease(query.data) : undefined),
+    [query.data]
+  );
+
+  return {
+    ...query,
+    data: latestRelease,
+  };
 }
 
 /** Type guard to check if an error is a rate limit error */
 export function isRateLimitError(error: Error | null): boolean {
   return error instanceof GithubRateLimitError;
 }
+
+export { getLatestStableRelease };
