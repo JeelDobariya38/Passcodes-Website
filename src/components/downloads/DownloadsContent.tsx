@@ -8,9 +8,9 @@ import { DownloadCard } from "@/components/downloads/DownloadCard";
 import { ReleaseList } from "@/components/downloads/ReleaseList";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import {
-    useLatestRelease,
-    useAllReleases,
+    useReleases,
     isRateLimitError,
+    getLatestStableRelease,
 } from "@/hooks/useGithubRelease";
 import { KOMI_STORE_URL, KOMI_BADGE_SRC } from "@/lib/constants";
 import Link from "next/link";
@@ -57,21 +57,21 @@ function KomiSection() {
 
 export function DownloadsContent() {
     const {
-        data: latestRelease,
-        isLoading: isLoadingLatest,
-        error: latestError,
-    } = useLatestRelease();
-    const {
-        data: allReleases,
-        isLoading: isLoadingAll,
-        error: allError,
-    } = useAllReleases();
+        data: releases,
+        isLoading,
+        error,
+    } = useReleases();
     const [query, setQuery] = useState("");
     const [status, setStatus] = useState<Status>("all");
 
+    const latestRelease = useMemo(
+        () => (releases ? getLatestStableRelease(releases) : undefined),
+        [releases]
+    );
+
     const filtered = useMemo(() => {
         const q = query.trim().toLowerCase();
-        return (allReleases ?? []).filter((r) => {
+        return (releases ?? []).filter((r) => {
             const matchQ =
                 !q ||
                 (r.name || "").toLowerCase().includes(q) ||
@@ -82,11 +82,10 @@ export function DownloadsContent() {
                 (status === "prerelease" ? r.prerelease : !r.prerelease);
             return matchQ && matchS;
         });
-    }, [allReleases, query, status]);
+    }, [releases, query, status]);
 
-    const hasError = latestError || allError;
-    const isRateLimited =
-        isRateLimitError(latestError) || isRateLimitError(allError);
+    const hasError = !!error;
+    const isRateLimited = isRateLimitError(error);
     const hasControls = query.trim() !== "" || status !== "all";
 
     return (
@@ -126,7 +125,7 @@ export function DownloadsContent() {
                     </div>
                 )}
 
-                {isLoadingLatest ? (
+                {isLoading ? (
                     <LoadingSpinner label="Fetching latest release..." />
                 ) : (
                     latestRelease && (
@@ -211,7 +210,7 @@ export function DownloadsContent() {
                         </p>
                     )}
 
-                    {isLoadingAll ? (
+                    {isLoading ? (
                         <LoadingSpinner label="Loading releases..." />
                     ) : (
                         <ReleaseList releases={filtered} />
