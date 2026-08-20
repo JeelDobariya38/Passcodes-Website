@@ -62,7 +62,11 @@ function KomiSection() {
 }
 
 export function DownloadsContent() {
-    const { data: releases, isLoading, error } = useReleases();
+    const {
+        data: releases,
+        isLoading,
+        error,
+    } = useReleases();
     const [query, setQuery] = useState("");
     const [status, setStatus] = useState<Status>("all");
 
@@ -128,11 +132,8 @@ export function DownloadsContent() {
                     </div>
                 )}
 
-                {/* 2. Architecture Selection & Primary Download Card */}
                 {isLoading ? (
-                    <div className="py-12">
-                        <LoadingSpinner label="Fetching release binaries..." />
-                    </div>
+                    <LoadingSpinner label="Fetching latest release..." />
                 ) : (
                     latestRelease && (
                         <ScrollReveal delay={60}>

@@ -100,6 +100,28 @@ export function getLatestStableRelease(
 }
 
 /**
+ * Find the latest stable release from a list of releases.
+ * Follows GitHub's /releases/latest semantics:
+ * - not a draft
+ * - not a prerelease
+ * - newest according to created_at
+ * Pure function that does not mutate the source array.
+ */
+export function getLatestStableRelease(
+  releases: GithubRelease[]
+): GithubRelease | undefined {
+  return releases.reduce<GithubRelease | undefined>((latest, release) => {
+    if (release.draft || release.prerelease) return latest;
+    if (!latest) return release;
+
+    return new Date(release.created_at).getTime() >
+      new Date(latest.created_at).getTime()
+      ? release
+      : latest;
+  }, undefined);
+}
+
+/**
  * Calculate aggregated download statistics.
  */
 export async function getDownloadStats(): Promise<DownloadStats> {
