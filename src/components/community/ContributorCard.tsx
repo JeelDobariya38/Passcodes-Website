@@ -11,7 +11,9 @@ function Initials({ name }: { name: string }) {
         .join("")
         .toUpperCase();
     return (
-        <span className="avatar-img avatar-fallback text-xl">{initials}</span>
+        <span className="avatar-img avatar-fallback mb-0 text-base font-bold">
+            {initials}
+        </span>
     );
 }
 
@@ -20,6 +22,7 @@ export function ContributorCard({
 }: {
     c: ContributorProfile & { avatarUrl?: string };
 }) {
+    const avatarSrc = c.avatarUrl || c.avatar;
     const socials = [
         c.github ? { href: c.github, label: "GitHub", Icon: GithubIcon } : null,
         c.email
@@ -35,22 +38,32 @@ export function ContributorCard({
     }[];
 
     return (
-        <div className="card flex flex-col items-center text-center">
-            {c.avatarUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                    src={c.avatarUrl}
-                    alt={c.name}
-                    className="avatar-img"
-                    loading="lazy"
-                />
-            ) : (
-                <Initials name={c.name} />
-            )}
-            <h3 className="text-lg font-semibold">{c.name}</h3>
-            <p className="role">{c.role}</p>
+        <div className="card group flex h-full flex-col items-center justify-between p-4 text-center transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--border)] hover:bg-[var(--card-bg-hover)]">
+            <div className="flex w-full flex-col items-center">
+                <div className="relative mb-3 flex items-center justify-center">
+                    {avatarSrc ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                            src={avatarSrc}
+                            alt={c.name}
+                            className="avatar-img mb-0 shadow-sm transition-transform duration-200 group-hover:scale-[1.03]"
+                            loading="lazy"
+                        />
+                    ) : (
+                        <Initials name={c.name} />
+                    )}
+                </div>
+
+                <h3 className="w-full truncate text-sm font-semibold text-[var(--text)] transition-colors group-hover:text-[var(--accent-light)] sm:text-base">
+                    {c.name}
+                </h3>
+                <p className="role mt-0.5 w-full truncate text-xs text-[var(--text-muted)]">
+                    {c.role || "Contributor"}
+                </p>
+            </div>
+
             {socials.length > 0 && (
-                <div className="card-links">
+                <div className="card-links mt-3 w-full justify-center border-t border-[var(--border-light)] pt-2.5">
                     {socials.map(({ href, label, Icon }) => (
                         <Link
                             key={label}
@@ -67,8 +80,9 @@ export function ContributorCard({
                             }
                             aria-label={`${c.name} on ${label}`}
                             title={label}
+                            className="p-1.5 text-[var(--text-dim)] transition-colors hover:text-[var(--accent-light)]"
                         >
-                            <Icon className="h-[18px] w-[18px]" />
+                            <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         </Link>
                     ))}
                 </div>

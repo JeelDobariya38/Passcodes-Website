@@ -4,9 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { ContributorCard } from "@/components/community/ContributorCard";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
-import { EmptyState } from "@/components/ui/EmptyState";
 import { ErrorState } from "@/components/ui/ErrorState";
 import { ButtonLink } from "@/components/ui/Button";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { getContributors, getRepoInfo } from "@/lib/github";
 import {
     FEATURED_CONTRIBUTORS,
@@ -14,9 +14,10 @@ import {
 } from "@/lib/contributors";
 import { GITHUB_REPO_URL } from "@/lib/constants";
 import { formatNumber } from "@/lib/utils";
-import { Star, GitFork, Users } from "lucide-react";
+import { Star, GitFork, Users, Heart, Code2 } from "lucide-react";
+import { GithubIcon } from "@/components/ui/BrandIcons";
 
-type Display = ContributorProfile & { avatarUrl?: string };
+type ContributorDisplay = ContributorProfile & { avatarUrl?: string };
 
 export function CommunityContent() {
     const {
@@ -38,7 +39,8 @@ export function CommunityContent() {
             Boolean
         ) as string[]
     );
-    const apiExtra: Display[] = (contributors ?? [])
+
+    const apiExtra: ContributorDisplay[] = (contributors ?? [])
         .filter(
             (a) =>
                 a.type !== "Bot" && !featuredLogins.has(a.login.toLowerCase())
@@ -51,7 +53,7 @@ export function CommunityContent() {
             avatarUrl: a.avatar_url,
         }));
 
-    const featured: Display[] = FEATURED_CONTRIBUTORS.map((c) => {
+    const featured: ContributorDisplay[] = FEATURED_CONTRIBUTORS.map((c) => {
         const api = contributors?.find(
             (a) => c.login && a.login.toLowerCase() === c.login.toLowerCase()
         );
@@ -62,87 +64,138 @@ export function CommunityContent() {
         };
     });
 
-    const all = [...featured, ...apiExtra];
+    // Unified contributor ecosystem: all people who build & contribute together
+    const allContributors: ContributorDisplay[] = [...featured, ...apiExtra];
+    const totalContributorsCount = allContributors.length;
 
     return (
         <div className="px-4 py-12 sm:px-6 sm:py-16">
             <div className="mx-auto max-w-5xl">
-                <SectionHeader
-                    as="h1"
-                    float
-                    title="Community"
-                    subtitle="Passcodes is built by the community, for the community. Every contribution matters."
-                />
-
-                {repoInfo && (
-                    <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
-                        <span className="stat-badge">
-                            <Star
-                                className="h-4 w-4 text-[#f59e0b]"
-                                aria-hidden="true"
-                            />
-                            <strong className="text-[var(--text)]">
-                                {formatNumber(repoInfo.stargazers_count)}
-                            </strong>{" "}
-                            stars
-                        </span>
-                        <span className="stat-badge">
-                            <GitFork className="h-4 w-4" aria-hidden="true" />
-                            <strong className="text-[var(--text)]">
-                                {formatNumber(repoInfo.forks_count)}
-                            </strong>{" "}
-                            forks
-                        </span>
-                        <span className="stat-badge">
-                            <Users
-                                className="h-4 w-4"
-                                style={{ color: "var(--accent-light)" }}
-                                aria-hidden="true"
-                            />
-                            <strong className="text-[var(--text)]">
-                                {all.length}
-                            </strong>{" "}
-                            contributors
-                        </span>
-                    </div>
-                )}
-
-                {isLoading ? (
-                    <LoadingSpinner label="Loading contributors..." />
-                ) : error ? (
-                    <ErrorState
-                        message="We couldn't load the community contributors. Please try again."
-                        onRetry={() => {
-                            void refetch();
-                        }}
+                {/* 1. Header & Community Intro */}
+                <ScrollReveal delay={0}>
+                    <SectionHeader
+                        as="h1"
+                        badge="Open Source Community"
+                        title="Community"
+                        subtitle="Passcodes is built entirely in the open by passionate engineers and contributors worldwide. Every commit, review, and discussion matters."
                     />
-                ) : all.length === 0 ? (
-                    <EmptyState />
-                ) : (
-                    <div className="community-container">
-                        {all.map((c, i) => (
-                            <ContributorCard
-                                key={`${c.login ?? c.name}-${i}`}
-                                c={c}
-                            />
-                        ))}
-                    </div>
-                )}
 
-                <div className="mt-12 text-center">
-                    <p className="mb-4 text-sm text-[var(--text-muted)]">
-                        Want to contribute? We welcome bug reports, feature
-                        requests, and pull requests.
-                    </p>
-                    <ButtonLink
-                        href={`${GITHUB_REPO_URL}/blob/main/CONTRIBUTING.md`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        variant="secondary"
-                    >
-                        Read Contributing Guide
-                    </ButtonLink>
+                    {/* Repository Statistics */}
+                    {repoInfo && (
+                        <div className="mb-12 flex flex-wrap items-center justify-center gap-3">
+                            <span className="stat-badge">
+                                <Star
+                                    className="h-4 w-4 text-[#f59e0b]"
+                                    aria-hidden="true"
+                                />
+                                <strong className="text-[var(--text)]">
+                                    {formatNumber(repoInfo.stargazers_count)}
+                                </strong>{" "}
+                                stars
+                            </span>
+                            <span className="stat-badge">
+                                <GitFork
+                                    className="h-4 w-4 text-[var(--accent-light)]"
+                                    aria-hidden="true"
+                                />
+                                <strong className="text-[var(--text)]">
+                                    {formatNumber(repoInfo.forks_count)}
+                                </strong>{" "}
+                                forks
+                            </span>
+                            <span className="stat-badge">
+                                <Users
+                                    className="h-4 w-4 text-[var(--text-muted)]"
+                                    aria-hidden="true"
+                                />
+                                <strong className="text-[var(--text)]">
+                                    {totalContributorsCount}
+                                </strong>{" "}
+                                contributors
+                            </span>
+                        </div>
+                    )}
+                </ScrollReveal>
+
+                {/* 2. Unified Contributor Section */}
+                <div className="my-10 border-t border-[var(--border-light)] pt-10">
+                    <ScrollReveal delay={40}>
+                        <div className="mb-8 text-center">
+                            <h2 className="text-xl font-bold tracking-tight text-[var(--text)] sm:text-2xl">
+                                The People Behind Passcodes
+                            </h2>
+                            <p className="mx-auto mt-1.5 max-w-lg text-sm text-[var(--text-muted)]">
+                                People who build, review, improve and contribute
+                                to Passcodes.
+                            </p>
+                        </div>
+                    </ScrollReveal>
+
+                    {isLoading ? (
+                        <div className="py-12">
+                            <LoadingSpinner label="Loading open source contributors..." />
+                        </div>
+                    ) : error && allContributors.length === 0 ? (
+                        <ErrorState
+                            message="We couldn't load the community contributors from GitHub. Please check back shortly."
+                            onRetry={() => {
+                                void refetch();
+                            }}
+                        />
+                    ) : (
+                        <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5">
+                            {allContributors.map((c, i) => (
+                                <ScrollReveal
+                                    key={c.login ?? c.name}
+                                    delay={Math.min(i * 20, 140)}
+                                    distance={12}
+                                >
+                                    <ContributorCard c={c} />
+                                </ScrollReveal>
+                            ))}
+                        </div>
+                    )}
                 </div>
+
+                {/* 3. Open Source Call to Action */}
+                <ScrollReveal
+                    delay={80}
+                    className="mt-14 border-t border-[var(--border-light)] pt-10"
+                >
+                    <div className="card bg-gradient-to-b from-[var(--card-bg)] to-[var(--card-bg-hover)] p-8 text-center sm:p-10">
+                        <div className="mb-4 inline-flex rounded-xl bg-[var(--accent-subtle)] p-3 text-[var(--accent-light)]">
+                            <Code2 className="h-6 w-6" />
+                        </div>
+                        <h3 className="text-xl font-bold tracking-tight text-[var(--text)] sm:text-2xl">
+                            Want to contribute?
+                        </h3>
+                        <p className="mx-auto mt-2 max-w-lg text-sm leading-relaxed text-[var(--text-muted)]">
+                            Whether you want to implement a new feature, fix a
+                            bug, improve documentation, or translate strings —
+                            your help makes Passcodes better for everyone.
+                        </p>
+                        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                            <ButtonLink
+                                href={`${GITHUB_REPO_URL}/blob/main/CONTRIBUTING.md`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                variant="filled"
+                            >
+                                <Heart className="h-4 w-4" />
+                                <span>Read Contributing Guide</span>
+                            </ButtonLink>
+                            <ButtonLink
+                                href={`${GITHUB_REPO_URL}/issues`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                variant="secondary"
+                            >
+                                <GithubIcon className="h-4 w-4" />
+                                <span>Browse Open Issues</span>
+                            </ButtonLink>
+                        </div>
+                    </div>
+                </ScrollReveal>
             </div>
         </div>
     );
