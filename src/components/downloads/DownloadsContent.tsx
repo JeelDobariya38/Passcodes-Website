@@ -1,12 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, XCircle, Store, AlertTriangle } from "lucide-react";
+import { Search, XCircle, AlertTriangle, Cpu, Layers } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { DeviceWarning } from "@/components/downloads/DeviceWarning";
 import { DownloadCard } from "@/components/downloads/DownloadCard";
 import { ReleaseList } from "@/components/downloads/ReleaseList";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import {
     useReleases,
     isRateLimitError,
@@ -21,10 +22,15 @@ function KomiSection() {
     const [badgeFailed, setBadgeFailed] = useState(false);
     return (
         <section className="store-section">
-            <h2>Also available on the Komi Store</h2>
+            <div className="mb-2 flex items-center justify-center gap-2">
+                <Layers className="h-4 w-4 text-[var(--accent-light)]" />
+                <h2 className="text-base font-semibold tracking-tight text-[var(--text)]">
+                    Alternative Distribution
+                </h2>
+            </div>
             <p>
-                Prefer an alternative store? You can grab Passcodes from the
-                Komi Store too.
+                Prefer an alternative package source? You can also install
+                Passcodes from the Komi Store.
             </p>
             {badgeFailed ? (
                 <Link
@@ -91,15 +97,16 @@ export function DownloadsContent() {
     return (
         <div className="px-4 py-12 sm:px-6 sm:py-16">
             <div className="mx-auto max-w-4xl">
-                <SectionHeader
-                    as="h1"
-                    float
-                    title="Downloads"
-                    subtitle="Get the latest version for your Android device. Always free, always open source."
-                />
-
-                <DeviceWarning />
-                <KomiSection />
+                {/* 1. Header & Technical Subtitle */}
+                <ScrollReveal delay={0}>
+                    <SectionHeader
+                        as="h1"
+                        badge="Verified Binaries"
+                        title="Downloads & Releases"
+                        subtitle="Production builds engineered for Android devices with split ABI support. Always free, reproducible, and open source."
+                    />
+                    <DeviceWarning />
+                </ScrollReveal>
 
                 {hasError && (
                     <div
@@ -129,93 +136,122 @@ export function DownloadsContent() {
                     <LoadingSpinner label="Fetching latest release..." />
                 ) : (
                     latestRelease && (
-                        <DownloadCard release={latestRelease} isLatest />
+                        <ScrollReveal delay={60}>
+                            <div className="mb-12">
+                                <div className="mb-3 flex items-center justify-between">
+                                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--accent-light)]">
+                                        <Cpu className="h-4 w-4" />
+                                        <span>
+                                            Recommended Production Build
+                                        </span>
+                                    </div>
+                                </div>
+                                <DownloadCard
+                                    release={latestRelease}
+                                    isLatest
+                                />
+                            </div>
+                        </ScrollReveal>
                     )
                 )}
 
-                <div className="mt-14">
-                    <h2 className="mb-5 text-center text-2xl font-bold">
-                        Release History
-                    </h2>
+                {/* 3. Alternative Distribution */}
+                <ScrollReveal delay={100}>
+                    <KomiSection />
+                </ScrollReveal>
 
-                    <div className="release-search">
-                        <div
-                            className="relative w-full"
-                            style={{ maxWidth: 420 }}
-                        >
-                            <Search
-                                className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--text-dim)]"
-                                aria-hidden="true"
-                            />
-                            <input
-                                type="search"
-                                value={query}
-                                onChange={(e) => setQuery(e.target.value)}
-                                placeholder="Search by version or notes…"
-                                aria-label="Search releases"
-                            />
-                            {query && (
-                                <button
-                                    type="button"
-                                    onClick={() => setQuery("")}
-                                    aria-label="Clear search"
-                                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-[var(--text-dim)] hover:text-[var(--text)]"
-                                >
-                                    <XCircle
-                                        className="h-4 w-4"
-                                        aria-hidden="true"
-                                    />
-                                </button>
+                {/* 4. Release Archive Group */}
+                <ScrollReveal delay={140}>
+                    <div className="mt-14">
+                        <div className="mb-6 text-center">
+                            <h2 className="section-title text-xl sm:text-2xl">
+                                Release History & Archives
+                            </h2>
+                            <p className="mt-1 text-sm text-[var(--text-muted)]">
+                                Browse previous production releases,
+                                architecture packages, and change manifests.
+                            </p>
+                        </div>
+
+                        <div className="release-search">
+                            <div
+                                className="relative w-full"
+                                style={{ maxWidth: 420 }}
+                            >
+                                <Search
+                                    className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--text-dim)]"
+                                    aria-hidden="true"
+                                />
+                                <input
+                                    type="search"
+                                    value={query}
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    placeholder="Search by version or notes…"
+                                    aria-label="Search releases"
+                                />
+                                {query && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setQuery("")}
+                                        aria-label="Clear search"
+                                        className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-[var(--text-dim)] hover:text-[var(--text)]"
+                                    >
+                                        <XCircle
+                                            className="h-4 w-4"
+                                            aria-hidden="true"
+                                        />
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className="release-filters">
+                            {(["all", "stable", "prerelease"] as Status[]).map(
+                                (s) => (
+                                    <button
+                                        key={s}
+                                        type="button"
+                                        className={`filter-btn ${status === s ? "active" : ""}`}
+                                        onClick={() => setStatus(s)}
+                                    >
+                                        {s === "all"
+                                            ? "All Releases"
+                                            : s === "stable"
+                                              ? "Stable"
+                                              : "Pre-releases"}
+                                    </button>
+                                )
                             )}
                         </div>
-                    </div>
 
-                    <div className="release-filters">
-                        {(["all", "stable", "prerelease"] as Status[]).map(
-                            (s) => (
+                        {hasControls && (
+                            <p className="mb-5 text-center text-sm text-[var(--text-muted)]">
+                                Showing{" "}
+                                <strong className="text-[var(--text)]">
+                                    {filtered.length}
+                                </strong>{" "}
+                                result{filtered.length === 1 ? "" : "s"}
                                 <button
-                                    key={s}
                                     type="button"
-                                    className={`filter-btn ${status === s ? "active" : ""}`}
-                                    onClick={() => setStatus(s)}
+                                    onClick={() => {
+                                        setQuery("");
+                                        setStatus("all");
+                                    }}
+                                    className="ml-2 font-medium"
+                                    style={{ color: "var(--accent-light)" }}
                                 >
-                                    {s === "all"
-                                        ? "All"
-                                        : s === "stable"
-                                          ? "Stable"
-                                          : "Pre-releases"}
+                                    Clear
                                 </button>
-                            )
+                            </p>
+                        )}
+
+                        {isLoading ? (
+                            <LoadingSpinner label="Loading release archive..." />
+                        ) : (
+                            <ReleaseList releases={filtered} />
                         )}
                     </div>
-
-                    {hasControls && (
-                        <p className="mb-5 text-center text-sm text-[var(--text-muted)]">
-                            Showing{" "}
-                            <strong className="text-[var(--text)]">
-                                {filtered.length}
-                            </strong>{" "}
-                            result{filtered.length === 1 ? "" : "s"}
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    setQuery("");
-                                    setStatus("all");
-                                }}
-                                className="ml-2 font-medium"
-                                style={{ color: "var(--accent-light)" }}
-                            >
-                                Clear
-                            </button>
-                        </p>
-                    )}
-
-                    {isLoading ? (
-                        <LoadingSpinner label="Loading releases..." />
-                    ) : (
-                        <ReleaseList releases={filtered} />
-                    )}
-                </div>
+                </ScrollReveal>
             </div>
         </div>
     );

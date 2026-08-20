@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download, Github } from "lucide-react";
 import { NAV_ROUTES, GITHUB_REPO_URL } from "@/lib/constants";
 import { useActiveNav } from "@/hooks/useActiveNav";
 import { Logo } from "@/components/layout/Logo";
@@ -14,64 +14,85 @@ export function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { isActive } = useActiveNav();
 
+    // Close mobile menu on Escape key
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                setIsMobileMenuOpen(false);
+            }
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, []);
+
     return (
-        <header className="nav-shell sticky top-0 z-50">
+        <header className="nav-shell sticky top-0 z-50 transition-colors duration-200">
             <nav
-                className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6"
+                className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6"
                 aria-label="Main navigation"
             >
+                {/* Brand */}
                 <Link
                     href="/"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="flex items-center gap-2.5 text-lg font-bold"
+                    className="flex items-center gap-2.5 rounded-lg text-base font-bold tracking-tight text-[var(--text)] transition-opacity hover:opacity-90"
                     aria-label="Passcodes Home"
                 >
-                    <Logo className="h-10 w-10 rounded-xl" />
-                    <span>Passcodes</span>
+                    <Logo className="h-7 w-7 rounded-lg shadow-sm" />
+                    <span className="text-lg font-bold">Passcodes</span>
                 </Link>
 
-                <ul
-                    className="hidden items-center gap-1.5 md:flex"
-                    role="menubar"
-                >
-                    {NAV_ROUTES.map((route) => (
-                        <li key={route.href} role="none">
+                {/* Desktop Nav Items */}
+                <div className="hidden items-center gap-1 md:flex">
+                    {NAV_ROUTES.map((route) => {
+                        const active = isActive(route.href);
+                        return (
                             <Link
+                                key={route.href}
                                 href={route.href}
-                                role="menuitem"
                                 className={cn(
-                                    "nav-btn text-sm",
-                                    isActive(route.href) && "active-nav"
+                                    "nav-btn text-sm font-medium",
+                                    active && "active-nav"
                                 )}
-                                aria-current={
-                                    isActive(route.href) ? "page" : undefined
-                                }
+                                aria-current={active ? "page" : undefined}
                             >
                                 {route.label}
                             </Link>
-                        </li>
-                    ))}
-                    <li role="none">
-                        <Link
-                            href={GITHUB_REPO_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="nav-btn"
-                            aria-label="GitHub repository"
-                        >
-                            <GithubIcon className="h-4 w-4" />
-                        </Link>
-                    </li>
-                    <li role="none">
-                        <ThemeToggle />
-                    </li>
-                </ul>
+                        );
+                    })}
+                </div>
 
+                {/* Desktop Right Actions */}
+                <div className="hidden items-center gap-2 md:flex">
+                    <Link
+                        href={GITHUB_REPO_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="nav-btn !px-2.5 !py-2"
+                        aria-label="Passcodes GitHub Repository"
+                        title="GitHub Repository"
+                    >
+                        <GithubIcon className="h-4 w-4" />
+                    </Link>
+
+                    <ThemeToggle />
+
+                    <Link
+                        href="/downloads"
+                        className="btn btn-filled btn-small ml-1"
+                        aria-label="Download Passcodes"
+                    >
+                        <Download className="h-3.5 w-3.5" aria-hidden="true" />
+                        <span>Get App</span>
+                    </Link>
+                </div>
+
+                {/* Mobile Menu & Theme Button */}
                 <div className="flex items-center gap-2 md:hidden">
                     <ThemeToggle />
                     <button
                         type="button"
-                        className="nav-btn !px-3 !py-2"
+                        className="nav-btn !p-2"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         aria-expanded={isMobileMenuOpen}
                         aria-controls="mobile-menu"
@@ -88,44 +109,57 @@ export function Navbar() {
                 </div>
             </nav>
 
+            {/* Mobile Drawer */}
             {isMobileMenuOpen && (
                 <div
                     id="mobile-menu"
-                    className="animate-fade-in border-t border-[var(--border-light)] px-4 pb-4 pt-2 md:hidden"
+                    className="animate-fade-in border-b border-[var(--border-light)] bg-[var(--nav-bg)] px-4 pb-5 pt-2 backdrop-blur-xl md:hidden"
                 >
-                    <ul className="flex flex-col gap-1.5" role="menu">
-                        {NAV_ROUTES.map((route) => (
-                            <li key={route.href} role="none">
+                    <div className="flex flex-col gap-1">
+                        {NAV_ROUTES.map((route) => {
+                            const active = isActive(route.href);
+                            return (
                                 <Link
+                                    key={route.href}
                                     href={route.href}
-                                    role="menuitem"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className={cn(
-                                        "nav-btn w-full text-base",
-                                        isActive(route.href) && "active-nav"
+                                        "flex items-center rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                                        active
+                                            ? "bg-[var(--card-bg-hover)] font-semibold text-[var(--text)]"
+                                            : "text-[var(--text-muted)] hover:bg-[var(--card-bg)] hover:text-[var(--text)]"
                                     )}
-                                    aria-current={
-                                        isActive(route.href)
-                                            ? "page"
-                                            : undefined
-                                    }
+                                    aria-current={active ? "page" : undefined}
                                 >
                                     {route.label}
                                 </Link>
-                            </li>
-                        ))}
-                        <li role="none">
+                            );
+                        })}
+
+                        <div className="mt-2 border-t border-[var(--border-light)] pt-2">
                             <Link
                                 href={GITHUB_REPO_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="nav-btn w-full"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--text-muted)] hover:bg-[var(--card-bg)] hover:text-[var(--text)]"
                             >
-                                <GithubIcon className="h-4 w-4" /> View on
-                                GitHub
+                                <Github className="h-4 w-4" />
+                                <span>View on GitHub</span>
                             </Link>
-                        </li>
-                    </ul>
+                        </div>
+
+                        <div className="pt-1">
+                            <Link
+                                href="/downloads"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="btn btn-filled w-full justify-center py-2.5 text-sm font-semibold"
+                            >
+                                <Download className="h-4 w-4" />
+                                <span>Download Passcodes</span>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             )}
         </header>

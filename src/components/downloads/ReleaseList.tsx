@@ -9,14 +9,20 @@ import Link from "next/link";
 export function ReleaseList({ releases }: { releases: GithubRelease[] }) {
     if (releases.length === 0) {
         return (
-            <p className="rounded-2xl border border-dashed border-[var(--border)] p-8 text-center text-sm text-[var(--text-muted)]">
-                No releases match your search.
-            </p>
+            <div className="rounded-2xl border border-dashed border-[var(--border)] p-10 text-center">
+                <p className="text-sm font-medium text-[var(--text)]">
+                    No releases match your search
+                </p>
+                <p className="mt-1 text-xs text-[var(--text-muted)]">
+                    Try searching for a different version tag or clearing the
+                    filter.
+                </p>
+            </div>
         );
     }
 
     return (
-        <div className="mx-auto grid max-w-3xl gap-5">
+        <div className="mx-auto grid max-w-3xl gap-4">
             {releases.map((release) => {
                 const totalDownloads = release.assets.reduce(
                     (sum, a) => sum + a.download_count,
@@ -30,16 +36,22 @@ export function ReleaseList({ releases }: { releases: GithubRelease[] }) {
                                     <span className="truncate">
                                         {release.name || release.tag_name}
                                     </span>
-                                    {release.prerelease && (
+                                    {release.prerelease ? (
                                         <span className="tag beta">pre</span>
+                                    ) : (
+                                        <span className="tag stable">
+                                            stable
+                                        </span>
                                     )}
                                 </h3>
-                                <p className="release-date flex items-center gap-1">
+                                <p className="release-date flex items-center gap-1.5">
                                     <Calendar
-                                        className="h-3 w-3"
+                                        className="h-3.5 w-3.5 text-[var(--text-dim)]"
                                         aria-hidden="true"
                                     />
-                                    {formatDate(release.published_at)}
+                                    <span>
+                                        {formatDate(release.published_at)}
+                                    </span>
                                 </p>
                             </div>
                             <span className="release-download-count">
@@ -51,7 +63,7 @@ export function ReleaseList({ releases }: { releases: GithubRelease[] }) {
                             </span>
                         </div>
 
-                        <div className="release-actions flex-wrap items-center justify-between">
+                        <div className="release-actions mt-3 flex-wrap items-center justify-between border-t border-[var(--border-light)] pt-3">
                             <ArchDownload
                                 assets={release.assets}
                                 variant="compact"
@@ -63,8 +75,8 @@ export function ReleaseList({ releases }: { releases: GithubRelease[] }) {
                                 className="btn btn-ghost btn-small"
                                 aria-label="View release notes on GitHub"
                             >
-                                <ExternalLink className="h-4 w-4" /> Release
-                                notes
+                                <ExternalLink className="h-3.5 w-3.5" />
+                                <span>GitHub Manifest</span>
                             </Link>
                         </div>
                     </div>

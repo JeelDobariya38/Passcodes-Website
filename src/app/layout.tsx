@@ -8,6 +8,7 @@ import { PageTransition } from "@/components/layout/PageTransition";
 import { GithubStarDialog } from "@/components/shared/GithubStarDialog";
 import { SITE_META } from "@/lib/constants";
 import { PowerShortcuts } from "@/components/layout/PowerShortcuts";
+import { AmbientBackground } from "@/components/visuals/AmbientBackground";
 import "@/styles/globals.css";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], display: "swap" });
@@ -52,9 +53,10 @@ export default function RootLayout({
                     dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
                 />
             </head>
-            <body className="antialiased" suppressHydrationWarning>
+            <body className="relative antialiased" suppressHydrationWarning>
                 <ThemeProvider>
                     <QueryProvider>
+                        <AmbientBackground />
                         <div className="flex min-h-screen flex-col">
                             <Navbar />
                             <main className="flex-1">
