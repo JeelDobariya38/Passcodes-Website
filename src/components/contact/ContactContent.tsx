@@ -2,6 +2,7 @@
 
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { ButtonLink } from "@/components/ui/Button";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import {
     GithubIcon,
     DiscordIcon,
@@ -14,54 +15,60 @@ import {
     CONTACT_EMAIL,
     USER_GUIDE_URL,
 } from "@/lib/constants";
-import { Bug, MessageSquare, BookOpen, Mail } from "lucide-react";
+import { Bug, MessageSquare, BookOpen, Mail, ShieldAlert } from "lucide-react";
 
 const contactOptions = [
     {
         Icon: Bug,
         title: "Report a Bug",
+        badge: "Technical",
         description:
-            "Found something broken? Open an issue on GitHub and we'll investigate.",
+            "Found something broken or inconsistent? Open an issue on GitHub with reproduction steps.",
         href: `${GITHUB_REPO_URL}/issues/new?template=bug_report.md`,
         label: "Open Issue",
     },
     {
         Icon: MessageSquare,
-        title: "Start a Discussion",
+        title: "Feature Requests & Ideas",
+        badge: "Community",
         description:
-            "Have a question or idea? Start a discussion in our GitHub repository.",
+            "Have a proposal for new functionality or design improvement? Start a discussion with the team.",
         href: `${GITHUB_REPO_URL}/discussions`,
-        label: "Discuss",
+        label: "Join Discussion",
     },
     {
         Icon: DiscordIcon,
-        title: "Join Discord",
+        title: "Discord Community",
+        badge: "Chat",
         description:
-            "Chat with the community and the maintainers in real time.",
+            "Chat with developers, ask troubleshooting questions, and get real-time community assistance.",
         href: DISCORD_URL,
         label: "Open Discord",
     },
     {
         Icon: TelegramIcon,
-        title: "Telegram",
+        title: "Telegram Channel",
+        badge: "Updates",
         description:
-            "Join our Telegram channel for updates and quick announcements.",
+            "Subscribe to our Telegram channel for direct build releases, quick news, and project bulletins.",
         href: TELEGRAM_URL,
-        label: "Open Telegram",
+        label: "Join Telegram",
     },
     {
         Icon: BookOpen,
-        title: "Read the Docs",
+        title: "User Documentation",
+        badge: "Guides",
         description:
-            "Check our documentation repository for guides, FAQs, and contributing info.",
+            "Browse detailed user manuals, architecture overviews, installation instructions, and FAQ guides.",
         href: USER_GUIDE_URL,
-        label: "View Docs",
+        label: "Browse Docs",
     },
     {
         Icon: Mail,
-        title: "Email Us",
+        title: "Private & Security Inquiries",
+        badge: "Direct",
         description:
-            "For private inquiries or security reports, reach out via email.",
+            "For confidential inquiries, partnership proposals, or vulnerability disclosures, reach out directly.",
         href: `mailto:${CONTACT_EMAIL}`,
         label: "Send Email",
         mail: true,
@@ -72,45 +79,78 @@ export function ContactContent() {
     return (
         <div className="px-4 py-12 sm:px-6 sm:py-16">
             <div className="mx-auto max-w-4xl">
-                <SectionHeader
-                    as="h1"
-                    float
-                    title="Contact Us"
-                    subtitle="We're an open-source project. Reach us on GitHub, Discord, Telegram, or email."
-                />
-                <div className="grid gap-5 sm:grid-cols-2">
-                    {contactOptions.map((option) => (
-                        <div
-                            key={option.title}
-                            className="card flex flex-col text-left"
-                        >
-                            <span className="feature-icon mb-4">
-                                <option.Icon className="h-6 w-6" />
-                            </span>
-                            <h3 className="text-lg font-semibold">
-                                {option.title}
-                            </h3>
-                            <p className="mt-2 flex-1 text-sm leading-relaxed text-[var(--text-muted)]">
-                                {option.description}
-                            </p>
-                            <div className="mt-4">
-                                <ButtonLink
-                                    href={option.href}
-                                    target={option.mail ? undefined : "_blank"}
-                                    rel={
-                                        option.mail
-                                            ? undefined
-                                            : "noopener noreferrer"
-                                    }
-                                    variant="secondary"
-                                    size="sm"
-                                >
-                                    {option.label}
-                                </ButtonLink>
+                {/* 1. Header */}
+                <ScrollReveal delay={0}>
+                    <SectionHeader
+                        as="h1"
+                        badge="Get In Touch"
+                        title="Contact & Support"
+                        subtitle="Passcodes is open source and community-driven. Reach out through our issue tracker, discussion boards, chat channels, or direct email."
+                    />
+                </ScrollReveal>
+
+                {/* 2. Communication Categories Grid (Single Minimal Group Reveal) */}
+                <ScrollReveal delay={50}>
+                    <div className="grid gap-5 sm:grid-cols-2">
+                        {contactOptions.map((option) => (
+                            <div
+                                key={option.title}
+                                className="card flex h-full flex-col justify-between text-left transition-all duration-150 hover:border-[var(--border)]"
+                            >
+                                <div>
+                                    <div className="mb-4 flex items-center justify-between">
+                                        <span className="feature-icon">
+                                            <option.Icon className="h-5 w-5" />
+                                        </span>
+                                        <span className="editorial-badge border border-[var(--border-light)] bg-[var(--card-bg)] text-[var(--text-dim)]">
+                                            {option.badge}
+                                        </span>
+                                    </div>
+                                    <h3 className="text-lg font-semibold text-[var(--text)]">
+                                        {option.title}
+                                    </h3>
+                                    <p className="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">
+                                        {option.description}
+                                    </p>
+                                </div>
+                                <div className="mt-6 border-t border-[var(--border-light)] pt-4">
+                                    <ButtonLink
+                                        href={option.href}
+                                        target={
+                                            option.mail ? undefined : "_blank"
+                                        }
+                                        rel={
+                                            option.mail
+                                                ? undefined
+                                                : "noopener noreferrer"
+                                        }
+                                        variant="secondary"
+                                        size="sm"
+                                        className="w-full justify-center sm:w-auto"
+                                    >
+                                        {option.label}
+                                    </ButtonLink>
+                                </div>
                             </div>
+                        ))}
+                    </div>
+                </ScrollReveal>
+
+                {/* 3. Security Disclosure Note */}
+                <ScrollReveal delay={100}>
+                    <div className="mt-12 flex items-start gap-3.5 rounded-xl border border-[var(--border-light)] bg-[var(--card-bg)] p-5 text-xs text-[var(--text-muted)]">
+                        <ShieldAlert className="mt-0.5 h-5 w-5 shrink-0 text-[var(--accent-light)]" />
+                        <div>
+                            <span className="mb-1 block font-semibold text-[var(--text)]">
+                                Responsible Vulnerability Disclosure
+                            </span>
+                            If you discover a potential security vulnerability
+                            in Passcodes, please send an email to{" "}
+                            {CONTACT_EMAIL} rather than opening a public issue.
+                            We investigate all security reports immediately.
                         </div>
-                    ))}
-                </div>
+                    </div>
+                </ScrollReveal>
             </div>
         </div>
     );
