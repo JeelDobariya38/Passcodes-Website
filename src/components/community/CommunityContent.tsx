@@ -12,9 +12,13 @@ import {
     FEATURED_CONTRIBUTORS,
     type ContributorProfile,
 } from "@/lib/contributors";
-import { GITHUB_REPO_URL } from "@/lib/constants";
+import {
+    GITHUB_REPO_URL,
+    GITHUB_ISSUES_URL,
+    PASSCODES_CONTRIBUTING_URL,
+} from "@/lib/constants";
 import { formatNumber } from "@/lib/utils";
-import { Star, GitFork, Users, Heart, Code2 } from "lucide-react";
+import { Star, GitFork, Users, BookOpen, Code2 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/BrandIcons";
 
 type ContributorDisplay = ContributorProfile & { avatarUrl?: string };
@@ -176,16 +180,16 @@ export function CommunityContent() {
                         </p>
                         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
                             <ButtonLink
-                                href={`${GITHUB_REPO_URL}/blob/main/CONTRIBUTING.md`}
+                                href={PASSCODES_CONTRIBUTING_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 variant="filled"
                             >
-                                <Heart className="h-4 w-4" />
+                                <BookOpen className="h-4 w-4" />
                                 <span>Read Contributing Guide</span>
                             </ButtonLink>
                             <ButtonLink
-                                href={`${GITHUB_REPO_URL}/issues`}
+                                href={GITHUB_ISSUES_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 variant="secondary"

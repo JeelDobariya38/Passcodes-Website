@@ -28,8 +28,18 @@ export const SITE_META = {
 } as const;
 
 export const GITHUB_REPO_URL = `https://github.com/${REPO_PATH}`;
+export const GITHUB_ISSUES_URL = `${GITHUB_REPO_URL}/issues`;
 export const GITHUB_RELEASES_URL = `${GITHUB_REPO_URL}/releases`;
 export const LICENSE_URL = `${GITHUB_REPO_URL}/blob/main/LICENSE.txt`;
+
+export const PASSCODES_DOCS_REPO_URL =
+    "https://github.com/PasscodesApp/Passcodes-Docs";
+export const PASSCODES_DOCS_URL =
+    "https://passcodesapp.github.io/Passcodes-Docs/";
+export const PASSCODES_CONTRIBUTING_URL =
+    "https://passcodesapp.github.io/Passcodes-Docs/contributing/CONTRIBUTING/";
+export const CONTRIBUTING_GUIDE_URL = PASSCODES_CONTRIBUTING_URL;
+
 export const USER_GUIDE_URL =
     "https://passcodesapp.github.io/Passcodes-Docs/user-docs/installing/";
 export const DOCS_RELEASE_NOTES_URL =

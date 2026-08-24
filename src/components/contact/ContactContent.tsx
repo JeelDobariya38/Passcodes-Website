@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/BrandIcons";
 import {
     GITHUB_REPO_URL,
+    GITHUB_ISSUES_URL,
     DISCORD_URL,
     TELEGRAM_URL,
     CONTACT_EMAIL,
@@ -32,9 +33,9 @@ const contactOptions = [
         title: "Feature Requests & Ideas",
         badge: "Community",
         description:
-            "Have a proposal for new functionality or design improvement? Start a discussion with the team.",
-        href: `${GITHUB_REPO_URL}/discussions`,
-        label: "Join Discussion",
+            "Have a proposal for new functionality or design improvement? Submit a feature request on GitHub Issues.",
+        href: GITHUB_ISSUES_URL,
+        label: "Request Feature",
     },
     {
         Icon: DiscordIcon,

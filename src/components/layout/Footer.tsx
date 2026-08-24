@@ -134,7 +134,7 @@ export function Footer() {
                                     rel="noopener noreferrer"
                                     className="text-[var(--footer-muted)] transition-colors hover:text-[var(--text)]"
                                 >
-                                    License (MIT/GPL)
+                                    MIT License
                                 </Link>
                             </li>
                             <li className="pt-0.5">
