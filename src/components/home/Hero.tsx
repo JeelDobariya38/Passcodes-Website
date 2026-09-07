@@ -53,7 +53,7 @@ export function Hero() {
                                         </span>
                                     </div>
                                     <p className="text-[11px] font-medium text-[var(--text-muted)]">
-                                        Android Credential Vault
+                                        Android Password Manager
                                     </p>
                                 </div>
                             </div>
@@ -95,15 +95,15 @@ export function Hero() {
                             <h1 className="text-3xl font-extrabold tracking-tight text-[var(--text)] sm:text-5xl lg:text-[2.75rem] lg:leading-[1.12] xl:text-[3.15rem]">
                                 Your passwords,{" "}
                                 <span className="bg-gradient-to-r from-violet-400 via-purple-300 to-indigo-300 bg-clip-text text-transparent">
-                                    stored securely
+                                    stored locally
                                 </span>{" "}
                                 on your device.
                             </h1>
                             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[var(--text-muted)] sm:text-lg lg:mx-0">
                                 Passcodes is a free, open-source password
-                                manager for Android. Local-first encrypted
-                                storage with zero cloud dependencies and
-                                complete data ownership.
+                                manager for Android. Local-first on-device
+                                storage with no credential cloud synchronization
+                                and complete data ownership.
                             </p>
                         </ScrollReveal>
 
@@ -200,7 +200,7 @@ export function Hero() {
                                             </span>
                                         </div>
                                         <p className="mt-0.5 text-xs font-medium text-[var(--text-muted)]">
-                                            Android Credential Vault
+                                            Android Password Manager
                                         </p>
                                     </div>
                                 </div>
@@ -216,18 +216,17 @@ export function Hero() {
                                             <span>Local-first</span>
                                         </div>
                                         <p className="mt-1 text-xs text-[var(--text-muted)] sm:text-sm">
-                                            Your data stays on your device.
+                                            No cloud account or server required.
                                         </p>
                                     </div>
 
                                     <div className="bg-[var(--card-bg)]/50 group rounded-xl border border-[var(--border-lighter)] p-3 transition-colors hover:border-[var(--border-light)] hover:bg-[var(--card-bg)]">
                                         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[var(--accent-light)]">
                                             <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-light)]" />
-                                            <span>Encrypted</span>
+                                            <span>On-Device</span>
                                         </div>
                                         <p className="mt-1 text-xs text-[var(--text-muted)] sm:text-sm">
-                                            Credentials remain protected
-                                            locally.
+                                            Credentials stay on your device.
                                         </p>
                                     </div>
 
@@ -243,13 +242,17 @@ export function Hero() {
                                     </div>
                                 </div>
 
-                                {/* Supporting Cryptographic / Offline Detail */}
-                                <div className="mt-5 flex items-center justify-between border-t border-[var(--border-light)] pt-3.5 text-[11px] font-medium text-[var(--text-dim)]">
-                                    <span>Client-side AES-256-GCM</span>
+                                {/* Supporting Capability Detail */}
+                                <div className="mt-5 flex items-center justify-center gap-2 border-t border-[var(--border-light)] pt-3.5 text-[11px] font-medium text-[var(--text-dim)]">
+                                    <span>Local Storage</span>
                                     <span className="text-[var(--text-dim)]/50">
                                         ·
                                     </span>
-                                    <span>Argon2id Key Derivation</span>
+                                    <span>Biometric App Lock</span>
+                                    <span className="text-[var(--text-dim)]/50">
+                                        ·
+                                    </span>
+                                    <span>Auto-Lock</span>
                                 </div>
                             </div>
                         </ScrollReveal>
@@ -267,7 +270,7 @@ export function Hero() {
                             <div className="mt-1 text-lg font-bold text-[var(--text)]">
                                 {downloadStats
                                     ? formatNumber(downloadStats.totalDownloads)
-                                    : "1,000+"}
+                                    : "—"}
                             </div>
                         </div>
 
@@ -287,7 +290,7 @@ export function Hero() {
                                 <span>Storage</span>
                             </div>
                             <div className="mt-1 text-lg font-bold text-[var(--text)]">
-                                Local Encrypted
+                                Local (SQLite)
                             </div>
                         </div>
 
@@ -312,11 +315,11 @@ export function Hero() {
                         </span>
                         <span className="trust-item">
                             <WifiOff className="h-4 w-4" aria-hidden="true" />
-                            Zero Cloud Dependency
+                            No Cloud Sync
                         </span>
                         <span className="trust-item">
                             <Lock className="h-4 w-4" aria-hidden="true" />
-                            Biometric Vault Lock
+                            Biometric App Lock
                         </span>
                         <span className="trust-item">
                             <GithubIcon className="h-4 w-4" />

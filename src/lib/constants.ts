@@ -19,9 +19,9 @@ export const NAV_ROUTES = [
 ] as const;
 
 export const SITE_META = {
-    title: "Passcodes - Secure Password Manager for Android",
+    title: "Passcodes - Open Source Password Manager for Android",
     description:
-        "Passcodes is a free, open-source password manager for Android. Securely store and manage your passwords locally on your device.",
+        "Passcodes is a free, open-source password manager for Android. Store and manage your passwords locally on your device with no credential cloud sync.",
     url: "https://passcodesapp.github.io/Passcodes-Website",
     ogImage: "/og-image.png",
     twitterHandle: "@PasscodesApp",

@@ -25,7 +25,7 @@ export function GithubStarDialog() {
                     <h2 id="star-dialog-title">Enjoying Passcodes?</h2>
                 </div>
                 <p>
-                    If Passcodes helps you manage your passwords securely,
+                    If Passcodes helps you manage your passwords locally,
                     consider giving us a star on GitHub. It helps others
                     discover the project!
                     {repoInfo && (
