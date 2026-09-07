@@ -62,15 +62,16 @@ export default function ChangelogPage() {
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                         <div>
                             <span className="editorial-badge mb-3 border border-[var(--border-light)] bg-[var(--card-bg)] text-[var(--accent-light)]">
-                                Engineering Journal
+                                Release Highlights
                             </span>
                             <h1 className="section-heading">
-                                Changelog & History
+                                Release Highlights & Milestones
                             </h1>
                             <p className="section-subheading max-w-2xl">
-                                Complete timeline of new features, security
-                                hardening, performance optimizations, and
-                                architecture milestones shipped to Passcodes.
+                                Curated milestones, architecture transitions, and
+                                feature updates across Passcodes releases. Complete
+                                historical notes and tags are maintained in our official
+                                documentation and GitHub releases.
                             </p>
                         </div>
                         <div className="flex items-center gap-2.5 text-xs text-[var(--text-muted)]">

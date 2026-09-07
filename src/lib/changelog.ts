@@ -83,7 +83,7 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
             "Modern Material UI design system with fluid animations and responsive layout.",
             "Comprehensive dark theme support with true black and low-contrast palettes.",
             "Screen capture and screenshot protection across all credential views.",
-            "Pull-to-refresh vault list and tab navigation improvements.",
+            "Pull-to-refresh password list and tab navigation improvements.",
             "Upgraded underlying foundation to Expo SDK 57.",
         ],
         sections: [
@@ -99,7 +99,7 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
             {
                 title: "Performance & Maintenance",
                 items: [
-                    "Reduced memory consumption during large vault indexing.",
+                    "Reduced memory consumption when loading large credential lists.",
                     "Optimized bundle size and startup latency.",
                     "Dependency bump to Expo SDK 57.",
                 ],
@@ -120,25 +120,25 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
         summary:
             "Biometric authentication (fingerprint/face unlock), Google Passwords CSV import & export, password detail viewer, and data recovery safeguards.",
         highlights: [
-            "Native biometric authentication for unlocking the password vault.",
+            "Native biometric authentication for unlocking app access.",
             "Seamless import and export compatibility with Google Passwords CSV.",
-            "Multi-purpose password detail screen with copy actions and password generator.",
+            "Multi-purpose password detail screen with quick copy actions.",
             "Data recovery troubleshooting tools and uninstall data preservation prompt.",
         ],
         sections: [
             {
                 title: "Security & Auth",
                 items: [
-                    "Fingerprint and biometric prompt integration with fallback PIN/passcode.",
-                    "Enhanced in-app auto-lock timers.",
+                    "Fingerprint and biometric prompt integration via Android BiometricPrompt.",
+                    "In-app auto-lock locking the app after 2 minutes of background inactivity.",
                 ],
             },
             {
-                title: "Vault Management",
+                title: "Credential Management",
                 items: [
                     "Full import & export pipeline compatible with standard password formats.",
                     "Inline password updating and credential editing.",
-                    "Search and filtering across vault credentials.",
+                    "Search and filtering across stored credentials.",
                 ],
             },
             {
@@ -158,24 +158,25 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
     {
         slug: "v3-0-0-alpha",
         version: "v3.0.0",
-        title: "v3.0.0 — Expo Ecosystem Architecture Remake",
+        title: "v3.0.0 — Complete Architecture Rewrite (Expo / React Native)",
         date: "2026-05-24",
         releaseType: "Alpha",
         category: "Architecture",
         summary:
-            "Major architectural rewrite migrating Passcodes to the modern Expo ecosystem for fast iteration and cross-platform readiness while preserving Android-first performance.",
+            "Major from-scratch architectural rewrite transitioning Passcodes from the legacy native Android codebase to Expo and React Native, establishing a clean foundation for core password management.",
         highlights: [
-            "Complete remake and migration to the Expo ecosystem.",
-            "New state management and local persistent storage architecture.",
-            "Laid groundwork for modular UI architecture and streamlined EAS workflows.",
+            "Complete from-scratch rewrite replacing the retired native Android architecture with Expo and React Native.",
+            "New local persistent storage architecture built on SQLite and Drizzle ORM.",
+            "Initial baseline release providing core password storage and basic manager functionality.",
+            "Data recovery tools provided to migrate stored credentials from pre-v3 releases.",
         ],
         sections: [
             {
-                title: "Architecture",
+                title: "Architecture Rewrite",
                 items: [
-                    "Rewrote the core frontend framework on modern Expo.",
-                    "Setup EAS build configurations and streamlined asset pipelines.",
-                    "Cleaned up legacy build workflows and optimized module tree.",
+                    "Replaced the previous native Kotlin/Compose architecture with Expo (React Native).",
+                    "Transitioned local database layer to expo-sqlite with Drizzle ORM.",
+                    "Setup modern build configurations and streamlined module tree.",
                 ],
             },
         ],
@@ -192,18 +193,18 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
         releaseType: "Beta",
         category: "Improvements",
         summary:
-            "Biometric authentication integration, dual navigation scaffolding, autofill service improvements, and database migration.",
+            "Biometric authentication integration, dual navigation scaffolding, and autofill service adjustments in the pre-rewrite native architecture.",
         highlights: [
-            "Biometric authentication in Compose Multiplatform.",
-            "Autofill service framework enhancements.",
-            "Database migration to v2 structure.",
+            "Biometric authentication in Compose Multiplatform (pre-rewrite architecture).",
+            "Autofill service framework enhancements (preview/experimental).",
+            "End of support announcement for v2.x codebase ahead of architecture rewrite.",
         ],
         sections: [
             {
                 title: "Enhancements",
                 items: [
                     "Dual navigation support (classical & modern screen layouts).",
-                    "Autofill service improvements for seamless credential filling.",
+                    "Experimental autofill adjustments in the native Android module.",
                     "Migrated network client from OkHttp to Ktor.",
                 ],
             },
@@ -219,11 +220,11 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
         releaseType: "Beta",
         category: "Features",
         summary:
-            "Introduction of a unified design system in Compose Multiplatform, SQLite database v2 migration, and initial Android autofill service.",
+            "Introduction of a unified design system in Compose Multiplatform, SQLite database v2 migration, and preview Android autofill service in the native codebase.",
         highlights: [
-            "Brand new Compose Multiplatform design system.",
-            "Android Autofill framework integration.",
-            "Database module migrated to KMP library module.",
+            "Brand new Compose Multiplatform design system (prior native architecture).",
+            "Preview Android Autofill framework integration (experimental).",
+            "Database module migrated to Kotlin Multiplatform library module.",
         ],
         githubUrl:
             "https://github.com/PasscodesApp/Passcodes/releases/tag/v2.0.0",
@@ -236,12 +237,12 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
         releaseType: "Stable",
         category: "Features",
         summary:
-            "The inaugural stable release of Passcodes. Offline-first encrypted password storage on Android with zero cloud dependencies.",
+            "The inaugural stable release of the original native Android application. Offline-first local password storage on device with zero cloud dependencies.",
         highlights: [
-            "Encrypted local SQLite password storage on device.",
-            "Password generator with customizable length and character sets.",
-            "Import/Export functionality and Google Passwords CSV compatibility.",
-            "Full open source release under GPL/MIT.",
+            "Local SQLite password storage on device via Android Room database.",
+            "Migrated core application codebase from Java to Kotlin.",
+            "In-app language and theme switching support with introductory onboarding hints.",
+            "Full open-source release under the MIT License.",
         ],
         githubUrl:
             "https://github.com/PasscodesApp/Passcodes/releases/tag/v1.0.0",
