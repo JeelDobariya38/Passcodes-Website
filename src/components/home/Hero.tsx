@@ -68,7 +68,7 @@ export function Hero() {
                                 href={`/changelog/${latestEntry.slug}`}
                                 className="group inline-flex items-center gap-2 rounded-full border border-[var(--border-light)] bg-[var(--card-bg)] px-3.5 py-1 text-xs font-medium text-[var(--text-muted)] backdrop-blur-md transition-all hover:border-[var(--border)] hover:bg-[var(--card-bg-hover)] hover:text-[var(--text)]"
                             >
-                                <span className="inline-block rounded-full bg-violet-600 px-2 py-0.5 text-[10px] font-bold text-white">
+                                <span className="inline-block rounded-full bg-[var(--accent)] px-2 py-0.5 text-[10px] font-bold text-white">
                                     {displayVersion}
                                 </span>
                                 <span className="font-medium text-[var(--text)]">
@@ -94,7 +94,7 @@ export function Hero() {
                         <ScrollReveal delay={40} className="mt-5 w-full">
                             <h1 className="text-3xl font-extrabold tracking-tight text-[var(--text)] sm:text-5xl lg:text-[2.75rem] lg:leading-[1.12] xl:text-[3.15rem]">
                                 Your passwords,{" "}
-                                <span className="bg-gradient-to-r from-violet-400 via-purple-300 to-indigo-300 bg-clip-text text-transparent">
+                                <span className="bg-gradient-to-r from-blue-600 via-sky-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:via-sky-300 dark:to-indigo-300">
                                     stored locally
                                 </span>{" "}
                                 on your device.
@@ -181,7 +181,7 @@ export function Hero() {
                             <div className="from-[var(--card-bg-solid)]/90 relative overflow-hidden rounded-2xl border border-[var(--border-light)] bg-gradient-to-b via-[var(--card-bg)] to-[var(--bg-base)] p-5 shadow-xl shadow-black/25 backdrop-blur-md transition-colors duration-300 hover:border-[var(--border)] sm:p-7">
                                 {/* Subtle Ambient Radial Accent (Engineered, not glowing blob) */}
                                 <div
-                                    className="pointer-events-none absolute -top-24 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-violet-600/10 blur-3xl"
+                                    className="pointer-events-none absolute -top-24 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[var(--accent)]/10 blur-3xl"
                                     aria-hidden="true"
                                 />
 

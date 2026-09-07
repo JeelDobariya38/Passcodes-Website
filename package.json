@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "node scripts/sync-releases.mjs",
+    "sync:releases": "node scripts/sync-releases.mjs",
     "start": "next start",
     "lint": "next lint",
     "preview": "npm run build && serve out",

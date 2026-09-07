@@ -8,7 +8,7 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { cn } from "@/lib/utils";
 
 export function LatestUpdates() {
-    const recent = CHANGELOG_ENTRIES.slice(0, 2);
+    const recent = CHANGELOG_ENTRIES.filter((entry) => !entry.isMilestone).slice(0, 2);
 
     return (
         <section className="bg-[var(--card-bg)]/30 border-t border-[var(--border-light)] py-16 sm:py-24">

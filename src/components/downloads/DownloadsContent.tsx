@@ -181,10 +181,7 @@ export function DownloadsContent() {
                         </div>
 
                         <div className="release-search">
-                            <div
-                                className="relative w-full"
-                                style={{ maxWidth: 420 }}
-                            >
+                            <div className="relative w-full max-w-[420px]">
                                 <Search
                                     className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--text-dim)]"
                                     aria-hidden="true"
@@ -195,13 +192,14 @@ export function DownloadsContent() {
                                     onChange={(e) => setQuery(e.target.value)}
                                     placeholder="Search by version or notes…"
                                     aria-label="Search releases"
+                                    className="w-full"
                                 />
                                 {query && (
                                     <button
                                         type="button"
                                         onClick={() => setQuery("")}
                                         aria-label="Clear search"
-                                        className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-[var(--text-dim)] hover:text-[var(--text)]"
+                                        className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded p-1 text-[var(--text-dim)] transition-colors hover:text-[var(--text)]"
                                     >
                                         <XCircle
                                             className="h-4 w-4"
