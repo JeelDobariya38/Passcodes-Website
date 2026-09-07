@@ -77,11 +77,57 @@ export async function getRepoInfo(): Promise<GithubRepoInfo> {
     return githubFetch<GithubRepoInfo>(API_ENDPOINTS.repoInfo);
 }
 
+export type ReleaseChannel = "stable" | "beta" | "alpha";
+
+/**
+ * Check if a release was marked as yanked in its title or tag.
+ * Follows the repository's convention: e.g. `[YANKED RELEASE]` or `[Yanked Released]`.
+ */
+export function isYankedRelease(release: GithubRelease): boolean {
+    const text = `${release.name || ""} ${release.tag_name || ""}`.toLowerCase();
+    return text.includes("yanked");
+}
+
+/**
+ * Classify a release into Stable, Beta, or Alpha channels based on metadata and naming conventions.
+ * Primary classification:
+ * - inspect explicit alpha/beta markers in release title or tag name
+ * - if not explicitly marked, inspect GitHub `prerelease` flag
+ * - fallback for pre-releases without alpha/beta keyword defaults to beta
+ */
+export function classifyRelease(release: GithubRelease): ReleaseChannel {
+    const text = `${release.name || ""} ${release.tag_name || ""}`.toLowerCase();
+
+    // Explicit alpha marker in tag or release title (e.g. "v3.0.0 - Alpha", "v1.1.2-alpha")
+    if (text.includes("alpha")) {
+        return "alpha";
+    }
+
+    // Explicit beta marker in tag or release title (e.g. "v2.1.1 - Beta", "v2.0.0-beta")
+    if (text.includes("beta")) {
+        return "beta";
+    }
+
+    // Explicit stable marker in title
+    if (text.includes("stable")) {
+        return "stable";
+    }
+
+    // Pre-release flag fallback: if marked as prerelease on GitHub without explicit keyword,
+    // classify as beta (safest preview channel fallback)
+    if (release.prerelease) {
+        return "beta";
+    }
+
+    // Default non-prerelease is stable
+    return "stable";
+}
+
 /**
  * Find the latest stable release from a list of releases.
  * Follows GitHub's /releases/latest semantics:
  * - not a draft
- * - not a prerelease
+ * - classified as stable (not prerelease, not alpha/beta, not yanked)
  * - newest according to created_at
  * Pure function that does not mutate the source array.
  */
@@ -89,7 +135,8 @@ export function getLatestStableRelease(
     releases: GithubRelease[]
 ): GithubRelease | undefined {
     return releases.reduce<GithubRelease | undefined>((latest, release) => {
-        if (release.draft || release.prerelease) return latest;
+        if (release.draft || isYankedRelease(release)) return latest;
+        if (classifyRelease(release) !== "stable") return latest;
         if (!latest) return release;
 
         return new Date(release.created_at).getTime() >

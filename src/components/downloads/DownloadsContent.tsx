@@ -12,11 +12,19 @@ import {
     useReleases,
     isRateLimitError,
     getLatestStableRelease,
+    classifyRelease,
 } from "@/hooks/useGithubRelease";
 import { KOMI_STORE_URL, KOMI_BADGE_SRC } from "@/lib/constants";
 import Link from "next/link";
 
-type Status = "all" | "stable" | "prerelease";
+type FilterChannel = "all" | "stable" | "beta" | "alpha";
+
+const FILTER_CHANNELS: { id: FilterChannel; label: string }[] = [
+    { id: "all", label: "All Releases" },
+    { id: "stable", label: "Stable" },
+    { id: "beta", label: "Beta" },
+    { id: "alpha", label: "Alpha" },
+];
 
 function KomiSection() {
     const [badgeFailed, setBadgeFailed] = useState(false);
@@ -68,7 +76,7 @@ export function DownloadsContent() {
         error,
     } = useReleases();
     const [query, setQuery] = useState("");
-    const [status, setStatus] = useState<Status>("all");
+    const [status, setStatus] = useState<FilterChannel>("all");
 
     const latestRelease = useMemo(
         () => (releases ? getLatestStableRelease(releases) : undefined),
@@ -84,8 +92,7 @@ export function DownloadsContent() {
                 r.tag_name.toLowerCase().includes(q) ||
                 (r.body || "").toLowerCase().includes(q);
             const matchS =
-                status === "all" ||
-                (status === "prerelease" ? r.prerelease : !r.prerelease);
+                status === "all" || classifyRelease(r) === status;
             return matchQ && matchS;
         });
     }, [releases, query, status]);
@@ -103,7 +110,7 @@ export function DownloadsContent() {
                         as="h1"
                         badge="Verified Binaries"
                         title="Downloads & Releases"
-                        subtitle="Production builds engineered for Android devices with split ABI support. Always free, reproducible, and open source."
+                        subtitle="Production builds engineered for Android devices with split ABI support. Always free and open source."
                     />
                     <DeviceWarning />
                 </ScrollReveal>
@@ -206,22 +213,16 @@ export function DownloadsContent() {
                         </div>
 
                         <div className="release-filters">
-                            {(["all", "stable", "prerelease"] as Status[]).map(
-                                (s) => (
-                                    <button
-                                        key={s}
-                                        type="button"
-                                        className={`filter-btn ${status === s ? "active" : ""}`}
-                                        onClick={() => setStatus(s)}
-                                    >
-                                        {s === "all"
-                                            ? "All Releases"
-                                            : s === "stable"
-                                              ? "Stable"
-                                              : "Pre-releases"}
-                                    </button>
-                                )
-                            )}
+                            {FILTER_CHANNELS.map((item) => (
+                                <button
+                                    key={item.id}
+                                    type="button"
+                                    className={`filter-btn ${status === item.id ? "active" : ""}`}
+                                    onClick={() => setStatus(item.id)}
+                                >
+                                    {item.label}
+                                </button>
+                            ))}
                         </div>
 
                         {hasControls && (
@@ -230,7 +231,7 @@ export function DownloadsContent() {
                                 <strong className="text-[var(--text)]">
                                     {filtered.length}
                                 </strong>{" "}
-                                result{filtered.length === 1 ? "" : "s"}
+                                {filtered.length === 1 ? "release" : "releases"}
                                 <button
                                     type="button"
                                     onClick={() => {
@@ -248,7 +249,13 @@ export function DownloadsContent() {
                         {isLoading ? (
                             <LoadingSpinner label="Loading release archive..." />
                         ) : (
-                            <ReleaseList releases={filtered} />
+                            <ReleaseList
+                                releases={filtered}
+                                onResetFilters={() => {
+                                    setQuery("");
+                                    setStatus("all");
+                                }}
+                            />
                         )}
                     </div>
                 </ScrollReveal>

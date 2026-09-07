@@ -5,6 +5,9 @@ import { useQuery } from "@tanstack/react-query";
 import {
     getAllReleases,
     getLatestStableRelease,
+    classifyRelease,
+    isYankedRelease,
+    type ReleaseChannel,
     GithubRateLimitError,
 } from "@/lib/github";
 import type { GithubRelease } from "@/types/github";
@@ -44,4 +47,4 @@ export function isRateLimitError(error: Error | null): boolean {
     return error instanceof GithubRateLimitError;
 }
 
-export { getLatestStableRelease };
+export { getLatestStableRelease, classifyRelease, isYankedRelease, type ReleaseChannel };

@@ -6,6 +6,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ArchDownload } from "@/components/downloads/ArchDownload";
 import { formatNumber, formatDate, cn } from "@/lib/utils";
+import { classifyRelease, isYankedRelease } from "@/hooks/useGithubRelease";
 import type { GithubRelease } from "@/types/github";
 
 export function DownloadCard({
@@ -20,6 +21,8 @@ export function DownloadCard({
         (sum, a) => sum + a.download_count,
         0
     );
+    const channel = classifyRelease(release);
+    const isYanked = isYankedRelease(release);
 
     return (
         <div className={cn("release-card", isLatest && "latest")}>
@@ -27,8 +30,15 @@ export function DownloadCard({
                 <h3>{release.name || release.tag_name}</h3>
                 <div className="flex items-center gap-2">
                     {isLatest && <span className="tag stable">Latest</span>}
-                    {release.prerelease && (
-                        <span className="tag beta">Pre-release</span>
+                    {isYanked && <span className="tag alpha">Yanked</span>}
+                    {channel === "beta" && (
+                        <span className="tag beta">Beta</span>
+                    )}
+                    {channel === "alpha" && (
+                        <span className="tag alpha">Alpha</span>
+                    )}
+                    {!isLatest && channel === "stable" && (
+                        <span className="tag stable">Stable</span>
                     )}
                 </div>
             </div>
