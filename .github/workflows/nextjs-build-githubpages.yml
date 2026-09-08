@@ -1,4 +1,8 @@
-# This CI workflow is not use anymore, but is just here!
+# Passcodes Website — Automated GitHub Pages Deployment & Upstream Release Sync
+# Triggers:
+# 1. Direct commits to main
+# 2. repository_dispatch events from Passcodes (on release) and Passcodes-Docs (on changelog edit)
+# 3. Manual workflow_dispatch runs
 
 name: 🚀 Deploy Next.js Based Website to GitHub Pages
 
@@ -7,6 +11,18 @@ on:
         branches: ["main"]
 
     workflow_dispatch:
+        inputs:
+            force_sync:
+                description: "Force live synchronization with upstream sources"
+                required: false
+                default: true
+                type: boolean
+
+    repository_dispatch:
+        types:
+            - passcodes-release-updated
+            - passcodes-docs-updated
+            - upstream-sync
 
 env:
     BASE_PATH: "/${{ github.event.repository.name }}"
@@ -49,6 +65,8 @@ jobs:
             #     npm test
 
             - name: 🛠️ Build and Export Site
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
                   npm run build
 

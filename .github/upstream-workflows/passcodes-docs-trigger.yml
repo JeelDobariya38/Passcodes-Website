@@ -1,0 +1,48 @@
+﻿# Upstream Trigger Workflow for: PasscodesApp/Passcodes-Docs
+# Place this file at: .github/workflows/notify-website.yml in PasscodesApp/Passcodes-Docs
+#
+# Purpose:
+# Automatically notifies PasscodesApp/Passcodes-Website whenever the official user changelog
+# or release-notes files are modified and pushed, triggering an automated website rebuild.
+#
+# Path Filtering:
+# Only triggers on changes to:
+# - docs/user-docs/changelog.md
+# - docs/user-docs/release-notes.md
+# Unrelated docs changes (e.g. guide edits, installation notes) will NOT trigger website builds.
+#
+# Required Secret:
+# WEBSITE_DISPATCH_TOKEN: A GitHub Fine-grained Personal Access Token (or Classic PAT with `repo` scope)
+# configured in Passcodes-Docs repository secrets with permissions:
+# - Contents: Read and write (for triggering repository_dispatch on PasscodesApp/Passcodes-Website)
+
+name: 🚀 Notify Passcodes-Website on Changelog Update
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'docs/user-docs/changelog.md'
+      - 'docs/user-docs/release-notes.md'
+
+jobs:
+  notify-website:
+    name: Dispatch Website Rebuild Event
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📡 Dispatch Event to Passcodes-Website
+        env:
+          GH_TOKEN: ${{ secrets.WEBSITE_DISPATCH_TOKEN }}
+        run: |
+          echo "Notifying Passcodes-Website of changelog update in commit ${{ github.sha }}..."
+          gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/PasscodesApp/Passcodes-Website/dispatches \
+            -f event_type='passcodes-docs-updated' \
+            -F client_payload[commit]='${{ github.sha }}' \
+            -F client_payload[ref]='${{ github.ref_name }}'

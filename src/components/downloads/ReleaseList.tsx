@@ -3,20 +3,35 @@
 import { Download, Calendar, ExternalLink } from "lucide-react";
 import { ArchDownload } from "@/components/downloads/ArchDownload";
 import { formatNumber, formatDate } from "@/lib/utils";
+import { classifyRelease, isYankedRelease } from "@/hooks/useGithubRelease";
 import type { GithubRelease } from "@/types/github";
 import Link from "next/link";
 
-export function ReleaseList({ releases }: { releases: GithubRelease[] }) {
+export function ReleaseList({
+    releases,
+    onResetFilters,
+}: {
+    releases: GithubRelease[];
+    onResetFilters?: () => void;
+}) {
     if (releases.length === 0) {
         return (
             <div className="rounded-2xl border border-dashed border-[var(--border)] p-10 text-center">
                 <p className="text-sm font-medium text-[var(--text)]">
-                    No releases match your search
+                    No releases match your filter
                 </p>
                 <p className="mt-1 text-xs text-[var(--text-muted)]">
-                    Try searching for a different version tag or clearing the
-                    filter.
+                    Try adjusting your search query or channel filter.
                 </p>
+                {onResetFilters && (
+                    <button
+                        type="button"
+                        onClick={onResetFilters}
+                        className="mt-4 inline-flex items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--card-bg)] px-3 py-1.5 text-xs font-medium text-[var(--text)] transition-colors hover:bg-[var(--card-bg-hover)]"
+                    >
+                        Reset filters
+                    </button>
+                )}
             </div>
         );
     }
@@ -28,6 +43,9 @@ export function ReleaseList({ releases }: { releases: GithubRelease[] }) {
                     (sum, a) => sum + a.download_count,
                     0
                 );
+                const channel = classifyRelease(release);
+                const isYanked = isYankedRelease(release);
+
                 return (
                     <div key={release.id} className="release-card">
                         <div className="release-top">
@@ -36,13 +54,14 @@ export function ReleaseList({ releases }: { releases: GithubRelease[] }) {
                                     <span className="truncate">
                                         {release.name || release.tag_name}
                                     </span>
-                                    {release.prerelease ? (
-                                        <span className="tag beta">pre</span>
-                                    ) : (
-                                        <span className="tag stable">
-                                            stable
+                                    {isYanked && (
+                                        <span className="tag alpha shrink-0">
+                                            yanked
                                         </span>
                                     )}
+                                    <span className={`tag ${channel} shrink-0`}>
+                                        {channel}
+                                    </span>
                                 </h3>
                                 <p className="release-date flex items-center gap-1.5">
                                     <Calendar

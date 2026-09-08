@@ -9,6 +9,7 @@ import {
     GitCompare,
     GitCommit,
     CheckCircle2,
+    AlertTriangle,
 } from "lucide-react";
 import {
     CHANGELOG_ENTRIES,
@@ -75,16 +76,26 @@ export default function ChangelogEntryPage({
 
                 <header className="mb-10 space-y-4">
                     <div className="flex flex-wrap items-center gap-2.5">
-                        <span
-                            className={cn(
-                                "tag",
-                                entry.releaseType === "Stable" && "tag stable",
-                                entry.releaseType === "Beta" && "tag beta",
-                                entry.releaseType === "Alpha" && "tag alpha"
-                            )}
-                        >
-                            {entry.releaseType}
-                        </span>
+                        {entry.isYanked ? (
+                            <span className="tag border-amber-500/40 bg-amber-500/10 font-semibold text-amber-600 dark:text-amber-400">
+                                Yanked Release
+                            </span>
+                        ) : entry.isMilestone ? (
+                            <span className="editorial-badge border-[var(--accent-light)]/40 bg-[var(--accent-light)]/15 font-semibold text-[var(--accent-light)]">
+                                Architecture Milestone
+                            </span>
+                        ) : (
+                            <span
+                                className={cn(
+                                    "tag",
+                                    entry.releaseType === "Stable" && "tag stable",
+                                    entry.releaseType === "Beta" && "tag beta",
+                                    entry.releaseType === "Alpha" && "tag alpha"
+                                )}
+                            >
+                                {entry.releaseType}
+                            </span>
+                        )}
 
                         <span className="inline-flex items-center gap-1 rounded-md border border-[var(--border-light)] bg-[var(--card-bg)] px-2.5 py-1 text-xs text-[var(--text-muted)]">
                             <Calendar className="h-3.5 w-3.5 text-[var(--text-dim)]" />
@@ -150,7 +161,69 @@ export default function ChangelogEntryPage({
                         )}
                     </div>
                 </header>
+
+                {/* Yanked Notice */}
+                {entry.isYanked && (
+                    <div className="mb-8 rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 text-sm text-amber-700 dark:text-amber-300">
+                        <div className="flex items-center gap-2 font-semibold">
+                            <AlertTriangle className="h-4 w-4" />
+                            <span>Yanked Release Notice</span>
+                        </div>
+                        <p className="mt-1.5 leading-relaxed text-xs sm:text-sm">
+                            {entry.yankedReason ||
+                                "This release has been explicitly yanked from active distribution. It is preserved here strictly for documentation and project history."}
+                        </p>
+                    </div>
+                )}
+
+                {/* Technical Build Specifications */}
+                {entry.internalDetails && (
+                    <div className="mb-8 rounded-xl border border-[var(--border-light)] bg-[var(--card-bg)] p-5">
+                        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-[var(--text-dim)]">
+                            Build & Runtime Specifications
+                        </h2>
+                        <div className="grid grid-cols-2 gap-4 font-mono text-xs sm:grid-cols-4">
+                            {entry.internalDetails.packageName && (
+                                <div>
+                                    <span className="block text-[var(--text-dim)]">Package</span>
+                                    <span className="font-semibold text-[var(--text)]">{entry.internalDetails.packageName}</span>
+                                </div>
+                            )}
+                            {entry.internalDetails.expoSdk && (
+                                <div>
+                                    <span className="block text-[var(--text-dim)]">Expo SDK</span>
+                                    <span className="font-semibold text-[var(--text)]">v{entry.internalDetails.expoSdk}</span>
+                                </div>
+                            )}
+                            {entry.internalDetails.minAndroid && (
+                                <div>
+                                    <span className="block text-[var(--text-dim)]">Min Android</span>
+                                    <span className="font-semibold text-[var(--text)]">{entry.internalDetails.minAndroid}</span>
+                                </div>
+                            )}
+                            {entry.internalDetails.maxAndroid && (
+                                <div>
+                                    <span className="block text-[var(--text-dim)]">Max Android</span>
+                                    <span className="font-semibold text-[var(--text)]">{entry.internalDetails.maxAndroid}</span>
+                                </div>
+                            )}
+                            {entry.internalDetails.versionCode && (
+                                <div>
+                                    <span className="block text-[var(--text-dim)]">Version Code</span>
+                                    <span className="font-semibold text-[var(--text)]">{entry.internalDetails.versionCode}</span>
+                                </div>
+                            )}
+                            {entry.internalDetails.masterDbVersion && (
+                                <div>
+                                    <span className="block text-[var(--text-dim)]">Database Schema</span>
+                                    <span className="font-semibold text-[var(--text)]">{entry.internalDetails.masterDbVersion}</span>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                )}
             </ScrollReveal>
+
 
             {/* 2. Article Content (Highlights + Release Sections) */}
             <ScrollReveal delay={60}>

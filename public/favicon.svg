@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  <rect width="128" height="128" rx="28" fill="#0b0f19"/>
+  <rect width="128" height="128" rx="28" fill="#080b12"/>
   <!-- Outer Shackle -->
-  <path d="M40 56V40C40 26.7452 50.7452 16 64 16C77.2548 16 88 26.7452 88 40V56" stroke="#7c3aed" stroke-width="10" stroke-linecap="round"/>
+  <path d="M40 56V40C40 26.7452 50.7452 16 64 16C77.2548 16 88 26.7452 88 40V56" stroke="#2563eb" stroke-width="10" stroke-linecap="round"/>
   <!-- Body -->
-  <rect x="28" y="52" width="72" height="60" rx="16" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="4"/>
+  <rect x="28" y="52" width="72" height="60" rx="16" fill="#0f1d3a" stroke="#3b82f6" stroke-width="4"/>
   <!-- Shield Inset -->
-  <path d="M64 64L80 72V88C80 98 72 104 64 106C56 104 48 98 48 88V72L64 64Z" fill="#7c3aed" fill-opacity="0.3" stroke="#a78bfa" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M64 64L80 72V88C80 98 72 104 64 106C56 104 48 98 48 88V72L64 64Z" fill="#2563eb" fill-opacity="0.3" stroke="#60a5fa" stroke-width="3" stroke-linejoin="round"/>
   <!-- Core Point -->
   <circle cx="64" cy="84" r="5" fill="#f8fafc"/>
 </svg>

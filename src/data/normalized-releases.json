@@ -1,0 +1,712 @@
+[
+  {
+    "slug": "v3-2-1-stable",
+    "version": "v3.2.1",
+    "title": "v3.2.1 — Split ABIs & Screenshot Prevention",
+    "date": "2026-08-02",
+    "releaseType": "Stable",
+    "category": "Improvements",
+    "summary": "Support for split Android ABIs for smaller download sizes, tab navigation back-stack fixes, screenshot prevention toggle, and UI consistency.",
+    "highlights": [
+      "**Support Screen Rotation**: added screen roatation support & grid layout for it.",
+      "**Improved Settings**: improved settings screen & make layout consistent. (@JeelDobariya38)",
+      "**Optimized Performance**: upgrade to latest dependencies & code optimizations (@JeelDobariya38)",
+      "**Back Navigation With Tabs**: fixed the backward navigation problems with tabs. (@JeelDobariya38)",
+      "**In App Lock**: fixed the in-app lock, it now also work on devices that doesn't have biometrics support. (@JeelDobariya38)"
+    ],
+    "sections": [
+      {
+        "title": "Added",
+        "items": [
+          "**Support Screen Rotation**: added screen roatation support & grid layout for it."
+        ]
+      },
+      {
+        "title": "Changed",
+        "items": [
+          "**Improved Settings**: improved settings screen & make layout consistent. (@JeelDobariya38)",
+          "**Optimized Performance**: upgrade to latest dependencies & code optimizations (@JeelDobariya38)"
+        ]
+      },
+      {
+        "title": "Fixed",
+        "items": [
+          "**Back Navigation With Tabs**: fixed the backward navigation problems with tabs. (@JeelDobariya38)",
+          "**In App Lock**: fixed the in-app lock, it now also work on devices that doesn't have biometrics support. (@JeelDobariya38)"
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "expoSdk": 57,
+      "versionCode": 10,
+      "versionName": "v3.2.1-Stable",
+      "masterDbVersion": "v2"
+    },
+    "tldr": "Screen Rotation | Fix Tab Navigation | Improved UI/UX",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v3.2.1",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v3.2.0...v3.2.1",
+    "isMajor": true,
+    "isYanked": false,
+    "assetsCount": 5,
+    "downloadCount": 24
+  },
+  {
+    "slug": "v3-2-0-stable",
+    "version": "v3.2.0",
+    "title": "v3.2.0 — Modern Material UI & Dark Mode",
+    "date": "2026-07-25",
+    "releaseType": "Stable",
+    "category": "Features",
+    "summary": "Complete Material 3 UI overhaul, system dark mode support, gesture navigation, and screen capture prevention.",
+    "highlights": [
+      "**Material UI**: added material UI for better UI/UX. (@JeelDobariya38)",
+      "**Font Awesome Icons**: add fontawesome icons for better layout understanding. (@JeelDobariya38)",
+      "**Screen Shot Prevention**: add screen-shot prevention on passscodes details screen. (@JeelDobariya38)",
+      "**Improved Navigation**: add tab navigation for better & modern navigation flow. (@JeelDobariya38)",
+      "**Optimized Performance**: upgrade to Expo SDK 57, improved performance & added flash-list for scrolling performance & added architecture specific app download option for optimized app size. (@JeelDobariya38)"
+    ],
+    "sections": [
+      {
+        "title": "Added",
+        "items": [
+          "**Material UI**: added material UI for better UI/UX. (@JeelDobariya38)",
+          "**Font Awesome Icons**: add fontawesome icons for better layout understanding. (@JeelDobariya38)",
+          "**Screen Shot Prevention**: add screen-shot prevention on passscodes details screen. (@JeelDobariya38)"
+        ]
+      },
+      {
+        "title": "Changed",
+        "items": [
+          "**Improved Navigation**: add tab navigation for better & modern navigation flow. (@JeelDobariya38)",
+          "**Optimized Performance**: upgrade to Expo SDK 57, improved performance & added flash-list for scrolling performance & added architecture specific app download option for optimized app size. (@JeelDobariya38)"
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "expoSdk": 57,
+      "versionCode": 10,
+      "versionName": "v3.2.0 - Stable",
+      "masterDbVersion": "v2"
+    },
+    "tldr": "Material UI | Support Light/Dark Mode",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v3.2.0",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v3.1.0...v3.2.0",
+    "isMajor": true,
+    "isYanked": false,
+    "assetsCount": 5,
+    "downloadCount": 69
+  },
+  {
+    "slug": "v3-1-0-stable",
+    "version": "v3.1.0",
+    "title": "v3.1.0 — Biometric Auth & Google Passwords Import/Export",
+    "date": "2026-06-22",
+    "releaseType": "Stable",
+    "category": "Features",
+    "summary": "Biometric authentication (fingerprint/face unlock), Google Passwords CSV import & export, password detail viewer, and data recovery safeguards.",
+    "highlights": [
+      "**Update Passwords Functionality**: added a update password functionality. which was missing in last (v3.0.0-Alpha) release. (@JeelDobariya38)",
+      "**In-App Lock**: added a in-app biometrics lock to protect user data. it can be opt-in by using settings. (@JeelDobariya38)",
+      "**Import & Export Google Passwords**: added a way to import & export passwords to csv. specifically, the format is compatible with google passwords. (@JeelDobariya38)",
+      "**Keep My Data On Uninstall**: added a android only feature, that prompts user on uninstall. weather to keep thier data or delete it. (@JeelDobariya38)",
+      "**Intuitive UI/UX**: improved UI for users, make it easier for user to navigate around. and easily tell wether something is text or button. (@JeelDobariya38)"
+    ],
+    "sections": [
+      {
+        "title": "Added",
+        "items": [
+          "**Update Passwords Functionality**: added a update password functionality. which was missing in last (v3.0.0-Alpha) release. (@JeelDobariya38)",
+          "**In-App Lock**: added a in-app biometrics lock to protect user data. it can be opt-in by using settings. (@JeelDobariya38)",
+          "**Import & Export Google Passwords**: added a way to import & export passwords to csv. specifically, the format is compatible with google passwords. (@JeelDobariya38)",
+          "**Keep My Data On Uninstall**: added a android only feature, that prompts user on uninstall. weather to keep thier data or delete it. (@JeelDobariya38)"
+        ]
+      },
+      {
+        "title": "Changed",
+        "items": [
+          "**Intuitive UI/UX**: improved UI for users, make it easier for user to navigate around. and easily tell wether something is text or button. (@JeelDobariya38)",
+          "**Fix Database Naming Inconsistency**: fix inconsietency in naming of database. it will need user to go and click on `Setting -> Data Recovery` to get thier data back. (@JeelDobariya38)",
+          "**Improved Performance**: faster start up times, better speed & more faster performant exprience overall. as we have moved to expo sdk 56. (@JeelDobariya38)",
+          "**Improved Troubleshooting**: significant better troubleshooting option with high performance. (@JeelDobariya38)"
+        ]
+      },
+      {
+        "title": "Fixed",
+        "items": [
+          "**Splash Screen**: improved & fixed icons on splash screen. (@JeelDobariya38)"
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "expoSdk": 56,
+      "versionCode": 9,
+      "versionName": "v3.1.0-Stable",
+      "masterDbVersion": "v2"
+    },
+    "tldr": "In-App Biometrics Lock | Import/Export Passwords To Google Passwords | Intuitive UI/UX",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v3.1.0",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v3.0.0...v3.1.0",
+    "isMajor": true,
+    "isYanked": false,
+    "assetsCount": 5,
+    "downloadCount": 67
+  },
+  {
+    "slug": "v3-0-0-alpha",
+    "version": "v3.0.0",
+    "title": "v3.0.0 — Complete Architecture Rewrite (Expo / React Native)",
+    "date": "2026-05-24",
+    "releaseType": "Alpha",
+    "category": "Architecture",
+    "summary": "Major from-scratch architectural rewrite transitioning Passcodes from the legacy native Android codebase to Expo and React Native, establishing a clean foundation for core password management.",
+    "highlights": [
+      "**Remake With Expo (React Native)**: maked the app again with expo (react-native). maked a basic password manager app. (@JeelDobariya38)",
+      "**Migrated Data To Drizzle DB**: wrote a drizzle database implementaion & a way to get old data from `room db` into `drizzle db`. (@JeelDobariya38)",
+      "**Troubleshooting Options**: added troubleshooting option. specifically, a way to get back all your password from previous versions. (@JeelDobariya38)"
+    ],
+    "sections": [
+      {
+        "title": "Added",
+        "items": [
+          "**Remake With Expo (React Native)**: maked the app again with expo (react-native). maked a basic password manager app. (@JeelDobariya38)",
+          "**Migrated Data To Drizzle DB**: wrote a drizzle database implementaion & a way to get old data from `room db` into `drizzle db`. (@JeelDobariya38)",
+          "**Troubleshooting Options**: added troubleshooting option. specifically, a way to get back all your password from previous versions. (@JeelDobariya38)"
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "expoSdk": 55,
+      "versionCode": 8,
+      "versionName": "v3.0.0-Alpha",
+      "masterDbVersion": "v2"
+    },
+    "tldr": "Cross Platform | Expo (React-Native) | Passcodes New Beginning...",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v3.0.0",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v2.1.1...v3.0.0",
+    "isMajor": true,
+    "isYanked": false,
+    "assetsCount": 5,
+    "downloadCount": 65
+  },
+  {
+    "slug": "end-of-android-only",
+    "version": "Architecture Transition",
+    "title": "End of Android-Only Codebase — Migration to Expo & React Native",
+    "date": "2026-05-20",
+    "releaseType": "Stable",
+    "category": "Architecture",
+    "isMilestone": true,
+    "isMajor": true,
+    "summary": "Passcodes officially concluded development on the native Android (Kotlin / Compose) codebase and transitioned to a unified Expo / React Native architecture with local SQLite and Drizzle ORM.",
+    "highlights": [
+      "Concluded 20 months of native Android development (v0.1.0 through v2.1.1).",
+      "Transitioned foundation to Expo and React Native for modern cross-platform capability.",
+      "Replaced native Room/SQLite schema with expo-sqlite and Drizzle ORM.",
+      "Maintained 100% offline-first local device credential storage."
+    ],
+    "sections": [
+      {
+        "title": "Architectural Shift",
+        "items": [
+          "Officially retired the legacy Kotlin Multiplatform / native Android codebase.",
+          "Adopted Expo SDK and React Native runtime for declarative, fluid UI.",
+          "Migrated local persistence to SQLite using Drizzle ORM.",
+          "Established unified design language across all supported form factors."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "v2-1-1-beta",
+    "version": "v2.1.1",
+    "title": "v2.1.1 — Biometric Auth & Navigation Scaffolding",
+    "date": "2026-05-19",
+    "releaseType": "Beta",
+    "category": "Improvements",
+    "summary": "Biometric authentication integration, dual navigation scaffolding, and autofill service adjustments in the pre-rewrite native architecture.",
+    "highlights": [
+      "**Material 3 Expressive**: added material 3 expressive buttons and theme in defualt (old) ui. (@JeelDobariya38)",
+      "**Improve Importing/Exporting Passwords**: added apache csv libaray to handle csv files. it now handles escaped-qouted commas & newline in (google-passwords generated) csv. (@JeelDobariya38)"
+    ],
+    "sections": [
+      {
+        "title": "Added",
+        "items": [
+          "**Material 3 Expressive**: added material 3 expressive buttons and theme in defualt (old) ui. (@JeelDobariya38)"
+        ]
+      },
+      {
+        "title": "Changed",
+        "items": [
+          "**Improve Importing/Exporting Passwords**: added apache csv libaray to handle csv files. it now handles escaped-qouted commas & newline in (google-passwords generated) csv. (@JeelDobariya38)"
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "minAndroid": "8.0 (API level 26)",
+      "maxAndroid": "17 (API level 37)",
+      "versionCode": 7,
+      "versionName": "v2.1.1-Beta",
+      "masterDbVersion": "v2"
+    },
+    "tldr": "End of Support for v2.x.x | Material 3 Expressive UI...",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v2.1.1",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v2.1.0...v2.1.1",
+    "isMajor": false,
+    "isYanked": false,
+    "assetsCount": 6,
+    "downloadCount": 37
+  },
+  {
+    "slug": "v2-1-0-beta",
+    "version": "v2.1.0",
+    "title": "v2.1.0 — Dual Navigation & Android 17 Support",
+    "date": "2026-05-12",
+    "releaseType": "Beta",
+    "category": "Architecture",
+    "summary": "Dual navigation architecture supporting both classic and modern interfaces, official Android 17 compatibility, and announcement of the upcoming transition to Expo.",
+    "highlights": [
+      "**No breaking changes.. but, end of support warning**: this is last release from android codebase. we will now migrate to expo-react-native and thier will be no security updates provided for release v2.x.x & prior, what-so-ever.",
+      "**Improve View Password Screen**: improved view password & other password management screens. (@JeelDobariya38)",
+      "**Improve URL field**: improved support for url field. (@JeelDobariya38)",
+      "**Android 17 Support**: bring official support for android 15, 16 & 17. which previous was limited to android 14 officially. (@JeelDobariya38)",
+      "**Import/Export Stability**: import/export passwords features are now stabilized. and are no longer a preview feature. (@JeelDobariya38)"
+    ],
+    "sections": [
+      {
+        "title": "Breaking Changes",
+        "items": [
+          "**No breaking changes.. but, end of support warning**: this is last release from android codebase. we will now migrate to expo-react-native and thier will be no security updates provided for release v2.x.x & prior, what-so-ever."
+        ]
+      },
+      {
+        "title": "Added",
+        "items": [
+          "**Improve View Password Screen**: improved view password & other password management screens. (@JeelDobariya38)",
+          "**Improve URL field**: improved support for url field. (@JeelDobariya38)"
+        ]
+      },
+      {
+        "title": "Changed",
+        "items": [
+          "**Android 17 Support**: bring official support for android 15, 16 & 17. which previous was limited to android 14 officially. (@JeelDobariya38)",
+          "**Import/Export Stability**: import/export passwords features are now stabilized. and are no longer a preview feature. (@JeelDobariya38)",
+          "**Adjusted Update Checking**: adjusted & optimized update checking for performance as we are reaching a end of support period. (@JeelDobariya38)",
+          "**Improved Performance & Security**: keeping up with android latest dependencies & community standards. (@dependabot)"
+        ]
+      },
+      {
+        "title": "Fixed",
+        "items": [
+          "**Back Navigation**: improved & fixed back navigation problem with preview layouts. handle android backstack. (@JeelDobariya38)"
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "minAndroid": "8.0 (API level 26)",
+      "maxAndroid": "17 (API level 37)",
+      "versionCode": 6,
+      "versionName": "v2.1.0-Beta",
+      "masterDbVersion": "v2"
+    },
+    "tldr": "End of Support for v2.x.x | Expo-React-Native kickstart...",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v2.1.0",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v2.0.0...v2.1.0",
+    "isMajor": false,
+    "isYanked": false,
+    "assetsCount": 6,
+    "downloadCount": 40
+  },
+  {
+    "slug": "v2-0-0-beta",
+    "version": "v2.0.0",
+    "title": "v2.0.0 — Compose Multiplatform Design System",
+    "date": "2026-04-16",
+    "releaseType": "Beta",
+    "category": "Features",
+    "summary": "Brand new Compose Multiplatform design system, SQLite database v2 migration, and preview Android autofill service in the native codebase.",
+    "highlights": [
+      "**No breaking changes**: just the internal database version has changed.",
+      "**Biometrics Authentication**: enhanced safety for password manager by restricting access to app. users now need to authenticate to open the application. (@JeelDobariya38)",
+      "**Accessibility Layouts**: added support for two different layouts: one is morden and intended to be use by teenages. while other one is bit old, but easy to navigate by elderly peoples. (@JeelDobariya38)",
+      "**Better Jetpack Compose Support**: improve support for jetpack compose UI & streamline the process of migrating from oldUI to jetpack UI. (@JeelDobariya38)",
+      "**Better Update Checking**: migrated to ktor http client. it is modern and versatile http library. (@JeelDobariya38)"
+    ],
+    "sections": [
+      {
+        "title": "Breaking Changes",
+        "items": [
+          "**No breaking changes**: just the internal database version has changed."
+        ]
+      },
+      {
+        "title": "Preview Features",
+        "items": [
+          "**Biometrics Authentication**: enhanced safety for password manager by restricting access to app. users now need to authenticate to open the application. (@JeelDobariya38)",
+          "**Accessibility Layouts**: added support for two different layouts: one is morden and intended to be use by teenages. while other one is bit old, but easy to navigate by elderly peoples. (@JeelDobariya38)"
+        ]
+      },
+      {
+        "title": "Changed",
+        "items": [
+          "**Better Jetpack Compose Support**: improve support for jetpack compose UI & streamline the process of migrating from oldUI to jetpack UI. (@JeelDobariya38)",
+          "**Better Update Checking**: migrated to ktor http client. it is modern and versatile http library. (@JeelDobariya38)",
+          "**Improved Performance & Security**: keeping up with android latest dependencies & community standards. we have resolve & migrated all of our (concerned) dependency, except one `org.json` which is also at rank #74 in maven repository. so, its a community standard anyway. (@dependabot)"
+        ]
+      },
+      {
+        "title": "Fixed",
+        "items": [
+          "**Autofill Crashing**: improved & fixed the bug with autofill service. now autofilling is not crashing anymore. (but, its still a preview feature). (@JeelDobariya38) & (@hexCode63)"
+        ]
+      },
+      {
+        "title": "Other Changes",
+        "items": [
+          "**Improve DX**: improvements in CI/CD, documentation & jetpack-compose-previews in android studio. (@JeelDobariya38)",
+          "**Multiplatform (Early Start)**: maded database & design system compatible for kmp development. (@JeelDobariya38)"
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "minAndroid": "8.0 (API level 26)",
+      "maxAndroid": "14 (API level 34)",
+      "versionCode": 5,
+      "versionName": "v2.0.0-Beta",
+      "masterDbVersion": "v2"
+    },
+    "tldr": "Added fingerprint lock & fixed autofill feature...",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v2.0.0",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v1.2.1...v2.0.0",
+    "isMajor": true,
+    "isYanked": false,
+    "assetsCount": 6,
+    "downloadCount": 42
+  },
+  {
+    "slug": "v1-2-1-alpha",
+    "version": "v1.2.1",
+    "title": "v1.2.1 — Version Name Fix & Release Alignment",
+    "date": "2026-01-31",
+    "releaseType": "Alpha",
+    "category": "Fixes",
+    "summary": "Targeted maintenance release correcting version naming and code metadata from the yanked v1.2.0 release to ensure consistent bug reporting and updates.",
+    "highlights": [
+      "**Update Version Info**: update the version name and version code that, I forget last time in a rush of releasing a new version.. (@JeelDobariya38)"
+    ],
+    "sections": [
+      {
+        "title": "Fixed",
+        "items": [
+          "**Update Version Info**: update the version name and version code that, I forget last time in a rush of releasing a new version.. (@JeelDobariya38)"
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "minAndroid": "8.0 (API level 26)",
+      "maxAndroid": "14 (API level 34)",
+      "versionCode": 4,
+      "versionName": "v1.2.1-Alpha",
+      "masterDbVersion": "v1"
+    },
+    "tldr": "Fix my mistake, by updating the version name that I forget last time...",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v1.2.1",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v1.2.0...v1.2.1",
+    "isMajor": false,
+    "isYanked": false,
+    "assetsCount": 6,
+    "downloadCount": 48
+  },
+  {
+    "slug": "v1-2-0-alpha-yanked",
+    "version": "v1.2.0",
+    "title": "v1.2.0 — Jetpack Compose Preview UI (Yanked)",
+    "date": "2026-01-31",
+    "releaseType": "Alpha",
+    "category": "Improvements",
+    "summary": "Early preview of Jetpack Compose UI for basic password operations and improved rendering performance. Explicitly yanked due to version metadata duplication.",
+    "highlights": [
+      "**Jetpack Compose (Preview Feature)**: made a jetpack compose UI that can be used for basic operation. (@JeelDobariya38)",
+      "**Mimetypes For Import Passwords**: fixed csv mimetypes for importing passswords feature for better experience with android file picker.. (@JeelDobariya38)"
+    ],
+    "sections": [
+      {
+        "title": "Preview Features",
+        "items": [
+          "**Jetpack Compose (Preview Feature)**: made a jetpack compose UI that can be used for basic operation. (@JeelDobariya38)"
+        ]
+      },
+      {
+        "title": "Fixed",
+        "items": [
+          "**Mimetypes For Import Passwords**: fixed csv mimetypes for importing passswords feature for better experience with android file picker.. (@JeelDobariya38)"
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "minAndroid": "8.0 (API level 26)",
+      "maxAndroid": "14 (API level 34)",
+      "versionCode": 3,
+      "versionName": "v1.1.2-Alpha",
+      "masterDbVersion": "v1"
+    },
+    "tldr": "Design a new jetpack compose preview ui.. | Improved performance...",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v1.2.0",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v1.1.2...v1.2.0",
+    "isMajor": false,
+    "isYanked": true,
+    "yankedReason": "Yanked release: version name was mistakenly kept as v1.1.2-Alpha during release packaging. Superseded immediately by v1.2.1.",
+    "assetsCount": 6,
+    "downloadCount": 13
+  },
+  {
+    "slug": "v1-1-2-alpha",
+    "version": "v1.1.2",
+    "title": "v1.1.2 — Architecture Cleanup & Multi-Module Refactor",
+    "date": "2025-12-15",
+    "releaseType": "Alpha",
+    "category": "Architecture",
+    "summary": "Extensive internal code quality refactor, modular multi-module Gradle project structure, and settings schema migration while preserving all local password data untouched.",
+    "highlights": [
+      "**Migrate to DataStore**: changed the way how setting and feature flag were been storage. previously, we were using shared preferences. but, now we use datastore which is much more modern way of storing such type of data... but this will also mean that all your previously store setting will be longer be available anymore. we have decide this breaking changes, because app settings can be restored again (in like few minutes). (@JeelDobariya38)",
+      "**Autofill System (Preview Feature)**: added an autofill service to autofill user's credentials on the fly. (@hexCode63)",
+      "**Jetpack Compose (Preview Feature)**: added jetpack compose UI & even added a toggle to switch to this new UI. but it would be worthless to do so, because it just has a single screen.. _this feature is mainly for very earlier testing_. (@JeelDobariya38)",
+      "**MVI Flavored - Clean Architecture**: migrated the codebase to make it more scalable, extendable & readable. this will enable us to create better features faster & make a strong base for faster iteration & collaboration. and will help us delegate & modularized task in future. (@JeelDobariya38)",
+      "**Java 21**: code now compile to java 21. previously it was compiling to java 11. this should improve performance & efficiency a bit. (@JeelDobariya38)"
+    ],
+    "sections": [
+      {
+        "title": "Breaking Changes",
+        "items": [
+          "**Migrate to DataStore**: changed the way how setting and feature flag were been storage. previously, we were using shared preferences. but, now we use datastore which is much more modern way of storing such type of data... but this will also mean that all your previously store setting will be longer be available anymore. we have decide this breaking changes, because app settings can be restored again (in like few minutes). (@JeelDobariya38)"
+        ]
+      },
+      {
+        "title": "Preview Features",
+        "items": [
+          "**Autofill System (Preview Feature)**: added an autofill service to autofill user's credentials on the fly. (@hexCode63)",
+          "**Jetpack Compose (Preview Feature)**: added jetpack compose UI & even added a toggle to switch to this new UI. but it would be worthless to do so, because it just has a single screen.. _this feature is mainly for very earlier testing_. (@JeelDobariya38)"
+        ]
+      },
+      {
+        "title": "Changed",
+        "items": [
+          "**MVI Flavored - Clean Architecture**: migrated the codebase to make it more scalable, extendable & readable. this will enable us to create better features faster & make a strong base for faster iteration & collaboration. and will help us delegate & modularized task in future. (@JeelDobariya38)",
+          "**Java 21**: code now compile to java 21. previously it was compiling to java 11. this should improve performance & efficiency a bit. (@JeelDobariya38)",
+          "**Improved Performance & Responsiveness**: Improve performance & better responsiveness of UI (less of density pixel, more of scalable pixel measurements). (@JeelDobariya38)"
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "minAndroid": "8.0 (API level 26)",
+      "maxAndroid": "14 (API level 34)",
+      "versionCode": 3,
+      "versionName": "v1.1.2-Alpha",
+      "masterDbVersion": "v1"
+    },
+    "tldr": "Improve the internal code quality.. | Clean architecture in codebase...",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v1.1.2",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v1.1.1...v1.1.2",
+    "isMajor": false,
+    "isYanked": false,
+    "assetsCount": 6,
+    "downloadCount": 49
+  },
+  {
+    "slug": "v1-1-1-alpha",
+    "version": "v1.1.1",
+    "title": "v1.1.1 — CSV Import File Fix",
+    "date": "2025-09-11",
+    "releaseType": "Alpha",
+    "category": "Fixes",
+    "summary": "Fixes file picker MIME type resolution bug that prevented selecting CSV files during credential import.",
+    "highlights": [
+      "**Fixed Import Passwords**: fixed the bug that was not allowing user to select csv files from file picker. due to incorrect mimetype in code.. (@JeelDobariya38)"
+    ],
+    "sections": [
+      {
+        "title": "Fixed",
+        "items": [
+          "**Fixed Import Passwords**: fixed the bug that was not allowing user to select csv files from file picker. due to incorrect mimetype in code.. (@JeelDobariya38)"
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "minAndroid": "8.0 (API level 26)",
+      "maxAndroid": "14 (API level 34)",
+      "versionCode": 2,
+      "versionName": "v1.1.1-Alpha",
+      "masterDbVersion": "v1"
+    },
+    "tldr": "Sorry for delay, but we have fix import files feature...",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v1.1.1",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v1.1.0...v1.1.1",
+    "isMajor": false,
+    "isYanked": false,
+    "assetsCount": 6,
+    "downloadCount": 56
+  },
+  {
+    "slug": "v1-1-0-alpha",
+    "version": "v1.1.0",
+    "title": "v1.1.0 — UI Improvements & GitHub Organization Transition",
+    "date": "2025-09-01",
+    "releaseType": "Alpha",
+    "category": "Features",
+    "summary": "Visual UI refinements on the credential viewer, in-app feature flagging system for preview features, basic update checker, and official transition to the PasscodesApp GitHub organization.",
+    "highlights": [
+      "**Improved UI/UX**: improved view password screen's visual feel, also adjust the button colors a bit. (@JeelDobariya38)",
+      "**Added Feature Flagging**: given user a control on whether they wanna latest experience or stable experience. added a way for launching preview features without worry about their stability. (@JeelDobariya38)",
+      "**Update Checking**: made a basic update checker that help users to stay up to date with latest release & also notify user about already reported security vulnerability using pre-release mechanism. (@JeelDobariya38)",
+      "**Copy Button (preview feature)**: added a copy button for copying passwords for easy of use. but as it is potential threat to security, so made it as a preview feature. (@JeelDobariya38)",
+      "**G-Passwords Import/Export (preview feature)**: added a import/export feature. which is also compatible with google passwords. I have test it with my google password setup. but, I am not sure weather this will run in every edge case or not. So, it is a preview feature for now. (@JeelDobariya38)"
+    ],
+    "sections": [
+      {
+        "title": "Added",
+        "items": [
+          "**Improved UI/UX**: improved view password screen's visual feel, also adjust the button colors a bit. (@JeelDobariya38)",
+          "**Added Feature Flagging**: given user a control on whether they wanna latest experience or stable experience. added a way for launching preview features without worry about their stability. (@JeelDobariya38)",
+          "**Update Checking**: made a basic update checker that help users to stay up to date with latest release & also notify user about already reported security vulnerability using pre-release mechanism. (@JeelDobariya38)"
+        ]
+      },
+      {
+        "title": "Preview Features",
+        "items": [
+          "**Copy Button (preview feature)**: added a copy button for copying passwords for easy of use. but as it is potential threat to security, so made it as a preview feature. (@JeelDobariya38)",
+          "**G-Passwords Import/Export (preview feature)**: added a import/export feature. which is also compatible with google passwords. I have test it with my google password setup. but, I am not sure weather this will run in every edge case or not. So, it is a preview feature for now. (@JeelDobariya38)"
+        ]
+      },
+      {
+        "title": "Notes",
+        "items": [
+          "**Official Github Organization (Aug 31, 2025)**: migrate project & repository from `JeelDobariya38 (personal account)` to `PasscodesApp (my organization)` for better development and governance of the project."
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "minAndroid": "8.0 (API level 26)",
+      "maxAndroid": "14 (API level 34)",
+      "versionCode": 2,
+      "versionName": "v1.1.0-Alpha",
+      "masterDbVersion": "v1"
+    },
+    "tldr": "Design Improvements.. | Will work with google passwords.... | We are officially an organization on GitHub from Aug 31, 2025....",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v1.1.0",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v1.0.0...v1.1.0",
+    "isMajor": false,
+    "isYanked": false,
+    "assetsCount": 6,
+    "downloadCount": 31
+  },
+  {
+    "slug": "v1-0-0-stable",
+    "version": "v1.0.0",
+    "title": "v1.0.0 — First Official Stable Release",
+    "date": "2025-08-16",
+    "releaseType": "Stable",
+    "category": "Features",
+    "summary": "The inaugural stable release of the original native Android application. Offline-first local password storage on device via Room SQLite with zero cloud dependencies.",
+    "highlights": [
+      "**Localized App**: added language translation for English, Chinese, Hindi, Indonesian, Japanese, Korean, German, Spanish, Vietnamese. (@JeelDobariya38).",
+      "**Improved UI/UX**: added confirmation dialogs for destructive actions, improved support for light & dark theme with additional minor changes. [@JeelDobariya38 & @kudanilll].",
+      "**New Icon**: rebanded the app as passcodes with a new visual app icon. (@JeelDobariya38).",
+      "**Migrated Package Name**: migrate package name from `com.passwordmanager` to `com.jeeldobariya.passcodes`. (@JeelDobariya38).",
+      "**Improve Safety By Kotlin Implementation**: move away from `Java` to `Kotlin` Language. (@JeelDobariya38)."
+    ],
+    "sections": [
+      {
+        "title": "Added",
+        "items": [
+          "**Localized App**: added language translation for English, Chinese, Hindi, Indonesian, Japanese, Korean, German, Spanish, Vietnamese. (@JeelDobariya38).",
+          "**Improved UI/UX**: added confirmation dialogs for destructive actions, improved support for light & dark theme with additional minor changes. [@JeelDobariya38 & @kudanilll].",
+          "**New Icon**: rebanded the app as passcodes with a new visual app icon. (@JeelDobariya38)."
+        ]
+      },
+      {
+        "title": "Changed",
+        "items": [
+          "**Migrated Package Name**: migrate package name from `com.passwordmanager` to `com.jeeldobariya.passcodes`. (@JeelDobariya38).",
+          "**Improve Safety By Kotlin Implementation**: move away from `Java` to `Kotlin` Language. (@JeelDobariya38).",
+          "**Improve Data Storing Process**: move away from `SqliteDatabase` to `Room` Library for better datastorage & security. (@JeelDobariya38)."
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.jeeldobariya.passcodes",
+      "minAndroid": "8.0 (API level 26)",
+      "maxAndroid": "14 (API level 34)",
+      "versionCode": 1,
+      "versionName": "v1.0.0-Stable",
+      "masterDbVersion": "v1"
+    },
+    "tldr": "Our first stable release.. | Not much has change in terms of look and features.. | Name of project has changed to Passcodes..",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v1.0.0",
+    "compareUrl": "https://github.com/PasscodesApp/Passcodes/compare/v0.1.0...v1.0.0",
+    "isMajor": true,
+    "isYanked": false,
+    "assetsCount": 6,
+    "downloadCount": 66
+  },
+  {
+    "slug": "v0-1-0-alpha-yanked",
+    "version": "v0.1.0",
+    "title": "v0.1.0 — Initial Prototype Alpha (Yanked)",
+    "date": "2024-08-26",
+    "releaseType": "Alpha",
+    "category": "Features",
+    "summary": "The very first proof-of-concept prototype for Passcodes, published under com.passwordmanager. Offline-first local password storage prototype.",
+    "highlights": [
+      "**App Icon Creation**: designed and implemented the initial app icon, providing the application with a recognizable visual identity. (@HamadaNative).",
+      "**Basic App Structure**: established the foundational architecture of the app, including the main entry point and the initial setup. (@JeelDobariya38).",
+      "**Main Page Development**: developed the main page of the app, including basic UI components and initial layout. (@JeelDobariya38).",
+      "**Basic Password Store**: developed a database to store the passwords data. (@kudanilll).",
+      "**Basic Design System**: developed a basic material 2 design system for consistency in app's feel & look. (@HamadaNative)."
+    ],
+    "sections": [
+      {
+        "title": "Added",
+        "items": [
+          "**App Icon Creation**: designed and implemented the initial app icon, providing the application with a recognizable visual identity. (@HamadaNative).",
+          "**Basic App Structure**: established the foundational architecture of the app, including the main entry point and the initial setup. (@JeelDobariya38).",
+          "**Main Page Development**: developed the main page of the app, including basic UI components and initial layout. (@JeelDobariya38).",
+          "**Basic Password Store**: developed a database to store the passwords data. (@kudanilll).",
+          "**Basic Design System**: developed a basic material 2 design system for consistency in app's feel & look. (@HamadaNative)."
+        ]
+      },
+      {
+        "title": "Notes",
+        "items": [
+          "This was the initial alpha (pre-release), focusing more on setting up the app for a basic structure and visual elements. It is an prototype release (`Proof Of Concept`)."
+        ]
+      }
+    ],
+    "internalDetails": {
+      "packageName": "com.passwordmanager",
+      "minAndroid": "8.0 (API level 26)",
+      "maxAndroid": "13 (API level 33)",
+      "versionCode": 1,
+      "versionName": "0.1.0-Alpha",
+      "masterDbVersion": "v1"
+    },
+    "tldr": "Our first initial release.. | Prototype release..",
+    "githubUrl": "https://github.com/PasscodesApp/Passcodes/releases/tag/v0.1.0",
+    "isMajor": true,
+    "isYanked": true,
+    "yankedReason": "Yanked prototype release: very early premature prototype published under com.passwordmanager. Kept strictly for documentation and project history.",
+    "assetsCount": 6,
+    "downloadCount": 98
+  }
+]

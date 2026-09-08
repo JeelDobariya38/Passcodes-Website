@@ -40,8 +40,12 @@ export default function ChangelogPage() {
             const matchesVersion = entry.version
                 .toLowerCase()
                 .includes(searchLower);
+            const matchesTldr = entry.tldr?.toLowerCase().includes(searchLower);
             const matchesHighlights = entry.highlights?.some((h) =>
                 h.toLowerCase().includes(searchLower)
+            );
+            const matchesSections = entry.sections?.some((s) =>
+                s.items.some((item) => item.toLowerCase().includes(searchLower))
             );
 
             return (
@@ -49,7 +53,9 @@ export default function ChangelogPage() {
                 (matchesTitle ||
                     matchesSummary ||
                     matchesVersion ||
-                    matchesHighlights)
+                    matchesTldr ||
+                    matchesHighlights ||
+                    matchesSections)
             );
         });
     }, [search, activeCategory]);
@@ -62,15 +68,16 @@ export default function ChangelogPage() {
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                         <div>
                             <span className="editorial-badge mb-3 border border-[var(--border-light)] bg-[var(--card-bg)] text-[var(--accent-light)]">
-                                Engineering Journal
+                                Release Highlights
                             </span>
                             <h1 className="section-heading">
-                                Changelog & History
+                                Release Highlights & Milestones
                             </h1>
                             <p className="section-subheading max-w-2xl">
-                                Complete timeline of new features, security
-                                hardening, performance optimizations, and
-                                architecture milestones shipped to Passcodes.
+                                Curated milestones, architecture transitions, and
+                                feature updates across Passcodes releases. Complete
+                                historical notes and tags are maintained in our official
+                                documentation and GitHub releases.
                             </p>
                         </div>
                         <div className="flex items-center gap-2.5 text-xs text-[var(--text-muted)]">
@@ -175,6 +182,72 @@ export default function ChangelogPage() {
                     {filteredEntries.map((entry, index) => {
                         const isLatest =
                             index === 0 && activeCategory === "All" && !search;
+
+                        if (entry.isMilestone) {
+                            return (
+                                <ScrollReveal
+                                    key={entry.slug}
+                                    delay={Math.min(index * 50, 150)}
+                                    distance={16}
+                                >
+                                    <div className="relative overflow-hidden rounded-2xl border border-[var(--accent-border)] bg-gradient-to-r from-[var(--card-bg)] via-[var(--accent-subtle)]/30 to-[var(--card-bg)] p-6 sm:p-8">
+                                        <div className="mb-3 flex flex-wrap items-center gap-2.5">
+                                            <span className="editorial-badge border-[var(--accent-light)]/40 bg-[var(--accent-light)]/15 font-semibold text-[var(--accent-light)]">
+                                                Architecture Milestone
+                                            </span>
+                                            <span className="font-mono text-xs text-[var(--text-dim)]">
+                                                May 2026
+                                            </span>
+                                        </div>
+
+                                        <h2 className="text-xl font-bold tracking-tight text-[var(--text)] sm:text-2xl">
+                                            <Link
+                                                href={`/changelog/${entry.slug}`}
+                                                className="transition-colors hover:text-[var(--accent-light)]"
+                                            >
+                                                {entry.title}
+                                            </Link>
+                                        </h2>
+
+                                        <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">
+                                            {entry.summary}
+                                        </p>
+
+                                        {entry.highlights &&
+                                            entry.highlights.length > 0 && (
+                                                <div className="mt-5 grid gap-2.5 sm:grid-cols-2">
+                                                    {entry.highlights.map(
+                                                        (h, hIdx) => (
+                                                            <div
+                                                                key={hIdx}
+                                                                className="flex items-start gap-2.5 text-xs text-[var(--text-muted)] sm:text-sm"
+                                                            >
+                                                                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent-light)]" />
+                                                                <span className="leading-relaxed">
+                                                                    {h}
+                                                                </span>
+                                                            </div>
+                                                        )
+                                                    )}
+                                                </div>
+                                            )}
+
+                                        <div className="mt-6">
+                                            <Link
+                                                href={`/changelog/${entry.slug}`}
+                                                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--accent-light)] transition-all hover:gap-2"
+                                            >
+                                                <span>
+                                                    Read architectural overview
+                                                </span>
+                                                <ArrowRight className="h-3.5 w-3.5" />
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </ScrollReveal>
+                            );
+                        }
+
                         return (
                             <ScrollReveal
                                 key={entry.slug}
@@ -185,26 +258,37 @@ export default function ChangelogPage() {
                                     {/* Left Column: Metadata & Category Node */}
                                     <div className="sm:col-span-4 lg:col-span-3">
                                         <div className="sticky top-24 flex flex-col gap-2.5">
-                                            <div className="flex items-center gap-2">
-                                                <span
-                                                    className={cn(
-                                                        "tag",
-                                                        entry.releaseType ===
-                                                            "Stable" &&
-                                                            "tag stable",
-                                                        entry.releaseType ===
-                                                            "Beta" &&
-                                                            "tag beta",
-                                                        entry.releaseType ===
-                                                            "Alpha" &&
-                                                            "tag alpha"
-                                                    )}
-                                                >
-                                                    {entry.releaseType}
-                                                </span>
+                                            <div className="flex flex-wrap items-center gap-2">
+                                                {entry.isYanked ? (
+                                                    <span className="tag border-amber-500/40 bg-amber-500/10 font-semibold text-amber-600 dark:text-amber-400">
+                                                        Yanked
+                                                    </span>
+                                                ) : (
+                                                    <span
+                                                        className={cn(
+                                                            "tag",
+                                                            entry.releaseType ===
+                                                                "Stable" &&
+                                                                "tag stable",
+                                                            entry.releaseType ===
+                                                                "Beta" &&
+                                                                "tag beta",
+                                                            entry.releaseType ===
+                                                                "Alpha" &&
+                                                                "tag alpha"
+                                                        )}
+                                                    >
+                                                        {entry.releaseType}
+                                                    </span>
+                                                )}
                                                 {isLatest && (
                                                     <span className="editorial-badge border-[var(--accent-light)]/30 bg-[var(--accent-light)]/15 border text-[var(--accent-light)]">
                                                         Latest
+                                                    </span>
+                                                )}
+                                                {entry.isMajor && !isLatest && (
+                                                    <span className="editorial-badge border-[var(--border-light)] bg-[var(--card-bg)] text-[var(--text-muted)]">
+                                                        Major
                                                     </span>
                                                 )}
                                             </div>
@@ -245,6 +329,17 @@ export default function ChangelogPage() {
                                                 </span>
                                             </div>
 
+                                            {entry.internalDetails && (
+                                                <div className="mt-1 font-mono text-[11px] text-[var(--text-dim)]">
+                                                    {entry.internalDetails.expoSdk && (
+                                                        <span>Expo SDK {entry.internalDetails.expoSdk}</span>
+                                                    )}
+                                                    {entry.internalDetails.minAndroid && (
+                                                        <span>Android {entry.internalDetails.minAndroid.split(" ")[0]}+</span>
+                                                    )}
+                                                </div>
+                                            )}
+
                                             {entry.githubUrl && (
                                                 <div className="mt-2 border-t border-[var(--border-light)] pt-2">
                                                     <Link
@@ -273,6 +368,13 @@ export default function ChangelogPage() {
                                                 {entry.title}
                                             </Link>
                                         </h2>
+
+                                        {entry.isYanked && entry.yankedReason && (
+                                            <div className="mt-3 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-700 dark:text-amber-300">
+                                                <span className="font-semibold">Release Notice: </span>
+                                                {entry.yankedReason}
+                                            </div>
+                                        )}
 
                                         <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">
                                             {entry.summary}

@@ -15,21 +15,21 @@ const features = [
         icon: Lock,
         title: "On-Device Storage",
         description:
-            "Your passwords live strictly on your device — never uploaded to any server or cloud database. True sovereignty over your keys.",
+            "Your passwords live strictly on your device — never uploaded to any server or cloud database. Complete control over your stored credentials.",
     },
     {
         category: "Privacy",
         icon: WifiOff,
         title: "Designed for Offline Privacy",
         description:
-            "No internet connection required for vault operations. Zero cloud dependencies and complete local isolation.",
+            "No internet connection required for core password management. No cloud synchronization of your credentials.",
     },
     {
         category: "Security",
         icon: Fingerprint,
         title: "Biometric Authentication",
         description:
-            "Unlock your credential vault instantaneously using device biometrics (fingerprint or face unlock) with PIN fallback.",
+            "Protect access to Passcodes using device biometrics (fingerprint or face unlock) with configurable auto-lock.",
     },
     {
         category: "Architecture",
@@ -43,14 +43,14 @@ const features = [
         icon: Code2,
         title: "100% Open Source",
         description:
-            "Publicly auditable on GitHub. Built with community transparency and reproducible open-source builds.",
+            "Publicly auditable on GitHub under the MIT License. Built with community transparency and open development.",
     },
     {
         category: "Portability",
         icon: RefreshCw,
-        title: "Encrypted Local Backup",
+        title: "Import & Export",
         description:
-            "Import and export compatibility with Google Passwords and standard CSVs. Easily manage and migrate your vault.",
+            "Import and export compatible password data using Google Passwords CSV format. Easily manage and migrate your credentials.",
     },
 ];
 
@@ -64,8 +64,8 @@ export function FeatureGrid() {
                 <ScrollReveal>
                     <SectionHeader
                         badge="Core Architecture"
-                        title="Engineered for Privacy & Sovereignty"
-                        subtitle="Every architectural decision in Passcodes prioritizes user ownership, local security, and technical transparency."
+                        title="Engineered for Privacy & Control"
+                        subtitle="Every architectural decision in Passcodes prioritizes user ownership, local storage, and technical transparency."
                     />
                 </ScrollReveal>
                 <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
